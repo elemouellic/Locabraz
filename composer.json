@@ -1,0 +1,17 @@
+{
+    "name": "emmanuellemouellic/locabraz",
+    "autoload": {
+        "psr-4": {
+            "Emmanuellemouellic\\Locabraz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "elemouellic",
+            "email": "emmanuel.lm@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
