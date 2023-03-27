@@ -2,7 +2,7 @@
     "name": "emmanuellemouellic/locabraz",
     "autoload": {
         "psr-4": {
-            "Emmanuellemouellic\\Locabraz\\": "src/"
+            "Locabraz\\": "src/"
         }
     },
     "authors": [
