@@ -181,13 +181,13 @@ body {
     /* Taille des polices */
 
     --slider: clamp(1.5rem, 0.5rem + 5vw, 5rem);
-    ;
+    
     --bannerprez: clamp(1.2rem, 0.4rem + 4vw, 4rem);
     --titleresponsivemedium: clamp(1.2rem, 1.0857rem + 0.5714vw, 1.6rem);
     --titleresponsivebig: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
     --textreponsive: clamp(1rem, 0.9714rem + 0.1429vw, 1.1rem);
     --inputs: clamp(1.1rem, 0.9857rem + 0.5714vw, 1.5rem);
-    ;
+    
 
     /* Box shadow */
 
