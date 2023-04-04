@@ -161,23 +161,33 @@ body {
     /* box-shadow: 0 0 0 3px red; */
 
     --colorbody: #f7f7f7;
-    --colorform: #463939ba;
+
+    --colorheader: #EEEEEE;
+    --colorfooter: #282828;
+
     --colormenuburger: #f7f7f7;
-    --colorburger: #142137;
-    --colorheader: #dad7d7;
-    --colordispo: #827d7d;
-    --colorbanneractus: #343f50;
+
+    --colorfontdark: #5c5c5c;
+    --colorfontmedium: #827d7d;
+    --colorfontlight: #EEEEEE;
+
+    --colorburger: #3c3c3b;
+    --colorbanneractus: #9e6e44;
+
     --colorarticles: #f1f1f1;
+
     --prata: 'prataregular';
 
     /* Taille des polices */
 
-    --slider: clamp(1.5rem, 0.2143rem + 6.4286vw, 6rem);
+    --slider: clamp(1.5rem, 0.5rem + 5vw, 5rem);
+    ;
     --bannerprez: clamp(1.2rem, 0.4rem + 4vw, 4rem);
     --titleresponsivemedium: clamp(1.2rem, 1.0857rem + 0.5714vw, 1.6rem);
     --titleresponsivebig: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
     --textreponsive: clamp(1rem, 0.9714rem + 0.1429vw, 1.1rem);
-    --inputs: clamp(1.5rem, 1.3571rem + 0.7143vw, 2rem);
+    --inputs: clamp(1.1rem, 0.9857rem + 0.5714vw, 1.5rem);
+    ;
 
     /* Box shadow */
 
@@ -323,7 +333,7 @@ header {
 
 .items-link {
     text-decoration: none;
-    color: #ccc;
+    color: var(--colorfontdark);
 }
 
 
@@ -356,7 +366,7 @@ header {
     font-size: var(--slider);
     font-weight: lighter;
     line-height: 1.2em;
-    color: #ccc;
+    color: var(--colorfontlight);
 }
 
 
@@ -364,20 +374,20 @@ header {
 /******************** Section recherche ********************/
 
 
-
 .title-form {
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: var(--prata);
-    color: var(--colordispo);
-    height: 10vh;
+    color: var(--colorfontmedium);
+    height: 15vh;
     font-size: var(--titleresponsivebig);
 }
 
+
 .home-form {
     width: 100%;
-    height: 20vh;
+    height: 15vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -386,25 +396,25 @@ header {
 
 .input {
     cursor: pointer;
-    border: 2px solid var(--colorform);
-    width: 40%;
+    border: 2px solid var(--colorfontdark);
+    border-radius: 4px;
+    width: 50%;
     margin-bottom: 0.5rem;
     background-color: transparent;
     text-align: center;
     font-size: var(--inputs);
-    color: var(--colorform);
-    border-radius: 4px;
+    color: var(--colorfontdark);
     box-shadow: var(--box);
 }
 
 
 .inputbutton {
     cursor: pointer;
-    border: 2px solid var(--colorform);
-    width: 50%;
+    border: 2px solid var(--colorfontdark);
+    width: 35%;
     font-size: var(--inputs);
     background-color: transparent;
-    color: var(--colorform);
+    color: var(--colorfontdark);
     border-radius: 4px;
     box-shadow: var(--box);
 
@@ -464,10 +474,10 @@ header {
 
 .seeall {
     cursor: pointer;
-    border: 2px solid var(--colorform);
+    border: 2px solid var(--colorfontdark);
     width: 30%;
     background-color: transparent;
-    color: var(--colorform);
+    color: var(--colorfontdark);
     cursor: pointer;
     font-size: var(--inputs);
 
@@ -496,13 +506,18 @@ header {
     font-family: var(--prata);
     color: var(--colorheader);
     text-align: center;
+    padding: 1rem;
 }
 
 .prez-text {
+    display: flex;
+    align-items: center;
+    text-align: left;
     width: 100%;
     height: 70%;
     padding: 1rem;
     font-size: var(--textreponsive);
+    color: var(--colorheader);
 
 }
 
@@ -524,7 +539,7 @@ header {
     background-color: var(--colorarticles);
     margin: 10px;
     padding: 10px;
-    width: 80%;
+    width: 18rem;
     height: 70vh;
     border-radius: 4px;
     box-shadow: var(--box);
@@ -533,6 +548,7 @@ header {
 .actus-img {
     width: 100%;
     height: 50%;
+    padding: 1rem;
     object-fit: cover;
 }
 
@@ -571,7 +587,8 @@ footer {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--colorbanneractus);
+    background-color: var(--colorfooter);
+    color: var(--colorfontlight);
     height: 40vh;
     width: 100%;
     margin-top: 2rem;
@@ -582,10 +599,11 @@ footer {
     flex-direction: column;
     justify-content: space-around;
     width: 50%;
-    height: 33%;
+    height: 100%;
     padding-left: 1rem;
     font-size: var(--textreponsive);
 }
+
 
 .logo-footer {
     background-color: aqua;
@@ -600,7 +618,7 @@ footer {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-end;
-    height: 33%;
+    height: 50%;
     width: 50%;
     padding-right: 1rem;
 
@@ -648,7 +666,7 @@ footer {
     }
 
     .input {
-        width: 20%;
+        width: 15%;
         height: 30%;
         margin-right: 1rem;
     }
@@ -691,6 +709,7 @@ footer {
 
     .actus-home {
         height: 50vh;
+        width: 70%;
     }
 
     .actus-img {
@@ -760,10 +779,4 @@ footer {
     footer :nth-child(3) {
         order: 2;
     }
-}
-
-@media only screen and (min-width: 1200px) {
-    /* .article-home {
-        width: 25%;
-    } */
 }

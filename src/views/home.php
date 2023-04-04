@@ -12,7 +12,6 @@
             <input class="inputbutton" type="submit" value="Rechercher">
         </form>
 
-
         <article class="articles rentals-list">
 
 
