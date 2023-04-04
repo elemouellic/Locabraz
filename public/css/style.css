@@ -178,7 +178,7 @@ body {
 
     --prata: 'prataregular';
 
-    /* Taille des polices */
+    /* Taille responsive des polices */
 
     --slider: clamp(1.5rem, 0.5rem + 5vw, 5rem);
     

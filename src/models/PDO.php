@@ -1,37 +1,39 @@
 <?php
+
 namespace Locabraz\models;
 
 use Dotenv\Dotenv;
+
+// the 3 following "use" are required to access classes and objects outside the namespace
 use PDO;
 use PDOException;
 
-class Database {
-    private $pdo;
+abstract class DbConnector
+{
+  // Singleton  --- permet de définir qu'une seule fois le pdo et d'optimiser l'accès à la bdd
+  private static $bdd = null;
 
-    public function __construct() {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
-        $dotenv->load();
-
-        $host = $_ENV['DB_HOST'];
-        $dbname = $_ENV['DB_NAME'];
-        $username = $_ENV['DB_USERNAME'];
-        $password = $_ENV['DB_PASSWORD'];
-        $port = $_ENV['DB_PORT'];
-
-
-        try {
-            $this->pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password, $port);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo 'Génial';
-        } catch (PDOException $e) {
-            echo 'Nul';
-            die("Erreur de connexion : " . $e->getMessage());
-        }
+  // méthode de connexion à la bdd
+  public static function dbConnect()
+  {
+    
+    if (isset(self::$bdd)) {
+      return self::$bdd;
+    } else {
+      try {
+        self::$bdd = new PDO(
+          "mysql:dbname=" . $_ENV['DB_NAME'] . "; host=" . $_ENV['DB_HOST'] . ":" . $_ENV['DB_PORT'] . "; charset=utf8", 
+          $_ENV['DB_USERNAME'],
+          $_ENV['DB_PASSWORD']
+        );
+        self::$bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        return self::$bdd;
+      } catch (PDOException $e) {
+          // throw the exception to the caller
+          throw new Exception($e->getMessage());
+      }
     }
-
-    public function getPdo() {
-        return $this->pdo;
-    }
+  }
 
 }
 
