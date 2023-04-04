@@ -1,12 +1,769 @@
-/*Font Family*/
+/* Box sizing border-box reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
+/* Reset margin and padding */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Reset headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* Reset lists */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Reset anchors */
+a {
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* Reset form elements */
+button,
+input,
+select,
+textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Reset images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hover */
+
+a:hover {
+    opacity: 0.5s;
+    transition: 0.2s;
+    filter: invert(0.2);
+}
+
+input:hover {
+    opacity: 0.5s;
+    transition: 0.2s;
+    filter: invert(0.4);
+}
+
+button:hover {
+    opacity: 0.5s;
+    transition: 0.2s;
+    filter: invert();
+}
+
+
+/* Add some useful defaults */
+body {
+    line-height: 1;
+    font-size: 100%;
+    font-family: sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Variables */
+
+/* Couleurs */
+
+* {
+    /* box-shadow: 0 0 0 3px red; */
+
+    --colorbody: #f7f7f7;
+    --colorform: #463939ba;
+    --colormenuburger: #f7f7f7;
+    --colorburger: #142137;
+    --colorheader: #dad7d7;
+    --colordispo: #827d7d;
+    --colorbanneractus: #343f50;
+    --colorarticles: #f1f1f1;
+    --prata: 'prataregular';
+
+    /* Taille des polices */
+
+    --slider: clamp(1.5rem, 0.2143rem + 6.4286vw, 6rem);
+    --bannerprez: clamp(1.2rem, 0.4rem + 4vw, 4rem);
+    --titleresponsivemedium: clamp(1.2rem, 1.0857rem + 0.5714vw, 1.6rem);
+    --titleresponsivebig: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
+    --textreponsive: clamp(1rem, 0.9714rem + 0.1429vw, 1.1rem);
+    --inputs: clamp(1.5rem, 1.3571rem + 0.7143vw, 2rem);
+
+    /* Box shadow */
+
+    --box: 0 3px 10px rgba(0, 0, 0, 0.09);
+
+
+}
+
+/*Font Family*/
 
 
 @font-face {
     font-family: 'robotoregular';
-    src: url('roboto-regular-webfont.woff2') format('woff2'),
-         url('roboto-regular-webfont.woff') format('woff');
+    src: url('../fonts/roboto-regular-webfont.woff') format('woff2'),
+        url('../fonts/roboto-regular-webfont.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
 
+}
+
+@font-face {
+    font-family: 'prataregular';
+    src: url('../fonts/prata-regular-webfont.woff2') format('woff2'),
+        url('../fonts/prata-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+
+
+/*Style personnalisé*/
+
+body {
+    width: 100%;
+    margin: auto;
+    background-color: var(--colorbody);
+
+}
+
+/******************** Menu ********************/
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-between;
+    height: 13vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--colorheader);
+    box-shadow: var(--box);
+    transition-delay: 0.5s;
+}
+
+.logo.hidden {
+    visibility: hidden;
+    box-shadow: none;
+}
+
+
+.burger {
+    width: 13vh;
+    background-color: var(--colorburger);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.burger .bar {
+    width: 1.8rem;
+    height: 0.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    transform: translate(-50%, -50%);
+    background-color: var(--colorheader);
+    transition: all 0.3s ease-in-out;
+}
+
+.burger .bar:nth-of-type(2) {
+    top: calc(50% - 9px);
+}
+
+.burger .bar:nth-of-type(3) {
+    top: calc(50% + 9px);
+}
+
+.burger.active .bar:nth-of-type(1) {
+    display: none;
+}
+
+.burger.active .bar:nth-of-type(2) {
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(45deg);
+}
+
+.burger.active .bar:nth-of-type(3) {
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(-45deg);
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: var(--colormenuburger);
+    transform: translateX(100%);
+    transition: transform 1s;
+}
+
+.nav.active {
+    transform: translateX(0);
+}
+
+.items-list {
+    list-style-type: none;
+    display: block;
+    padding: 1rem;
+    font-size: var(--titleresponsivebig);
+    /* border-bottom: 1px solid #ccc; */
+    width: 100%;
+    height: 7rem;
+}
+
+.items-link {
+    text-decoration: none;
+    color: #ccc;
+}
+
+
+
+/******************** Slider ********************/
+
+.slider {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    background-position: center;
+    background-image: linear-gradient(180deg,
+            rgba(31, 31, 38, 0.88) 0%,
+            rgba(31, 31, 38, 0.24) 100%),
+        url(../img/appt1quimperle/20220521_172648.jpg);
+    animation: fade 5s ease-in-out infinite;
+
+}
+
+.slider-title {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 50%;
+    font-family: var(--prata);
+    font-size: var(--slider);
+    font-weight: lighter;
+    line-height: 1.2em;
+    color: #ccc;
+}
+
+
+
+/******************** Section recherche ********************/
+
+
+
+.title-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--prata);
+    color: var(--colordispo);
+    height: 10vh;
+    font-size: var(--titleresponsivebig);
+}
+
+.home-form {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.input {
+    cursor: pointer;
+    border: 2px solid var(--colorform);
+    width: 40%;
+    margin-bottom: 0.5rem;
+    background-color: transparent;
+    text-align: center;
+    font-size: var(--inputs);
+    color: var(--colorform);
+    border-radius: 4px;
+    box-shadow: var(--box);
+}
+
+
+.inputbutton {
+    cursor: pointer;
+    border: 2px solid var(--colorform);
+    width: 50%;
+    font-size: var(--inputs);
+    background-color: transparent;
+    color: var(--colorform);
+    border-radius: 4px;
+    box-shadow: var(--box);
+
+}
+
+
+/******************** Section Articles ********************/
+
+.articles {
+
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.article-home {
+    width: 18rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: var(--box);
+    margin: 20px;
+}
+
+.article-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.article-body {
+    padding: 20px;
+}
+
+.article-title {
+    font-size: var(--titleresponsivemedium);
+    margin-bottom: 20px;
+}
+
+.article-description {
+    font-size: var(--textreponsive);
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.article-button {
+    cursor: pointer;
+}
+
+.section-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.seeall {
+    cursor: pointer;
+    border: 2px solid var(--colorform);
+    width: 30%;
+    background-color: transparent;
+    color: var(--colorform);
+    cursor: pointer;
+    font-size: var(--inputs);
+
+}
+
+
+
+/******************** Présentation ********************/
+
+.prez-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 30vh;
+    background-color: var(--colorbanneractus);
+    margin-top: 1rem;
+
+}
+
+.prez-title {
+    width: 100%;
+    font-size: var(--bannerprez);
+    font-family: var(--prata);
+    color: var(--colorheader);
+    text-align: center;
+}
+
+.prez-text {
+    width: 100%;
+    height: 70%;
+    padding: 1rem;
+    font-size: var(--textreponsive);
+
+}
+
+/******************** Actualités ********************/
+
+.actus {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.actus-home {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--colorarticles);
+    margin: 10px;
+    padding: 10px;
+    width: 80%;
+    height: 70vh;
+    border-radius: 4px;
+    box-shadow: var(--box);
+}
+
+.actus-img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.actus-title {
+    width: 100%;
+    height: 10%;
+    font-size: var(--titleresponsivemedium);
+    text-align: center;
+}
+
+.actus-description {
+    font-size: var(--textreponsive);
+    width: 100%;
+    height: 35%;
+    padding: 1rem;
+    text-align: left;
+}
+
+.actus-button {
+    cursor: pointer;
+    height: 5%;
+    font-size: var(--textreponsive);
+}
+
+.section-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/******************** Footer ********************/
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--colorbanneractus);
+    height: 40vh;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.menu-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    height: 33%;
+    padding-left: 1rem;
+    font-size: var(--textreponsive);
+}
+
+.logo-footer {
+    background-color: aqua;
+    width: 100%;
+    height: 33%;
+    padding-right: 1rem;
+}
+
+
+.rentalsite {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 33%;
+    width: 50%;
+    padding-right: 1rem;
+
+}
+
+
+.logo-airbnb {
+    height: 4vh;
+
+}
+
+
+
+
+.logo-booking {
+    height: 3vh;
+
+}
+
+
+/* Media Queries */
+
+@media only screen and (min-width: 768px) {
+
+    /* Menu burger */
+
+    header {
+        height: 10vh;
+    }
+
+    .burger {
+        width: 10vh;
+    }
+
+    .items-list {
+        text-align: center;
+    }
+
+
+    .home-form {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    .input {
+        width: 20%;
+        height: 30%;
+        margin-right: 1rem;
+    }
+
+    .inputbutton {
+        width: 15%;
+        height: 30%;
+        margin-bottom: 8px;
+    }
+
+    .rentals-list {
+        justify-content: center;
+    }
+
+
+
+    .prez-banner {
+        flex-direction: row-reverse;
+
+    }
+
+    .prez-title {
+        width: 30%;
+
+    }
+
+    .prez-text {
+        width: 70%;
+        height: 100%;
+    }
+
+    .seeall {
+        width: 15%;
+        border-radius: 4px;
+        box-shadow: var(--box);
+    }
+
+    /* Actualités */
+
+
+    .actus-home {
+        height: 50vh;
+    }
+
+    .actus-img {
+        width: 50%;
+        height: 100%;
+        padding: 1rem;
+    }
+
+    .actus-title {
+        padding: 1rem 0;
+        width: 50%;
+        height: 30%;
+    }
+
+    .actus-description {
+        padding: 1rem;
+        width: 50%;
+        height: 60%;
+    }
+
+    .actus-button {
+        height: 10%;
+    }
+
+
+    /* Footer */
+
+    footer {
+        height: 20vh;
+    }
+
+    .menu-footer {
+        width: 33%;
+        height: 100%;
+    }
+
+
+    .rentalsite {
+        width: 33%;
+        height: 100%;
+    }
+
+    .logo-footer {
+        width: 34%;
+        height: 100%;
+    }
+
+    .logo-airbnb {
+        height: 6.5vh;
+
+    }
+
+
+    .logo-booking {
+        height: 5vh;
+
+    }
+
+    footer :nth-child(1) {
+        order: 1;
+    }
+
+    footer :nth-child(2) {
+        order: 3;
+    }
+
+    footer :nth-child(3) {
+        order: 2;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    /* .article-home {
+        width: 25%;
+    } */
 }
