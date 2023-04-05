@@ -5,6 +5,7 @@ namespace Locabraz\models;
 
 use PDO;
 use PDOException;
+use Exception;
 
 abstract class DbConnector
 {
@@ -15,7 +16,7 @@ abstract class DbConnector
   public static function dbConnect()
   {
 
-    $path = "mysql:dbname=" . $_ENV['DB_NAME'] . "; host=" . $_ENV['DB_HOST'] . ":" . $_ENV['DB_PORT'] . "; charset=utf8" ;
+    $dsn = "mysql:dbname=" . $_ENV['DB_NAME'] . "; host=" . $_ENV['DB_HOST'] . ":" . $_ENV['DB_PORT'] . "; charset=utf8" ;
     $user = $_ENV['DB_USERNAME'] ;
     $pwd = $_ENV['DB_PASSWORD'] ;
     
@@ -23,7 +24,7 @@ abstract class DbConnector
       return self::$bdd;
     } else {
       try {
-        self::$bdd = new PDO($path, $user, $pwd);
+        self::$bdd = new PDO($dsn, $user, $pwd);
         self::$bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         return self::$bdd;
       } catch (PDOException $e) {
