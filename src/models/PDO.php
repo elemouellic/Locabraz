@@ -2,7 +2,7 @@
 
 namespace Locabraz\models;
 
-use Dotenv\Dotenv;
+
 
 // the 3 following "use" are required to access classes and objects outside the namespace
 use PDO;
