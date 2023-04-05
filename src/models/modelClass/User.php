@@ -7,7 +7,7 @@ use Locabraz\models\DbConnector;
 class User extends DbConnector
 {
 
-    //Créer un utilisateur
+    /** Créer un utilisateur **/
 
     public function insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password)
     {
@@ -50,8 +50,51 @@ class User extends DbConnector
         ]);
     }
 
-    //Mettre à jour un utilisateur
+    /** Mettre à jour un utilisateur **/
+    public function updateUser($email, $name, $firstname, $phone, $address, $zipcode)
+    {
+        $db = self::dbConnect();
 
-    //Supprimer un compte utilisateur
+        // Validation de l'email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new \Exception('Email invalide');
+        }
 
+        // Validation du code postal
+        if (!preg_match('/^[0-9]{5}$/', $zipcode)) {
+            throw new \Exception('Code postal invalide');
+        }
+
+        $req = $db->prepare(
+            "UPDATE _user 
+            SET name = :name, 
+            firstname = :firstname, 
+            phone = :phone, 
+            address = :address, 
+            zipcode = :zipcode 
+            WHERE email = :email"
+        );
+        $req->execute([
+            ':email' => $email,
+            ':name' => $name,
+            ':firstname' => $firstname,
+            ':phone' => $phone,
+            ':address' => $address,
+            ':zipcode' => $zipcode
+        ]);
+    }
+
+    /** Supprimer un compte utilisateur **/
+    public function deleteUser($email)
+    {
+        $db = self::dbConnect();
+
+        $req = $db->prepare(
+            "DELETE FROM _user 
+            WHERE email = :email"
+        );
+        $req->execute([
+            ':email' => $email
+        ]);
+    }
 }
