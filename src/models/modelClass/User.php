@@ -4,6 +4,16 @@ namespace Locabraz\models\modelClass;
 
 use Locabraz\models\DbConnector;
 
+
+/**
+ * *****Liste des fonctions*****
+ * insertUser (créer nouvel utilisateur et l'insérer dans la base de données)
+ * udpateUser (mettre à jour les informations dans la base de données)
+ * deleteUser (supprimer un compte utilisateur de la base de données)
+ * userLogin (permettre à un utilisateur de se connecter à son compte)
+ * getUsersByEmail (afficher tous les utilisateurs de mon site)
+ */
+
 class User extends DbConnector
 {
 
@@ -96,5 +106,45 @@ class User extends DbConnector
         $req->execute([
             ':email' => $email
         ]);
+    }
+
+    /** Connexion d'un utilisateur **/
+
+    public function userLogin($email, $password)
+    {
+        $db = self::dbConnect();
+
+        $req = $db->prepare("SELECT * FROM _user WHERE email = :email");
+        $req->execute([':email' => $email]);
+
+        $user = $req->fetch();
+
+        if (!$user) {
+            throw new \Exception('Utilisateur non trouvé');
+        }
+
+        if (!password_verify($password, $user['password'])) {
+            throw new \Exception('Mot de passe incorrect');
+        }
+
+        return $user;
+    }
+
+    /** Récupérer tous les comptes utilisateurs pour back office **/
+
+    public function getUsersByEmail($email)
+    {
+        $db = self::dbConnect();
+
+        $req = $db->prepare("SELECT * FROM _user WHERE email = :email");
+        $req->execute([':email' => $email]);
+
+        $users = $req->fetchAll();
+
+        if (!$users) {
+            throw new \Exception('Aucun utilisateur trouvé');
+        }
+
+        return $users;
     }
 }
