@@ -4,6 +4,13 @@ namespace Locabraz\models\modelClass;
 
 use Locabraz\models\DbConnector;
 
+/**
+ * *****Liste des fonctions*****
+ * insertRental (créer nouvelle réservation et l'insérer dans la base de données)
+ * udpateRental (mettre à jour les informations dans la base de données)
+ * deleteRental (supprimer une réservations de la base de données)
+ * getAllRentals (afficher toutes les réservations)
+ */
 
 class Rental extends DbConnector
 {
