@@ -28,9 +28,9 @@ abstract class DbConnector
         self::$bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         return self::$bdd;
       } catch (PDOException $e) {
-          // throw the exception to the caller
-          throw new Exception($e->getMessage());
-      }
+        throw new Exception("Erreur de connexion à la base de données : " . $e->getMessage());
+    }
+    
     }
   }
 

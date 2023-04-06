@@ -6,7 +6,7 @@ use Locabraz\models\DbConnector;
 
 
 /**
- * *****Liste des fonctions*****
+ * *****Liste des méthodes*****
  * insertUser (créer nouvel utilisateur et l'insérer dans la base de données)
  * udpateUser (mettre à jour les informations dans la base de données)
  * deleteUser (supprimer un compte utilisateur de la base de données)

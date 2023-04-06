@@ -5,14 +5,14 @@ namespace Locabraz\models\modelClass;
 use Locabraz\models\DbConnector;
 
 /**
- * *****Liste des fonctions*****
+ * *****Liste des méthodes*****
  * getBookingById (récupérer une réservation par son ID)
  * createBooking (insérer une réservation dans la base de données)
  * updateBooking (mettre à jour une réservation)
  * deleteBooking (supprimer une réservation)
  * getAllBookings (afficher tous les réservations)
  */
-class Rental extends DbConnector
+class Booking extends DbConnector
 {
    
    public function getBookingById($id)

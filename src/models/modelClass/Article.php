@@ -6,7 +6,7 @@ use Locabraz\models\DbConnector;
 
 
 /**
- * *****Liste des fonctions*****
+ * *****Liste des méthodes*****
  * insertArticle (créer un nouvel article et l'insérer dans la base de données)
  * udpateArticle (mettre à jour un article dans la base de données)
  * deleteArticle (supprimer un article de la base de données)
