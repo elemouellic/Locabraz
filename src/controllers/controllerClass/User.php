@@ -18,7 +18,18 @@ class UserController extends MainController
 
     /**Page de connexion */
 
-    
+    public function loginUser()
+    {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $user = new User();
+        $user->userLogin($email, $password);
+
+        //Redirection vers le compte utilisateur
+        header('Location: views/user/account.php');
+    }
+
 
     /**Créer un utilisateur */
 

@@ -113,22 +113,23 @@ class User extends DbConnector
     public function userLogin($email, $password)
     {
         $db = self::dbConnect();
-
+    
         $req = $db->prepare("SELECT * FROM _user WHERE email = :email");
         $req->execute([':email' => $email]);
-
+    
         $user = $req->fetch();
-
+    
         if (!$user) {
             throw new \Exception('Utilisateur non trouvé');
         }
-
+    
         if (!password_verify($password, $user['password'])) {
             throw new \Exception('Mot de passe incorrect');
         }
-
+    
+        $_SESSION['user_id'] = $user['id'];
+    
         return $user;
-    }
 
     /** Récupérer tous les comptes utilisateurs pour back office **/
 

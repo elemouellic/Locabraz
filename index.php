@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_SESSION)) {
+    session_start();
+  }
+  
+
 //Chargment Autoload
 require __DIR__ . '/vendor/autoload.php';
 
