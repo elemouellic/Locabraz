@@ -11,5 +11,5 @@ $dotenv->load();
 
 
 
-require_once __DIR__ . '/src/views/home.php';
+require_once __DIR__ . '/src/views/frontpages/home.php';
 

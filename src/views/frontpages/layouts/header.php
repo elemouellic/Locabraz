@@ -21,7 +21,7 @@
         </div>
         <nav class="nav">
             <ul class="items-menu">
-                <li class="items-list"><a class="items-link" href="#">Appartements</a></li>
+                <li class="items-list"><a class="items-link" href="/?action=apartment">Appartements</a></li>
                 <li class="items-list"><a class="items-link" href="#">Actualités</a></li>
                 <li class="items-list"><a class="items-link" href="#">Contact</a></li>
                 <li class="items-list"><a class="items-link" href="#">Mon compte</a></li>

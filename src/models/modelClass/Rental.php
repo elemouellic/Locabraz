@@ -9,7 +9,8 @@ use Locabraz\models\DbConnector;
  * insertRental (créer nouvelle réservation et l'insérer dans la base de données)
  * udpateRental (mettre à jour les informations dans la base de données)
  * deleteRental (supprimer une réservations de la base de données)
- * getAllRentals (afficher toutes les réservations)
+ * getAllRentals (récupérer toutes les locations)
+ * getFourRentals (récupérer les 4 dernières locations)
  */
 
 class Rental extends DbConnector
@@ -46,7 +47,7 @@ class Rental extends DbConnector
       $req->execute([$type, $rooms, $description, $id]);
    }
 
-   /** Supprimer une location **/
+   /** Supprimer une location **/ 
    public function deleteRental($id)
    {
       $db = self::dbConnect();
@@ -74,4 +75,24 @@ class Rental extends DbConnector
 
       return $rentals;
    }
+
+   /** Récupérer les quatre dernières locations **/
+
+   public function getFourRentals()
+   {
+      $db = self::dbConnect();
+
+      $req = $db->prepare("SELECT * FROM rentals ORDER BY id ASC LIMIT 4");
+      $req->execute();
+
+      $rentals = $req->fetchAll();
+
+      if (!$rentals) {
+         throw new \Exception('Aucune location trouvée');
+      }
+
+      return $rentals;
+   }
+
+
 }
