@@ -7,7 +7,7 @@ use Locabraz\models\DbConnector;
 
 /**
  * *****Liste des méthodes*****
- * insertUser (créer nouvel utilisateur et l'insérer dans la base de données)
+ * insertUser (ajouter nouvel utilisateur dans la base de données)
  * udpateUser (mettre à jour les informations dans la base de données)
  * deleteUser (supprimer un compte utilisateur de la base de données)
  * userLogin (permettre à un utilisateur de se connecter à son compte)
@@ -17,7 +17,7 @@ use Locabraz\models\DbConnector;
 class User extends DbConnector
 {
 
-    /** Créer un utilisateur **/
+    /** Ajouter un utilisateur **/
 
     public function insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password)
     {
