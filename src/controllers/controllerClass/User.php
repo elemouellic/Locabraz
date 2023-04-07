@@ -26,9 +26,20 @@ class UserController extends MainController
         $user = new User();
         $user->userLogin($email, $password);
 
-        //Redirection vers le compte utilisateur
-        header('Location: views/user/account.php');
+        // Démarrage de la session
+        session_start();
+
+        $_SESSION['email'] = $email;
+        $_SESSION['loggedin'] = true;
+
+        //Redirection vers le compte utilisateur ou sur la page login
+        if ($_SESSION['loggedin']) {
+            header('Location: views/frontpages/user/account.php');
+        } else {
+            header('Location: views/frontpages/user/login.php');
+        }
     }
+
 
 
     /**Créer un utilisateur */
@@ -47,6 +58,6 @@ class UserController extends MainController
         $user->insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password);
 
         //Redirection vers le compte utilisateur
-        header('Location: views/user/account.php');
+        header('Location: views/frontpages/user/account.php');
     }
 }

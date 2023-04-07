@@ -130,7 +130,7 @@ class User extends DbConnector
         $_SESSION['user_id'] = $user['id'];
     
         return $user;
-
+    }
     /** Récupérer tous les comptes utilisateurs pour back office **/
 
     public function getUsersByEmail($email)
