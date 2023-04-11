@@ -7,15 +7,39 @@ use Locabraz\models\DbConnector;
 
 /**
  * *****Liste des méthodes*****
+ * userLogin (permettre à un utilisateur de se connecter à son compte)
  * insertUser (ajouter nouvel utilisateur dans la base de données)
  * udpateUser (mettre à jour les informations dans la base de données)
  * deleteUser (supprimer un compte utilisateur de la base de données)
- * userLogin (permettre à un utilisateur de se connecter à son compte)
  * getUsersByEmail (afficher tous les utilisateurs de mon site)
  */
 
 class User extends DbConnector
 {
+
+    /** Connexion d'un utilisateur **/
+
+    public function userLogin($email, $password)
+    {
+        $db = self::dbConnect();
+    
+        $req = $db->prepare("SELECT * FROM _user WHERE email = :email");
+        $req->execute([':email' => $email]);
+    
+        $user = $req->fetch();
+    
+        if (!$user) {
+            throw new \Exception('Utilisateur non trouvé');
+        }
+    
+        if (!password_verify($password, $user['password'])) {
+            throw new \Exception('Mot de passe incorrect');
+        }
+    
+        $_SESSION['user_id'] = $user['id'];
+    
+        return $user;
+    }
 
     /** Ajouter un utilisateur **/
 
@@ -108,29 +132,7 @@ class User extends DbConnector
         ]);
     }
 
-    /** Connexion d'un utilisateur **/
-
-    public function userLogin($email, $password)
-    {
-        $db = self::dbConnect();
     
-        $req = $db->prepare("SELECT * FROM _user WHERE email = :email");
-        $req->execute([':email' => $email]);
-    
-        $user = $req->fetch();
-    
-        if (!$user) {
-            throw new \Exception('Utilisateur non trouvé');
-        }
-    
-        if (!password_verify($password, $user['password'])) {
-            throw new \Exception('Mot de passe incorrect');
-        }
-    
-        $_SESSION['user_id'] = $user['id'];
-    
-        return $user;
-    }
     /** Récupérer tous les comptes utilisateurs pour back office **/
 
     public function getUsersByEmail($email)

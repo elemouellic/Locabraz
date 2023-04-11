@@ -9,7 +9,9 @@ use Locabraz\models\modelClass\User;
  * *****Liste des méthodes*****
  * loginUser (Connexion de l'utilisateur)
  * createUser (créer nouvel utilisateur et l'ajouter dans la base de données)
- * 
+ * upgradeUser (mise à jour des informations de l'utilisateur connecté)
+ * removeUser (supprimer compte utilisateur)
+ * obtainUsersByEmail (récupérer comptes utilisateurs)
  */
 
 
@@ -90,5 +92,39 @@ class UserController extends MainController
 
         // Redirection vers le compte utilisateur
         header('Location: views/frontpages/user/account.php');
+    }
+
+
+    /** Supprimer un utilisateur **/
+    public function removeUser()
+    {
+        // Vérification que l'utilisateur est connecté
+        session_start();
+        if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
+            header('Location: views/frontpages/user/login.php');
+            exit;
+        }
+
+        // Récupération de l'email de l'utilisateur à supprimer
+        $email = $_SESSION['email'];
+
+        // Suppression de l'utilisateur
+        $user = new User();
+        $user->deleteUser($email);
+
+        // Fermeture de la session et redirection vers la page de login
+        session_unset();
+        session_destroy();
+        header('Location: views/frontpages/user/login.php');
+    }
+
+    /** Récupérer comptes utilisateurs */
+
+    public function obtainUsersByEmail($email)
+    {
+        $user = new User();
+        $users = $user->getUsersByEmail($email);
+
+        return $users;
     }
 }
