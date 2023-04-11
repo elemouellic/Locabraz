@@ -1,9 +1,8 @@
 <?php
-
-if (!isset($_SESSION)) {
+//Vérifier si une session existe déjà
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
 
 //Chargement Autoload
 require __DIR__ . '/vendor/autoload.php';
@@ -14,47 +13,6 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-
-try {
-    //Récupérer Controller pour vue front
-    $view = new \Locabraz\controllers\UserController;
-
-    switch ($_GET['action']) {
-
-        //Pages menu
-
-        case 'apartment':
-            $view->apartmentPage();
-            break;
-
-        case 'news':
-            $view->newsPage();
-            break;
-
-        case 'contact':
-            $view->contactPage();
-            break;
-
-        case 'mentions':
-            $view->mentionsPage();
-            break;
-
-        //Pages utilisateurs
-
-        case 'account':
-            $view->accountPage();
-            break;
-
-        default:
-            $view->homePage();
-            break;
-    }
-} catch (Exception $e) {
-    require_once __DIR__ . '404.php';
-} catch (Error $e) {
-    require_once  __DIR__ . 'error.php';
-}
-
-
-
-// require_once __DIR__ . '/src/views/frontpages/home.php';
+//Connexion à l'index et aux pages du site via routage
+require_once __DIR__ .'/src/controllers/Route.php';
+?>
