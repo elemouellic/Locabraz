@@ -29,7 +29,7 @@ class RentalController extends MainController
         $rental->insertRental($type, $rooms, $description);
 
         //Redirection vers le dashboard admin
-        header('Location: views/admin/rentaladmin.php');
+        header('Location: views/admin/dashboard.php');
     }
 
     /** Mettre à jour une location via dashboard */
@@ -45,7 +45,7 @@ class RentalController extends MainController
         $rental->updateRental($id, $type, $rooms, $description);
 
         // Redirection vers le dashboard admin
-        header('Location: views/admin/rentaladmin.php');
+        header('Location: views/admin/dashboard.php');
     }
 
     /** Supprimer une location via dashboard */
@@ -58,7 +58,7 @@ class RentalController extends MainController
         $rental->deleteRental($id);
 
         // Redirection vers le dashboard admin
-        header('Location: views/admin/rentaladmin.php');
+        header('Location: views/admin/dashboard.php');
     }
 
     /** Afficher touts les locations */
