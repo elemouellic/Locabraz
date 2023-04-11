@@ -52,8 +52,8 @@ try {
         $view->homePage();
     }
 } catch (Exception $e) {
-    require_once __DIR__ . '/404.php';
+    require_once './src/views/frontpages/404.php';
 } catch (Error $e) {
-    require_once  __DIR__ . '/error.php';
+    require_once  './src/views/frontpages/error.php';
 }
 ?>
