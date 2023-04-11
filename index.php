@@ -20,6 +20,9 @@ try {
     $view = new \Locabraz\controllers\UserController;
 
     switch ($_GET['action']) {
+
+        //Pages menu
+
         case 'apartment':
             $view->apartmentPage();
             break;
@@ -30,6 +33,16 @@ try {
 
         case 'contact':
             $view->contactPage();
+            break;
+
+        case 'mentions':
+            $view->mentionsPage();
+            break;
+
+        //Pages utilisateurs
+
+        case 'account':
+            $view->accountPage();
             break;
 
         default:

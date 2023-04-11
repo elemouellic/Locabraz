@@ -38,7 +38,7 @@ class UserController extends MainController
     }
 
     /**
-     * Affiche la page de contact
+     * Affiche la page mentions légales
      */
     public function mentionsPage(): void
     {
