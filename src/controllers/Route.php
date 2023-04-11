@@ -1,12 +1,19 @@
 <?php
 try {
-    //Récupérer Controller pour vue front
+    /** Récupérer Controller pour vue front */
+
+    // Vues visiteurs et utilisateurs
     $view = new \Locabraz\controllers\UserController;
+
+    //Vues admin
+    $admin = new \Locabraz\controllers\AdminController;
 
     // Vérifier si l'action est définie
     if (isset($_GET['action'])) {
         switch ($_GET['action']) {
-            //Pages menu
+
+            /** Vues visiteurs */
+                //Pages menu
             case 'apartment':
                 $view->apartmentPage();
                 break;
@@ -23,7 +30,7 @@ try {
                 $view->mentionsPage();
                 break;
 
-            //Pages utilisateurs
+                //Pages utilisateurs
             case 'account':
                 $view->accountPage();
                 break;
@@ -44,6 +51,28 @@ try {
                 $view->bookingPage();
                 break;
 
+            /** Vues admin */
+
+            case 'dashboard':
+                $admin->dashboard();
+                break;
+
+            case 'articleadmin':
+                $admin->articleAdmin();
+                break;
+
+            case 'bookingadmin':
+                $admin->bookingAdmin();
+                break;
+
+            case 'rentaladmin':
+                $admin->rentalAdmin();
+                break;
+
+            case 'useradmin':
+                $admin->userAdmin();
+                break;
+
             default:
                 $view->homePage();
                 break;
@@ -56,4 +85,3 @@ try {
 } catch (Error $e) {
     require_once  './src/views/frontpages/error.php';
 }
-?>
