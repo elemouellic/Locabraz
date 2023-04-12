@@ -7,11 +7,16 @@ if (session_status() == PHP_SESSION_NONE) {
 //Chargement Autoload
 require __DIR__ . '/vendor/autoload.php';
 
-//Dotenv
-use Dotenv\Dotenv;
 
+
+use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+try {
+    $dotenv->load();
+    // echo 'connexion réussie';
+} catch (\Dotenv\Exception\InvalidPathException $e) {
+    die('Impossible de charger le fichier .env : ' . $e->getMessage());
+}
 
 //Connexion à l'index et aux pages du site via routage
 require_once __DIR__ . '/src/controllers/Route.php';

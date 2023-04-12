@@ -6,9 +6,6 @@
 
 // require_once __DIR__ . '/../../vendor/autoload.php';
 
-// require_once './DbConnector.php';
-
-
 
 
 // use Dotenv\Dotenv;

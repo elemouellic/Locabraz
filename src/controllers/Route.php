@@ -2,11 +2,14 @@
 try {
     /** Récupérer Controller pour vue front */
 
+
     // Vues visiteurs et utilisateurs
     $view = new \Locabraz\controllers\UserController;
 
     //Vues admin
     $admin = new \Locabraz\controllers\AdminController;
+
+
 
     // Vérifier si l'action est définie
     if (isset($_GET['action'])) {
@@ -24,6 +27,14 @@ try {
 
             case 'contact':
                 $view->contactPage();
+                break;
+
+                //Formulaire de contact
+            
+            case 'form-contact':
+                $contact = new \Locabraz\controllers\controllerClass\ContactController;
+                $contact->sendMessage();
+                echo 'génial';
                 break;
 
             case 'mentions':

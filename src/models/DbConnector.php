@@ -7,6 +7,18 @@ use PDO;
 use PDOException;
 use Exception;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__.'/../..');
+try {
+    $dotenv->load();
+    echo 'connexion réussie';
+} catch (\Dotenv\Exception\InvalidPathException $e) {
+    die('Impossible de charger le fichier .env : ' . $e->getMessage());
+}
+
+
 abstract class DbConnector
 {
   // Singleton 
@@ -19,6 +31,7 @@ abstract class DbConnector
     $dsn = "mysql:dbname=" . $_ENV['DB_NAME'] . "; host=" . $_ENV['DB_HOST'] . ":" . $_ENV['DB_PORT'] . "; charset=utf8" ;
     $user = $_ENV['DB_USERNAME'] ;
     $pwd = $_ENV['DB_PASSWORD'] ;
+
     
     if (isset(self::$bdd)) {
       return self::$bdd;
@@ -33,6 +46,7 @@ abstract class DbConnector
     
     }
   }
+  
 
 }
 
