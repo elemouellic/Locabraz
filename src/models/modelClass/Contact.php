@@ -6,11 +6,16 @@ use Locabraz\models\DbConnector;
 
 /** 
  * *****Liste des méthodes*****
- * insertMessage (insérer un message via le formulaire de contact)*/
+ * insertMessage (insérer un message via le formulaire de contact)
+ * getMessages (récupérer tous les messages reçus)
+ */
+
 
 
 class Contact extends DbConnector
 {
+
+    /** Insérer message dans la base de données */
 
     public function insertMessage($name, $firstname, $email, $subject, $message, $postdate, $status)
     {
@@ -18,10 +23,13 @@ class Contact extends DbConnector
 
         $name = htmlspecialchars($name);
         $firstname = htmlspecialchars($firstname);
-        $email = htmlspecialchars($email);
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
         $subject = htmlspecialchars($subject);
         $message = htmlspecialchars($message);
 
+        if (!$email) {
+            throw new \Exception('Adresse e-mail invalide');
+        }
 
 
         $req = $db->prepare(
@@ -34,9 +42,9 @@ class Contact extends DbConnector
             postdate, 
             status)
              VALUES (:name, :firstname, :email, :subject, :message, :postdate, :status)"
-                
-            );
-        
+
+        );
+
         $req->execute([
             ':name' => $name,
             ':firstname' => $firstname,
@@ -44,11 +52,14 @@ class Contact extends DbConnector
             ':subject' => $subject,
             ':message' => $message,
             ':postdate' => $postdate,
-            ':status' => $status
+            ':status' => $status ? 1 : 0
         ]);
     }
 
-    public function getMessages(){
+    /** Récupérer messages pour vue admin */
+
+    public function getMessages()
+    {
 
         $db = self::dbConnect();
 
@@ -62,6 +73,5 @@ class Contact extends DbConnector
         }
 
         return $messages;
-
     }
 }
