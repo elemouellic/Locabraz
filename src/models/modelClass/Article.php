@@ -10,8 +10,8 @@ use Locabraz\models\DbConnector;
  * insertArticle (créer un nouvel article et l'insérer dans la base de données)
  * udpateArticle (mettre à jour un article dans la base de données)
  * deleteArticle (supprimer un article de la base de données)
- * getAllArticles (récupérer tous les articles de la base de données)
- * getArticleById (récupérer un article en fonction de son ID)
+ * getAllArticles (récupérer tous les articles de la table)
+ * getThreeArticles (récupérer les trois derniers articles de la table)
  */
 
 class Article extends DbConnector
@@ -97,21 +97,21 @@ class Article extends DbConnector
         return $articles;
     }
 
-    /** Récupérer un article en fonction de son ID **/
+    /** Récupérer trois articles **/
 
-    public function getArticleById($id)
+    public function getThreeArticles()
     {
         $db = self::dbConnect();
 
-        $req = $db->prepare("SELECT * FROM article WHERE idArticles = :id");
-        $req->execute([':id' => $id]);
+        $req = $db->prepare("SELECT * FROM article ORDER BY id ASC LIMIT 3");
+        $req->execute();
 
-        $article = $req->fetch();
+        $articles = $req->fetchAll();
 
-        if (!$article) {
-            throw new \Exception('Article non trouvé');
+        if (!$articles) {
+            throw new \Exception('Aucun article trouvé');
         }
 
-        return $article;
+        return $articles;
     }
 }

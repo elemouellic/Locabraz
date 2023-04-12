@@ -13,8 +13,8 @@ class ArticleController extends MainController
      * createArticle (créer un nouvel article à partir de l'admin)
      * udpgradeArticle (mettre à jour un article à partir de l'admin)
      * removeArticle (supprimer un article à partir de l'admin)
-     * obtainAllArticles (récupérer tous les articles)
-     * obtainArticleById (récupérer un article en fonction de son ID)
+     * obtainAllArticles (récupérer tous les articles pour page article)
+     * obtainThreeArticles (récupérer les trois derniers articles pour page accueil)
      */
 
     /** Créer un article via le dashboard admin */
@@ -54,7 +54,8 @@ class ArticleController extends MainController
 
     /** Supprimer un article via le dashboard admin */
 
-    public function removeArticle(){
+    public function removeArticle()
+    {
 
         $id = $_POST['id'];
 
@@ -63,6 +64,27 @@ class ArticleController extends MainController
 
         //Redirection vers le dashboard admin
         header('Location: views/admin/dashboard.php');
+    }
 
+    /** Récupérer tous les article */
+
+    public function obtainAllArticles()
+    {
+
+        $article = new Article();
+        $article = $article->getAllArticles();
+
+        return $article;
+    }
+
+    /** Récupérer trois articles */
+
+    public function obtainThreeArticles()
+    {
+
+        $article = new Article();
+        $article = $article->getThreeArticles();
+
+        return $article;
     }
 }
