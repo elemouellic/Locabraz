@@ -7,11 +7,11 @@ use Locabraz\models\modelClass\Rental;
 
 /**
  * *****Liste des méthodes*****
- * createRental ()
- * upgradeRental ()
- * removeRental ()
- * obtainAllRentals ()
- * obtainFourRentals ()
+ * createRental (créer une nouvelle location via l'admin)
+ * upgradeRental (mettre à jour une location via l'admin)
+ * removeRental (supprimer une location via l'admin)
+ * obtainAllRentals (récupérer les quatres dernières ,location pour page d'accueil)
+ * obtainFourRentals (récupérer toutes les locations pour page appartements)
  */
 
 class RentalController extends MainController
@@ -24,9 +24,10 @@ class RentalController extends MainController
         $type = $_POST['type'];
         $rooms = $_POST['rooms'];
         $description = $_POST['description'];
+        $photoIds = $_POST['photo_id'];
 
         $rental = new Rental();
-        $rental->insertRental($type, $rooms, $description);
+        $rental->insertRental($type, $rooms, $description, $photoIds);
 
         //Redirection vers le dashboard admin
         header('Location: views/admin/dashboard.php');
@@ -40,9 +41,10 @@ class RentalController extends MainController
         $type = $_POST['type'];
         $rooms = $_POST['rooms'];
         $description = $_POST['description'];
+        $photoIds = $_POST['photo_id'];
 
         $rental = new Rental();
-        $rental->updateRental($id, $type, $rooms, $description);
+        $rental->updateRental($id, $type, $rooms, $description, $photoIds);
 
         // Redirection vers le dashboard admin
         header('Location: views/admin/dashboard.php');
@@ -68,6 +70,12 @@ class RentalController extends MainController
         $rental = new Rental();
         $rentals = $rental->getAllRentals();
 
+        // Ajouter les photos pour chaque location
+        foreach ($rentals as &$r) {
+            $photos = $rental->getRentalPhotos($r['idRentals']);
+            $r['photos'] = $photos;
+        }
+
         return $rentals;
     }
 
@@ -77,6 +85,12 @@ class RentalController extends MainController
     {
         $rental = new Rental();
         $rentals = $rental->getFourRentals();
+
+        // Ajouter les photos pour chaque location
+        foreach ($rentals as &$r) {
+            $photos = $rental->getRentalPhotos($r['idRentals']);
+            $r['photos'] = $photos;
+        }
 
         return $rentals;
     }
