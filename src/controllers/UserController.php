@@ -34,7 +34,7 @@ class UserController extends MainController
      */
     public function contactPage(): void
     {
-        require_once $this->getViewFront('contact');
+        require_once $this->getViewFront('contact/contact');
     }
 
     /**
@@ -85,5 +85,13 @@ class UserController extends MainController
     public function bookingPage(): void
     {
         require_once $this->getViewFront('user/booking');
+    }
+
+        /**
+     * Confirmation du formulaire
+     */
+    public function confirmationPage(): void
+    {
+        require_once $this->getViewFront('contact/contact-confirm');
     }
 }

@@ -1,13 +1,20 @@
 <?php
+
+use Locabraz\controllers\controllerClass\ContactController;
+
 try {
     /** Récupérer Controller pour vue front */
-
 
     // Vues visiteurs et utilisateurs
     $view = new \Locabraz\controllers\UserController;
 
-    //Vues admin
+    // Vues admin
     $admin = new \Locabraz\controllers\AdminController;
+
+    // Récupérer contrôleur contact
+    require_once dirname(__FILE__) . '/controllerClass/Contact.php';
+
+
 
 
 
@@ -15,7 +22,7 @@ try {
     if (isset($_GET['action'])) {
         switch ($_GET['action']) {
 
-            /** Vues visiteurs */
+                /** Vues visiteurs */
                 //Pages menu
             case 'apartment':
                 $view->apartmentPage();
@@ -27,14 +34,6 @@ try {
 
             case 'contact':
                 $view->contactPage();
-                break;
-
-                //Formulaire de contact
-            
-            case 'form-contact':
-                $contact = new \Locabraz\controllers\controllerClass\ContactController;
-                $contact->sendMessage();
-                echo 'génial';
                 break;
 
             case 'mentions':
@@ -62,7 +61,7 @@ try {
                 $view->bookingPage();
                 break;
 
-            /** Vues admin */
+                /** Vues admin */
 
             case 'dashboard':
                 $admin->dashboard();
@@ -83,6 +82,19 @@ try {
             case 'useradmin':
                 $admin->userAdmin();
                 break;
+
+                //Formulaire de contact
+
+            case 'form-contact':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $contact = new ContactController;
+                    $contact->sendMessage();
+                    $view->confirmationPage();
+                    break;
+                } else {
+                    $view->contactPage();
+                    break;
+                }
 
             default:
                 $view->homePage();

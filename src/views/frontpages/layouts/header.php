@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <h1 class="logo"><a href="#">Locabraz</a></h1>
+        <h1 class="logo"><a href="?action=home">Locabraz</a></h1>
         <div class="burger">
             <span class="bar"></span>
             <span class="bar"></span>

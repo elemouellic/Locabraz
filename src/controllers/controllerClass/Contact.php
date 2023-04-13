@@ -2,7 +2,7 @@
 
 namespace Locabraz\controllers\controllerClass;
 
-use Locabraz\controllers\MainController;
+
 use Locabraz\models\modelClass\Contact;
 
 /**
@@ -11,7 +11,7 @@ use Locabraz\models\modelClass\Contact;
  * obtainMessages (récupérer messages pour vue administrateur)
  */
 
-class ContactController extends MainController
+class ContactController
 {
 
     /** Envoyer un message via le formulaire de contact */
@@ -23,11 +23,15 @@ class ContactController extends MainController
         $email = $_POST['email'];
         $subject = $_POST['subject'];
         $message = $_POST['message'];
-        $postdate = date('d/m/Y H:i:s');
+        $postdate =  date('Y-m-d H:i:s');
         $status = 0;
+        
 
         $contact = new Contact();
         $contact->insertMessage($name, $firstname, $email, $subject, $message, $postdate, $status);
+
+
+        
     }
 
     public function obtainMessages()

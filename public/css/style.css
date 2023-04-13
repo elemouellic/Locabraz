@@ -245,6 +245,8 @@ header {
 }
 
 
+
+
 .logo {
     display: flex;
     align-items: center;
@@ -579,6 +581,47 @@ header {
     width: 100%;
 }
 
+/******************** Page contact ********************/
+
+.contact-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-contact{
+
+    background-color: var(--colorheader);
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    height: 60vh;
+    width: 50%;
+}
+
+.box-contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.box-contact>label{
+    text-align: center;
+    font-size: var(--textreponsive);
+}
+
+
+
+.box-contact>input{
+    width: 70%;
+    height: 100%;
+}
+
+
 /******************** Footer ********************/
 
 footer {
@@ -637,6 +680,8 @@ footer {
     height: 3vh;
 
 }
+
+
 
 
 /* Media Queries */
