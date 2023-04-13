@@ -58,7 +58,7 @@
         </article>
     </article>
     <div class="section-button">
-        <button class="seeall" type="submit">Voir&nbsptout</button>
+    <a href="?action=apartment" class="seeall" >Voir&nbsptout</a>
     </div>
     <section class="prez-banner">
         <h5 class="prez-title">Présentation</h5>
@@ -111,7 +111,7 @@
             <input class="actus-button" type="button" value="Lire...">
         </article>
         <div class="section-button">
-            <button class="seeall" type="submit">Voir&nbsptout</button>
+            <a href="?action=news" class="seeall" >Voir&nbsptout</a>
         </div>
     </article>
 
