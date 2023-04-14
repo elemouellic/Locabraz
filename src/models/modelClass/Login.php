@@ -46,7 +46,6 @@ class Login extends DbConnector
     
         return $user;
     }
-    
 
     /** Ajouter un utilisateur **/
 
