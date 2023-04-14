@@ -102,7 +102,6 @@ try {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $register = new LoginController();
                     $register->createUser();
-                    $view->accountPage();
                     break;
                 } else {
                     $view->registerPage();

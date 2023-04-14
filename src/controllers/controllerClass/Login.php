@@ -2,7 +2,8 @@
 
 namespace Locabraz\controllers\controllerClass;
 
-use Locabraz\controllers\MainController;
+// use Locabraz\controllers\MainController;
+use Locabraz\controllers\UserController;
 use Locabraz\models\modelClass\Login;
 
 /**
@@ -16,7 +17,7 @@ use Locabraz\models\modelClass\Login;
 
 
 
-class LoginController extends MainController
+class LoginController extends UserController
 {
 
     /**Page de connexion */
@@ -25,26 +26,26 @@ class LoginController extends MainController
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-    
+
         $user = new Login();
         $user->userLogin($email, $password);
-    
+
         // Démarrage de la session
         session_start();
-    
+
         $_SESSION['email'] = $email;
         $_SESSION['loggedin'] = true;
-    
+
         //Redirection vers le compte utilisateur ou sur la page login
         if (isset($_SESSION['admin']) && $_SESSION['admin']) {
-            header('Location: views/admin/dashboard.php');
+            header("Location: " . $_ENV['SITE_URL'] . "?action=dashboard");
         } elseif ($_SESSION['loggedin']) {
-            header('Location: views/frontpages/user/account.php');
+            header("Location: " . $_ENV['SITE_URL'] . "?action=account");
         } else {
-            header('Location: views/frontpages/user/login.php');
+            header("Location: " . $_ENV['SITE_URL'] . "?action=login");
         }
     }
-    
+
 
 
 
@@ -64,7 +65,7 @@ class LoginController extends MainController
         $user->insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password);
 
         //Redirection vers le compte utilisateur
-        header('Location: views/frontpages/user/account.php');
+        header("Location: " . $_ENV['SITE_URL'] . "?action=account");
     }
 
     /** Mettre à jour les informations de l'utilisateur */
@@ -74,7 +75,7 @@ class LoginController extends MainController
         // Vérification si l'utilisateur est connecté
         session_start();
         if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-            header('Location: views/frontpages/user/login.php');
+            header("Location: " . $_ENV['SITE_URL'] . "?action=login");
             exit;
         }
 
@@ -94,7 +95,7 @@ class LoginController extends MainController
         }
 
         // Redirection vers le compte utilisateur
-        header('Location: views/frontpages/user/account.php');
+        header("Location: " . $_ENV['SITE_URL'] . "?action=account");
     }
 
 
@@ -104,7 +105,7 @@ class LoginController extends MainController
         // Vérification que l'utilisateur est connecté
         session_start();
         if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
-            header('Location: views/frontpages/user/login.php');
+            header("Location: " . $_ENV['SITE_URL'] . "?action=login");
             exit;
         }
 
@@ -118,7 +119,7 @@ class LoginController extends MainController
         // Fermeture de la session et redirection vers la page de login
         session_unset();
         session_destroy();
-        header('Location: views/frontpages/user/login.php');
+        header("Location: " . $_ENV['SITE_URL'] . "?action=login");
     }
 
     /** Récupérer comptes utilisateurs */

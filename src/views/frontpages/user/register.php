@@ -4,7 +4,7 @@
 <section class="account-page">
 
     <h2 class="title-form">Inscription</h2>
-    <form class="form-template" action="form-register" method="POST">
+    <form class="form-template" action="?action=form-register" method="POST">
         <div class="box-form">
             <label for="name">Nom:</label>
             <input type="text" id="name" name="name" maxlength="50" placeholder="Votre nom" required>
