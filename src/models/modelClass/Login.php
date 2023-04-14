@@ -14,7 +14,7 @@ use Locabraz\models\DbConnector;
  * getUsersByEmail (afficher tous les utilisateurs de mon site)
  */
 
-class User extends DbConnector
+class Login extends DbConnector
 {
 
     /** Connexion d'un utilisateur **/
@@ -38,8 +38,15 @@ class User extends DbConnector
     
         $_SESSION['user_id'] = $user['id'];
     
+        // Vérifier si l'utilisateur est un admin
+
+        if ($user['admin'] == 1) {
+            $_SESSION['admin'] = true;
+        }
+    
         return $user;
     }
+    
 
     /** Ajouter un utilisateur **/
 

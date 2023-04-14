@@ -3,7 +3,7 @@
 namespace Locabraz\controllers\controllerClass;
 
 use Locabraz\controllers\MainController;
-use Locabraz\models\modelClass\User;
+use Locabraz\models\modelClass\Login;
 
 /**
  * *****Liste des méthodes*****
@@ -16,7 +16,7 @@ use Locabraz\models\modelClass\User;
 
 
 
-class UserController extends MainController
+class LoginController extends MainController
 {
 
     /**Page de connexion */
@@ -25,23 +25,26 @@ class UserController extends MainController
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-
-        $user = new User();
+    
+        $user = new Login();
         $user->userLogin($email, $password);
-
+    
         // Démarrage de la session
         session_start();
-
+    
         $_SESSION['email'] = $email;
         $_SESSION['loggedin'] = true;
-
+    
         //Redirection vers le compte utilisateur ou sur la page login
-        if ($_SESSION['loggedin']) {
+        if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+            header('Location: views/admin/dashboard.php');
+        } elseif ($_SESSION['loggedin']) {
             header('Location: views/frontpages/user/account.php');
         } else {
             header('Location: views/frontpages/user/login.php');
         }
     }
+    
 
 
 
@@ -57,7 +60,7 @@ class UserController extends MainController
         $zipcode = $_POST['zipcode'];
         $password = $_POST['password'];
 
-        $user = new User();
+        $user = new Login();
         $user->insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password);
 
         //Redirection vers le compte utilisateur
@@ -83,7 +86,7 @@ class UserController extends MainController
         $zipcode = $_POST['zipcode'];
 
         try {
-            $user = new User();
+            $user = new Login();
             $user->updateUser($email, $name, $firstname, $phone, $address, $zipcode);
         } catch (\Exception $e) {
             echo 'Erreur : ' . $e->getMessage();
@@ -109,7 +112,7 @@ class UserController extends MainController
         $email = $_SESSION['email'];
 
         // Suppression de l'utilisateur
-        $user = new User();
+        $user = new Login();
         $user->deleteUser($email);
 
         // Fermeture de la session et redirection vers la page de login
@@ -122,7 +125,7 @@ class UserController extends MainController
 
     public function obtainUsersByEmail($email)
     {
-        $user = new User();
+        $user = new Login();
         $users = $user->getUsersByEmail($email);
 
         return $users;

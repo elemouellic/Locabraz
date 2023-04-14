@@ -1,6 +1,7 @@
 <?php
 
 use Locabraz\controllers\controllerClass\ContactController;
+use Locabraz\controllers\controllerClass\LoginController;
 
 try {
     /** Récupérer Controller pour vue front */
@@ -13,6 +14,8 @@ try {
 
     // Récupérer contrôleur contact
     require_once dirname(__FILE__) . '/controllerClass/Contact.php';
+    // Récupérer contrôleur utilisateur
+    require_once dirname(__FILE__) . '/controllerClass/Login.php';
 
 
     // Vérifier si l'action est définie
@@ -80,8 +83,9 @@ try {
                 $admin->userAdmin();
                 break;
 
-                //Formulaire de contact
+            /** Traitement des formulaires */
 
+                // Formulaire de contact
             case 'form-contact':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $contact = new ContactController();
@@ -90,6 +94,18 @@ try {
                     break;
                 } else {
                     $view->contactPage();
+                    break;
+                }
+
+                // Formulaire d'enregistrement utilisateur
+            case 'form-register':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $register = new LoginController();
+                    $register->createUser();
+                    $view->accountPage();
+                    break;
+                } else {
+                    $view->registerPage();
                     break;
                 }
 
