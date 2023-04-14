@@ -9,11 +9,17 @@ try {
     // Vues admin
     $admin = new \Locabraz\controllers\AdminController();
 
+    /** Récupérer Controller pour formulaires */
+ 
+    $article = new Locabraz\controllers\controllerClass\ArticleController();
 
-    // Récupérer contrôleur contact
+    $booking = new Locabraz\controllers\controllerClass\BookingController();
+
     $contact = new Locabraz\controllers\controllerClass\ContactController();
-    // Récupérer contrôleur enregistrement
-    $register = new Locabraz\controllers\controllerClass\LoginController();
+
+    $login = new Locabraz\controllers\controllerClass\LoginController();
+
+    $rental = new Locabraz\controllers\controllerClass\RentalController();
 
 
 
@@ -98,7 +104,7 @@ try {
                 // Formulaire d'enregistrement utilisateur
             case 'form-register':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $register->createUser();
+                    $login->createUser();
                     break;
                 } else {
                     $view->registerPage();
@@ -113,7 +119,7 @@ try {
         $view->homePage();
     }
 } catch (Exception $e) {
-    require_once './src/views/frontpages/404.php';
+    $view->notFoundPage();
 } catch (Error $e) {
-    require_once  './src/views/frontpages/error.php';
+    $view->errorPage();
 }

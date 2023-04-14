@@ -88,6 +88,24 @@ class UserController extends MainController
     }
 
     /**
+     * Affiche page 404
+     */
+    public function notFoundPage()
+    {
+        require_once $this->getViewFront('404');
+    }
+
+
+    /**
+     * Affiche page erreur
+     */
+    public function errorPage()
+    {
+        require_once $this->getViewFront('error');
+    }
+
+
+    /**
      * Confirmation du formulaire
      */
     public function confirmationPage(): void
