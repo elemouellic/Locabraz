@@ -87,7 +87,7 @@ class UserController extends MainController
         require_once $this->getViewFront('user/booking');
     }
 
-        /**
+    /**
      * Confirmation du formulaire
      */
     public function confirmationPage(): void

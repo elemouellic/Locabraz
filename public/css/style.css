@@ -177,13 +177,13 @@ body {
     /* Taille responsive des polices */
 
     --slider: clamp(1.5rem, 0.5rem + 5vw, 5rem);
-    
+
     --bannerprez: clamp(1.2rem, 0.4rem + 4vw, 4rem);
     --titleresponsivemedium: clamp(1.2rem, 1.0857rem + 0.5714vw, 1.6rem);
     --titleresponsivebig: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
     --textreponsive: clamp(1rem, 0.9714rem + 0.1429vw, 1.1rem);
     --inputs: clamp(1.1rem, 0.9857rem + 0.5714vw, 1.5rem);
-    
+
 
     /* Box shadow */
 
@@ -579,7 +579,7 @@ header {
 
 /******************** Page contact ********************/
 
-.contact-page{
+.contact-page {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -587,7 +587,31 @@ header {
     align-items: center;
 }
 
-.form-contact{
+
+
+/******************** Page Login ********************/
+
+.login-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/******************** Page Mon Compte ********************/
+
+.account-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/******************** Template formulaire ********************/
+
+.form-template {
 
     background-color: var(--colorheader);
     display: flex;
@@ -598,7 +622,8 @@ header {
     width: 100%;
 }
 
-.box-contact{
+
+.box-form {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -607,28 +632,8 @@ header {
     height: 100%;
 }
 
-/******************** Page Mon Compte ********************/
-
-.login-page{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/******************** Page Mon Compte ********************/
-
-.account-page{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 /* Faire disparaître les labels mais les laisser accessibles aux lecteurs d'écrans  */
-.box-contact>label{
+.box-form>label {
     position: absolute;
     left: -10000px;
     width: 1px;
@@ -637,27 +642,44 @@ header {
 }
 
 
-.box-contact>input{
+.box-form>input {
     width: 70%;
     height: 50%;
     font-size: var(--textreponsive);
+    text-indent: 1rem;
 
 }
 
-.box-contact>textarea{
+/* Box alternative pour pages avec peu d'input */
+
+.box-form-alt{
+    justify-content: center;
+}
+
+.box-form-alt>input {
+    width: 70%;
+    height: 20%;
+    font-size: var(--textreponsive);
+
+}
+
+.box-form>textarea {
     width: 70%;
     height: 100%;
     font-size: var(--textreponsive);
+    margin-bottom: 1rem;
 }
 
-.form-contact>label{
-    margin: 1rem;
+.form-validate {
+    border: 2px solid var(--colorfontdark);
+    width: 30%;
+    background-color: transparent;
+    color: var(--colorfontdark);
+    cursor: pointer;
+    font-size: var(--inputs);
+    text-align: center;
+    margin-top: 1rem;
 }
-
-.form-contact>.inputbutton{
-    margin: 1rem;
-}
-
 
 
 /******************** Footer ********************/
@@ -817,17 +839,22 @@ footer {
         height: 10%;
     }
 
-    /* Page contact */
+    /* Template formulaire */
 
-    .form-contact{
+    .form-template {
         width: 70%;
     }
 
-    .box-contact{
-    width: 50%;
+    .box-form {
+        width: 50%;
+    }
+
+    .form-validate {
+        width: 20%;
+    }
 
 
-} */
+
 
 
 

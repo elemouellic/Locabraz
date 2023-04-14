@@ -1,6 +1,6 @@
 <?php
 
-namespace Locabraz\controllers;
+namespace Locabraz\controllers\controllerClass;
 
 use Locabraz\controllers\MainController;
 use Locabraz\models\modelClass\Article;

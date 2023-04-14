@@ -6,16 +6,13 @@ try {
     /** Récupérer Controller pour vue front */
 
     // Vues visiteurs et utilisateurs
-    $view = new \Locabraz\controllers\UserController;
+    $view = new \Locabraz\controllers\UserController();
 
     // Vues admin
-    $admin = new \Locabraz\controllers\AdminController;
+    $admin = new \Locabraz\controllers\AdminController();
 
     // Récupérer contrôleur contact
     require_once dirname(__FILE__) . '/controllerClass/Contact.php';
-
-
-
 
 
     // Vérifier si l'action est définie
@@ -87,7 +84,7 @@ try {
 
             case 'form-contact':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $contact = new ContactController;
+                    $contact = new ContactController();
                     $contact->sendMessage();
                     $view->confirmationPage();
                     break;

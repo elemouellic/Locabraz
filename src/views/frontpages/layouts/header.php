@@ -24,7 +24,7 @@
                 <li class="items-list"><a href="?action=apartment" class="items-link">Appartements</a></li>
                 <li class="items-list"><a href="?action=news" class="items-link"> Actualités</a></li>
                 <li class="items-list"><a href="?action=contact" class="items-link">Contact</a></li>
-                <li class="items-list"><a  href="?action=login" class="items-link">Mon compte</a></li>
+                <li class="items-list"><a  href="?action=account" class="items-link">Mon compte</a></li>
             </ul>
         </nav>
     </header>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Locabraz\Controllers;
+namespace Locabraz\controllers;
 
 class MainController {
     /**
