@@ -22,7 +22,7 @@
                     <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et enim,
                         perferendis quibusdam iure ex neque cum fugit. Atque unde, ipsum eius, quam sint velit iusto.
                     </p>
-                    <a href="#" class="article-button">Réserver</a>
+                    <a href="?action=booking" class="article-button">Réserver</a>
                 </div>
             </article>
             <article class="article-home">

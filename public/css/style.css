@@ -607,6 +607,25 @@ header {
     height: 100%;
 }
 
+/******************** Page Mon Compte ********************/
+
+.login-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/******************** Page Mon Compte ********************/
+
+.account-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Faire disparaître les labels mais les laisser accessibles aux lecteurs d'écrans  */
 .box-contact>label{
