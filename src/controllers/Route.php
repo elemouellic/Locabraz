@@ -115,6 +115,7 @@ try {
                     break;
                 }
 
+                // Formulaires location
             case 'create-rental':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $rental->createRental();
@@ -125,6 +126,14 @@ try {
             case 'upgrade-rental':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $rental->upgradeRental();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
+            case 'remove-rental':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $rental->removeRental();
                     break;
                 } else {
                     $admin->dashboard();
