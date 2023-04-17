@@ -18,33 +18,43 @@ class Rental extends DbConnector
 {
 
    /** Créer une location **/
-   public function insertRental($type, $rooms, $description, $photoIds)
+   public function insertRental($type, $rooms, $description, $photolinks, $photoalts)
    {
-      $db = self::dbConnect();
-
-      $req = $db->prepare(
-         "INSERT INTO rentals (
-        type,
-        rooms,
-        description
-        ) 
-        VALUES (?, ?, ?)"
-      );
-      $req->execute([$type, $rooms, $description]);
-
-      $rentalId = $db->lastInsertId();
-
-      foreach ($photoIds as $photoId) {
-         $req = $db->prepare(
-            "INSERT INTO representer (
-            idRentals,
-            idPhotorental
-            ) 
-            VALUES (?, ?)"
-         );
-         $req->execute([$rentalId, $photoId]);
-      }
+       $db = self::dbConnect();
+   
+       $req = $db->prepare(
+           "INSERT INTO rentals (
+           type,
+           rooms,
+           description
+           ) 
+           VALUES (?, ?, ?)"
+       );
+       $req->execute([$type, $rooms, $description]);
+       
+   
+       foreach ($photolinks['tmp_name'] as $index => $tmp_name) {
+           $target_dir = "public/img/";
+           $target_file = $target_dir . basename($photolinks["name"][$index]);
+           $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+           $newfilename = uniqid() . '.' . $imageFileType;
+           $target_file = $target_dir . $newfilename;
+   
+           move_uploaded_file($tmp_name, $target_file);
+   
+           $photoalt = $photoalts[$index];
+   
+           $req = $db->prepare(
+               "INSERT INTO rentalgallerie (
+               photolink,
+               alt
+               ) 
+               VALUES (?, ?)"
+           );
+           $req->execute([$target_file, $photoalt]);
+       }
    }
+   
 
    /** Mettre à jour une location **/
    public function updateRental($id, $type, $rooms, $description, $photoIds)

@@ -24,13 +24,23 @@ class RentalController extends MainController
         $type = $_POST['type'];
         $rooms = $_POST['rooms'];
         $description = $_POST['description'];
-        $photoIds = $_POST['photo_id'];
+        
+        $photolinks = $_FILES['photolink'];
+        
+        // Gérer les fichiers téléchargés
+        $photoalt = array();
+        foreach ($_POST['photoalt'] as $alt) {
+            $photoalt[] = $alt;
+        }
+        
+        // Maintenant, vous pouvez utiliser $photolinks et $photoalt pour insérer les données dans la base de données
+        
 
         $rental = new Rental();
-        $rental->insertRental($type, $rooms, $description, $photoIds);
+        $rental->insertRental($type, $rooms, $description, $photolinks, $photoalt);
 
         //Redirection vers le dashboard admin
-        header('Location: views/admin/dashboard.php');
+        header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 
     /** Mettre à jour une location via dashboard */

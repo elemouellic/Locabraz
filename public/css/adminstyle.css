@@ -249,6 +249,7 @@ body {
 
 .admin-items{
     margin-bottom: 0.2rem;
+    font-family: var(--prata);
 }
 
 .admin-items>a{
@@ -263,7 +264,8 @@ body {
 
 .title-admin{
     font-size: var(--titleresponsivebig);
-    margin-bottom: 1rem;
+    font-family: var(--prata);
+    margin: 1rem 0;
     height: 20%;
 }
 
@@ -299,6 +301,11 @@ body {
 
 .box-form>textarea{
     width: 80%;
+}
+
+.box-links{
+    display: flex;
+    flex-direction: column;
 }
 
 .form-validate{

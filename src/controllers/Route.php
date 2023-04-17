@@ -115,6 +115,14 @@ try {
                     break;
                 }
 
+            case 'create-rental':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $rental->createRental();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
             default:
                 $view->homePage();
                 break;
