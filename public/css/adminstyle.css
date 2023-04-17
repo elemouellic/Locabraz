@@ -1,0 +1,318 @@
+/* Box sizing border-box reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margin and padding */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Reset headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* Reset lists */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Reset anchors */
+a {
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* Reset form elements */
+button,
+input,
+select,
+textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Reset images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hover */
+
+a:hover {
+    opacity: 0.5s;
+    transition: 0.2s;
+    filter: invert(0.2);
+}
+
+input:hover {
+    opacity: 0.5s;
+    transition: 0.2s;
+
+}
+
+button:hover {
+    opacity: 0.5s;
+    transition: 0.2s;
+}
+
+
+/* Add some useful defaults */
+body {
+    line-height: 1;
+    font-size: 100%;
+    font-family: sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Variables */
+
+/* Couleurs */
+
+* {
+    /* box-shadow: 0 0 0 3px red; */
+
+    --colorbody: #f7f7f7;
+
+    --colorheader: #EEEEEE;
+    --colorfooter: #282828;
+
+    --colormenuburger: #f7f7f7;
+
+    --colorfontdark: #5c5c5c;
+    --colorfontmedium: #827d7d;
+    --colorfontlight: #EEEEEE;
+
+    --colorburger: #3c3c3b;
+    --colorbanneractus: #9e6e44;
+
+    --colorarticles: #f1f1f1;
+
+    --prata: 'prataregular';
+
+    /* Taille responsive des polices */
+
+    --slider: clamp(1.5rem, 0.5rem + 5vw, 5rem);
+
+    --bannerprez: clamp(1.2rem, 0.4rem + 4vw, 4rem);
+    --titleresponsivemedium: clamp(1.2rem, 1.0857rem + 0.5714vw, 1.6rem);
+    --titleresponsivebig: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
+    --textreponsive: clamp(1rem, 0.9714rem + 0.1429vw, 1.1rem);
+    --inputs: clamp(1.1rem, 0.9857rem + 0.5714vw, 1.5rem);
+
+
+    /* Box shadow */
+
+    --box: 0 3px 10px rgba(0, 0, 0, 0.09);
+
+
+}
+
+/*Font Family*/
+
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto-regular-webfont.woff') format('woff2'),
+        url('../fonts/roboto-regular-webfont.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'prataregular';
+    src: url('../fonts/prata-regular-webfont.woff2') format('woff2'),
+        url('../fonts/prata-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+
+
+/*Style personnalisé*/
+
+body {
+    width: 100%;
+    margin: auto;
+    background-color: var(--colorbody);
+
+}
+
+/* Header */
+
+.admin-header{
+    display: flex;
+    align-items: center;
+    height: 20vh;
+    justify-content: center;
+    background-color: var(--colorheader);
+    box-sizing: border-box;
+
+}
+
+.admin-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.admin-items{
+    margin-bottom: 0.2rem;
+}
+
+.admin-items>a{
+    font-size: var(--titleresponsivemedium);
+}
+
+.section-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-admin{
+    font-size: var(--titleresponsivebig);
+    margin-bottom: 1rem;
+    height: 20%;
+}
+
+.form-admin-template{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 80%;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.box-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.box-form>label{
+    width: 100%;
+    text-align: center;
+    font-size: var(--textreponsive);
+}
+
+.box-form>input{
+    align-self: center;
+}
+
+.box-form>textarea{
+    width: 80%;
+}
+
+.form-validate{
+    cursor: pointer;
+    align-self: center;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    .admin-header{
+        height: 15vh;
+    }
+    .admin-menu{
+        flex-direction: row;
+    }
+}

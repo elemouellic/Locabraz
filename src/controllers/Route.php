@@ -88,6 +88,10 @@ try {
                 $admin->userAdmin();
                 break;
 
+            case 'contactadmin':
+                    $admin->contactAdmin();
+                    break;
+
             /** Traitement des formulaires */
 
                 // Formulaire de contact
