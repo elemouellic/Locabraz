@@ -31,12 +31,13 @@ class Rental extends DbConnector
            VALUES (?, ?, ?)"
        );
        $req->execute([$type, $rooms, $description]);
-       
+   
+       $rental_id = $db->lastInsertId();
    
        foreach ($photolinks['tmp_name'] as $index => $tmp_name) {
            $target_dir = "public/img/";
            $target_file = $target_dir . basename($photolinks["name"][$index]);
-           $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+           $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
            $newfilename = uniqid() . '.' . $imageFileType;
            $target_file = $target_dir . $newfilename;
    
@@ -52,8 +53,19 @@ class Rental extends DbConnector
                VALUES (?, ?)"
            );
            $req->execute([$target_file, $photoalt]);
+           $photorental_id = $db->lastInsertId();
+   
+           $req = $db->prepare(
+               "INSERT INTO representer (
+               idRentals,
+               idPhotorental
+               ) 
+               VALUES (?, ?)"
+           );
+           $req->execute([$rental_id, $photorental_id]);
        }
    }
+   
    
 
    /** Mettre à jour une location **/
