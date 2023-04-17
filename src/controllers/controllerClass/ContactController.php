@@ -2,7 +2,7 @@
 
 namespace Locabraz\controllers\controllerClass;
 
-
+use Locabraz\controllers\MainController;
 use Locabraz\models\modelClass\Contact;
 
 /**
@@ -11,7 +11,7 @@ use Locabraz\models\modelClass\Contact;
  * obtainMessages (récupérer messages pour vue administrateur)
  */
 
-class ContactController
+class ContactController extends MainController
 {
 
     /** Envoyer un message via le formulaire de contact */

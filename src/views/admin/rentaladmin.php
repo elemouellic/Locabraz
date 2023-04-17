@@ -1,5 +1,10 @@
 <!-- Chargement Header -->
-<?php require_once __DIR__ . '/./layouts/header.php'; ?>
+<?php require_once __DIR__ . '/./layouts/header.php';
+
+use Locabraz\controllers\controllerClass\RentalController;
+?>
+
+
 
 <section class="section-page">
     <h3 class="title-admin">Ajouter un appartement</h3>
@@ -29,11 +34,47 @@
             <input type="text" id="alt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 5" required>
         </div>
 
-
-
         <input class="form-validate" type="submit" value="Envoyer">
 
     </form>
+</section>
+<h3 class="title-admin">Liste appartements</h3>
+<section class="section-affichage">
+    
+    <?php
+    $controller = new RentalController();
+    $rentals = $controller->obtainAllRentals();
+    foreach ($rentals as $rental) {
+    ?>
+        <form class="form-admin-template" action="?action=upgrade-rental" method="POST" enctype="multipart/form-data">
+            <div class="box-form">Type
+            <input type="text" id="type" name="type" maxlength="50" value="<?php echo $rental['type']; ?>" required>
+            </div>
+            <div class="box-form">Nombre de chambres
+            <input type="number" name="rooms" value="<?php echo $rental['rooms']; ?>" required>
+            </div>
+            <div class="box-form">Description
+            <textarea type="description" id="description" name="description" rows="10" cols="50" maxlength="1000" required ><?php echo $rental['description']; ?> </textarea>
+            </div>
+            <div class="box-form box-row">
+            <?php
+            if (!empty($rental['photos'])) {
+                foreach ($rental['photos'] as $photo) {
+            ?>
+                    <img class="img-form" src="<?php echo $photo['photolink']; ?>" alt="<?php echo $photo['alt']; ?>">
+            <?php
+                }
+            }
+            ?>
+            </div>
+            
+            <input type="hidden" name="idRentals" value="<?php echo $rental['idRentals']; ?>">
+        <input class="form-validate" type="submit" value="Mettre à jour">
+        </form>
+    <?php
+    }
+    ?>
+
 </section>
 
 <?php require_once __DIR__ . '/./layouts/footer.php'; ?>

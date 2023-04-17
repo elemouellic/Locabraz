@@ -267,7 +267,10 @@ body {
     font-family: var(--prata);
     margin: 1rem 0;
     height: 20%;
+    text-align: center;
 }
+
+/* Template de formulaire */
 
 .form-admin-template{
     display: flex;
@@ -284,9 +287,14 @@ body {
 
 .box-form{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     width: 100%;
+}
+
+.box-row{
+    flex-direction: row;
 }
 
 .box-form>label{
@@ -312,6 +320,40 @@ body {
     cursor: pointer;
     align-self: center;
 }
+
+/* Template d'affichage */
+
+.section-affichage{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.img-form{
+    width: 18rem;
+    height: 10rem;
+    object-fit: cover;
+    margin: 1rem;
+}
+
+/* .box-div{
+    width: 18rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.title-box{
+    font-size: var(--titleresponsivemedium);
+    width: 100%;
+}
+.content-box{
+    font-size: var(--textreponsive);
+    width: 100%;
+} */
+
+
 
 
 @media only screen and (min-width: 768px) {

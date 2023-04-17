@@ -35,7 +35,7 @@ class Rental extends DbConnector
        $rental_id = $db->lastInsertId();
    
        foreach ($photolinks['tmp_name'] as $index => $tmp_name) {
-           $target_dir = "public/img/";
+           $target_dir = "public/img/rentals";
            $target_file = $target_dir . basename($photolinks["name"][$index]);
            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
            $newfilename = uniqid() . '.' . $imageFileType;
@@ -69,7 +69,7 @@ class Rental extends DbConnector
    
 
    /** Mettre à jour une location **/
-   public function updateRental($id, $type, $rooms, $description, $photoIds)
+   public function updateRental($id, $type, $rooms, $description)
    {
       $db = self::dbConnect();
 
@@ -82,22 +82,6 @@ class Rental extends DbConnector
       );
       $req->execute([$type, $rooms, $description, $id]);
 
-      $req = $db->prepare(
-         "DELETE FROM representer 
-        WHERE idRentals = ?"
-      );
-      $req->execute([$id]);
-
-      foreach ($photoIds as $photoId) {
-         $req = $db->prepare(
-            "INSERT INTO representer (
-            idRentals,
-            idPhotorental
-            ) 
-            VALUES (?, ?)"
-         );
-         $req->execute([$id, $photoId]);
-      }
    }
 
    /** Supprimer une location **/

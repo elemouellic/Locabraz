@@ -47,30 +47,29 @@ class RentalController extends MainController
 
     public function upgradeRental()
     {
-        $id = $_POST['id'];
+        $id = $_POST['idRentals'];
         $type = $_POST['type'];
         $rooms = $_POST['rooms'];
         $description = $_POST['description'];
-        $photoIds = $_POST['photo_id'];
 
         $rental = new Rental();
-        $rental->updateRental($id, $type, $rooms, $description, $photoIds);
+        $rental->updateRental($id, $type, $rooms, $description);
 
         // Redirection vers le dashboard admin
-        header('Location: views/admin/dashboard.php');
+        header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 
     /** Supprimer une location via dashboard */
 
     public function removeRental()
     {
-        $id = $_POST['id'];
+        $id = $_POST['idRentals'];
 
         $rental = new Rental();
         $rental->deleteRental($id);
 
         // Redirection vers le dashboard admin
-        header('Location: views/admin/dashboard.php');
+        header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 
     /** Afficher touts les locations */

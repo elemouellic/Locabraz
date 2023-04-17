@@ -10,7 +10,7 @@ try {
     $admin = new \Locabraz\controllers\AdminController();
 
     /** Récupérer Controller pour formulaires */
- 
+
     $article = new Locabraz\controllers\controllerClass\ArticleController();
 
     $booking = new Locabraz\controllers\controllerClass\BookingController();
@@ -89,10 +89,10 @@ try {
                 break;
 
             case 'contactadmin':
-                    $admin->contactAdmin();
-                    break;
+                $admin->contactAdmin();
+                break;
 
-            /** Traitement des formulaires */
+                /** Traitement des formulaires */
 
                 // Formulaire de contact
             case 'form-contact':
@@ -118,6 +118,13 @@ try {
             case 'create-rental':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $rental->createRental();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+            case 'upgrade-rental':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $rental->upgradeRental();
                     break;
                 } else {
                     $admin->dashboard();

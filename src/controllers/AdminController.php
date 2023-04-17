@@ -45,7 +45,7 @@ class AdminController extends MainController
         require_once $this->getViewAdmin('useradmin');
     }
 
-        /**
+    /**
      * Affiche la page des entrées contact
      */
     public function contactAdmin(): void
