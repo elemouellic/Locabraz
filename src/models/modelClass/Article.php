@@ -19,49 +19,61 @@ class Article extends DbConnector
 
     /** Créer un nouvel article **/
 
-    public function insertArticle($title, $content, $publishdate, $idPhotoarticle = null)
+    public function insertArticle($title, $content, $publishdate, $photolink, $photoalt)
     {
         $db = self::dbConnect();
 
+        // Insertion de la photo dans la table articlegallerie
+        $target_dir = "public/img/articles/";
+        $target_file = $target_dir . basename($photolink["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $newfilename = uniqid() . '.' . $imageFileType;
+        $target_file = $target_dir . $newfilename;
+
+        move_uploaded_file($photolink["tmp_name"], $target_file);
+
         $req = $db->prepare(
-            "INSERT INTO article (
-            title, 
-            content, 
-            publishdate, 
-            idPhotoarticle
+            "INSERT INTO articlegallerie (
+                photolink,
+                alt
             ) 
-            VALUES (:title, :content, :publishdate, :idPhotoarticle)"
+            VALUES (?, ?)"
         );
 
-        $req->execute([
-            ':title' => $title,
-            ':content' => $content,
-            ':publishdate' => $publishdate,
-            ':idPhotoarticle' => $idPhotoarticle
-        ]);
+        $req->execute([$target_file, $photoalt]);
+
+        // Récupération de l'ID de la photo insérée
+        $photoid = $db->lastInsertId();
+
+        // Insertion de l'article dans la table article en faisant référence à la photo insérée
+        $req = $db->prepare(
+            "INSERT INTO articles (
+                title, 
+                content, 
+                publishdate,
+                idPhotoarticle
+            ) 
+            VALUES (?, ?, ?, ?)"
+        );
+
+        $req->execute([$title, $content, $publishdate, $photoid]);
     }
+
+
 
     /** Mettre à jour un article **/
 
-    public function updateArticle($id, $title, $content, $publishdate, $idPhotoarticle = null)
+    public function updateArticle($title, $content, $id)
     {
         $db = self::dbConnect();
 
         $req = $db->prepare(
-            "UPDATE article 
-            SET title = :title, 
-            content = :content, 
-            publishdate = :publishdate, 
-            idPhotoarticle = :idPhotoarticle 
-            WHERE idArticles = :id"
+            "UPDATE articles
+            SET title = ?, 
+            content = ?
+            WHERE idArticles = ?"
         );
-        $req->execute([
-            ':id' => $id,
-            ':title' => $title,
-            ':content' => $content,
-            ':publishdate' => $publishdate,
-            ':idPhotoarticle' => $idPhotoarticle
-        ]);
+        $req->execute([$title, $content, $id]);
     }
 
     /** Supprimer un article **/
@@ -70,13 +82,19 @@ class Article extends DbConnector
     {
         $db = self::dbConnect();
 
-        $req = $db->prepare(
-            "DELETE FROM article 
-            WHERE idArticles = :id"
+        // Suppression de l'article
+        $req1 = $db->prepare(
+            "DELETE FROM articles
+            WHERE idArticles = ?"
         );
-        $req->execute([
-            ':id' => $id
-        ]);
+        $req1->execute([$id]);
+
+        // Suppression de la photo
+        $req2 = $db->prepare(
+            "DELETE FROM articlegallerie
+                    WHERE idPhotoarticle = ?"
+        );
+        $req2->execute([$id]);
     }
 
     /** Récupérer tous les articles **/
@@ -85,7 +103,8 @@ class Article extends DbConnector
     {
         $db = self::dbConnect();
 
-        $req = $db->prepare("SELECT * FROM article");
+        $req = $db->prepare("SELECT * FROM articles");
+
         $req->execute();
 
         $articles = $req->fetchAll();
@@ -103,7 +122,7 @@ class Article extends DbConnector
     {
         $db = self::dbConnect();
 
-        $req = $db->prepare("SELECT * FROM article ORDER BY id ASC LIMIT 3");
+        $req = $db->prepare("SELECT * FROM articles ORDER BY id ASC LIMIT 3");
         $req->execute();
 
         $articles = $req->fetchAll();

@@ -33,13 +33,12 @@ class RentalController extends MainController
             $photoalt[] = $alt;
         }
         
-        // Maintenant, vous pouvez utiliser $photolinks et $photoalt pour insérer les données dans la base de données
         
 
         $rental = new Rental();
         $rental->insertRental($type, $rooms, $description, $photolinks, $photoalt);
 
-        //Redirection vers le dashboard admin
+        //Redirection vers la vue rentaladmin
         header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 
@@ -55,7 +54,7 @@ class RentalController extends MainController
         $rental = new Rental();
         $rental->updateRental($id, $type, $rooms, $description);
 
-        // Redirection vers le dashboard admin
+   //Redirection vers la vue rentaladmin
         header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 
@@ -68,7 +67,7 @@ class RentalController extends MainController
         $rental = new Rental();
         $rental->deleteRental($id);
 
-        // Redirection vers le dashboard admin
+       //Redirection vers la vue rentaladmin
         header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 

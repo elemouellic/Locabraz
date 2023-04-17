@@ -21,17 +21,17 @@ use Locabraz\controllers\controllerClass\RentalController;
 
         <div class="box-form">
             <label for="description">Description :</label>
-            <textarea type="description" id="description" name="description" rows="10" cols="50" maxlength="1000" placeholder="Saisir description (1000 caractères max)" required></textarea>
+            <textarea id="description" name="description" rows="10" cols="50" maxlength="1000" placeholder="Saisir description (1000 caractères max)" required></textarea>
         </div>
         <div class="box-links">
             <label for="photolink">Téléverser cinq photos</label>
             <input type="file" id="photolink" name="photolink[]" multiple accept=".jpg, .jpeg">
-            <label for="alt">Texte alternatif:</label>
-            <input type="text" id="alt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 1" required>
-            <input type="text" id="alt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 2" required>
-            <input type="text" id="alt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 3" required>
-            <input type="text" id="alt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 4" required>
-            <input type="text" id="alt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 5" required>
+            <label for="photoalt">Texte alternatif:</label>
+            <input type="text" id="photoalt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 1" required>
+            <input type="text" id="photoalt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 2" required>
+            <input type="text" id="photoalt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 3" required>
+            <input type="text" id="photoalt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 4" required>
+            <input type="text" id="photoalt" name="photoalt[]" maxlength="100" placeholder="Texte alternatif photo 5" required>
         </div>
 
         <input class="form-validate" type="submit" value="Envoyer">
@@ -56,7 +56,7 @@ use Locabraz\controllers\controllerClass\RentalController;
                 <input type="number" name="rooms" value="<?php echo $rental['rooms']; ?>" required>
             </div>
             <div class="box-form"><label for="description">Description</label>
-                <textarea type="description" id="description" name="description" rows="10" cols="50" maxlength="1000" required><?php echo $rental['description']; ?> </textarea>
+                <textarea id="description" name="description" rows="10" cols="50" maxlength="1000" required><?php echo $rental['description']; ?> </textarea>
             </div>
             <div class="box-form box-row">
                 <?php
@@ -92,10 +92,12 @@ use Locabraz\controllers\controllerClass\RentalController;
             <h4>Type : <?php echo $rental['type']; ?></h4>
         </div>
         <input type="hidden" name="idRentals" value="<?php echo $rental['idRentals']; ?>">
-        <input class="form-validate" type="submit" value="Supprimer appartement">
+        <input class="form-validate" type="submit" value="Supprimer">
     </form>
 <?php
 }
 ?>
 </section>
+
+<!-- Chargement Footer -->
 <?php require_once __DIR__ . '/./layouts/footer.php'; ?>

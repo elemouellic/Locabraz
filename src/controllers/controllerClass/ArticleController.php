@@ -25,13 +25,16 @@ class ArticleController extends MainController
         $title = $_POST['title'];
         $content = $_POST['content'];
         $publishdate = $_POST['publishdate'];
-        $idPhotoarticle = $_POST['idPhotoarticle'];
+
+        $photolink = $_FILES['photolink'];
+        $photoalt = $_POST['photoalt'];
+        
 
         $article = new Article();
-        $article->insertArticle($title, $content, $publishdate, $idPhotoarticle);
+        $article->insertArticle($title, $content, $publishdate, $photolink, $photoalt);
 
-        //Redirection vers le dashboard admin
-        header('Location: views/admin/dashboard.php');
+        //Redirection vers la vue articleadmin
+        header("Location: " . $_ENV['SITE_URL'] . "?action=articleadmin");
     }
 
     /** Mettre à jour un article via le dashboard admin */
@@ -39,17 +42,15 @@ class ArticleController extends MainController
     public function upgradeArticle()
     {
 
-        $id = $_POST['id'];
+        $id = $_POST['idArticles'];
         $title = $_POST['title'];
         $content = $_POST['content'];
-        $publishdate = $_POST['publishdate'];
-        $idPhotoarticle = $_POST['idPhotoarticle'];
 
         $article = new Article();
-        $article->updateArticle($id, $title, $content, $publishdate, $idPhotoarticle);
+        $article->updateArticle($title, $content, $id);
 
-        //Redirection vers le dashboard admin
-        header('Location: views/admin/dashboard.php');
+        //Redirection vers la vue articleadmin
+        header("Location: " . $_ENV['SITE_URL'] . "?action=articleadmin");
     }
 
     /** Supprimer un article via le dashboard admin */
@@ -57,13 +58,13 @@ class ArticleController extends MainController
     public function removeArticle()
     {
 
-        $id = $_POST['id'];
+        $id = $_POST['idArticles'];
 
         $article = new Article();
         $article->deleteArticle($id);
 
-        //Redirection vers le dashboard admin
-        header('Location: views/admin/dashboard.php');
+        //Redirection vers la vue articleadmin
+        header("Location: " . $_ENV['SITE_URL'] . "?action=articleadmin");
     }
 
     /** Récupérer tous les article */

@@ -115,7 +115,8 @@ try {
                     break;
                 }
 
-                // Formulaires location
+                /** Formulaires de la vue admin */
+                // Gestion des locations
             case 'create-rental':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $rental->createRental();
@@ -134,6 +135,30 @@ try {
             case 'remove-rental':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $rental->removeRental();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
+                // Gestion des articles
+            case 'create-article':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $article->createArticle();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+            case 'upgrade-article':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $article->upgradeArticle();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
+            case 'remove-article':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $article->removeArticle();
                     break;
                 } else {
                     $admin->dashboard();
