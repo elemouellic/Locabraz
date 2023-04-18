@@ -7,6 +7,7 @@ use Locabraz\models\modelClass\Article;
 
 /**
  * *****Liste des méthodes*****
+ * articleAdmin (Contrôleur pour vue admin)
  * createArticle (créer un nouvel article à partir de l'admin)
  * udpgradeArticle (mettre à jour un article à partir de l'admin)
  * removeArticle (supprimer un article à partir de l'admin)
@@ -16,11 +17,14 @@ use Locabraz\models\modelClass\Article;
 class ArticleController extends MainController
 {
 
+    /** Vue admin */
+    
     public function articleAdmin(): void
     {
         
         require_once $this->getViewAdmin('articleadmin');
     }
+
     /** Créer un article via le dashboard admin */
 
     public function createArticle()
