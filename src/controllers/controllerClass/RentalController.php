@@ -19,7 +19,7 @@ class RentalController extends MainController
 {
 
     /** Vue admin */
-    public function rentalAdmin()
+    public function rentalAdmin(): void
     {
         $controller = new RentalController();
         $rentals = $controller->obtainAllRentals();

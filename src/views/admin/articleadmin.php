@@ -1,7 +1,5 @@
 <!-- Chargement Header -->
-<?php require_once __DIR__ . '/./layouts/header.php'; 
-use Locabraz\controllers\controllerClass\ArticleController;?>
-
+<?php require_once __DIR__ . '/./layouts/header.php'; ?>
 <section class="section-page">
     <h3 class="title-admin">Ajouter un article</h3>
     <form class="form-admin-template" action="?action=create-article" method="POST" enctype="multipart/form-data">
@@ -30,7 +28,7 @@ use Locabraz\controllers\controllerClass\ArticleController;?>
 <section class="section-affichage">
 
     <?php
-    $controller = new ArticleController();
+    $controller = new Locabraz\controllers\controllerClass\ArticleController();
     $articles = $controller->obtainAllArticles();
     foreach ($articles as $article) {
     ?>

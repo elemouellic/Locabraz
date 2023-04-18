@@ -73,7 +73,8 @@ try {
                 break;
 
             case 'articleadmin':
-                $admin->articleAdmin();
+                //Vue et méthode par contrôleur
+                $article->articleAdmin();
                 break;
 
             case 'bookingadmin':
@@ -91,7 +92,8 @@ try {
                 break;
 
             case 'contactadmin':
-                $admin->contactAdmin();
+                //Vue et méthode par contrôleur
+                $contact->contactAdmin();
                 break;
 
                 /** Traitement des formulaires */

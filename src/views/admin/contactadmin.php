@@ -5,8 +5,6 @@
     <h3 class="title-admin">Messages reçus</h3>
     <?php
     
-    $controller = new Locabraz\controllers\controllerClass\ContactController();
-    $contacts = $controller->obtainMessages();
     foreach ($contacts as $contact) {
     ?>
         <div class="form-admin-template">

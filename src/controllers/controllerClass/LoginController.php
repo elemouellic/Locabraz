@@ -8,6 +8,7 @@ use Locabraz\models\modelClass\Login;
 
 /**
  * *****Liste des méthodes*****
+ * userAdmin(Contrôleur pour vue admin)
  * loginUser (Connexion de l'utilisateur)
  * createUser (créer nouvel utilisateur et l'ajouter dans la base de données)
  * createUserByAdmin (créer utilisateur par dashboard admin)
@@ -22,7 +23,7 @@ class LoginController extends UserController
 {
 
     /** Vue admin */
-    public function userAdmin()
+    public function userAdmin(): void
     {
         $controller = new LoginController();
         $users = $controller->obtainAllUsers();

@@ -7,6 +7,7 @@ use Locabraz\models\modelClass\Contact;
 
 /**
  * *****Liste des méthodes*****
+ * contactAdmin(Contrôleur pour vue admin)
  * sendMessage (envoi d'un message via le formulaire)
  * obtainMessages (récupérer messages pour vue administrateur)
  * removeMessages (supprimer message pour vue administrateur)
@@ -14,6 +15,14 @@ use Locabraz\models\modelClass\Contact;
 
 class ContactController extends MainController
 {
+
+    /** Vue admin */
+    public function contactAdmin(): void
+    {
+        $controller = new ContactController();
+        $contacts = $controller->obtainMessages();
+        require_once $this->getViewAdmin('contactadmin');
+    }
 
     /** Envoyer un message via le formulaire de contact */
 
