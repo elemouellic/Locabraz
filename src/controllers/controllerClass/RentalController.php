@@ -7,6 +7,7 @@ use Locabraz\models\modelClass\Rental;
 
 /**
  * *****Liste des méthodes*****
+ * rentalAdmin (Contrôleur pour vue admin)
  * createRental (créer une nouvelle location via l'admin)
  * upgradeRental (mettre à jour une location via l'admin)
  * removeRental (supprimer une location via l'admin)
@@ -17,6 +18,14 @@ use Locabraz\models\modelClass\Rental;
 class RentalController extends MainController
 {
 
+    /** Vue admin */
+    public function rentalAdmin()
+    {
+        $controller = new RentalController();
+        $rentals = $controller->obtainAllRentals();
+        require_once $this->getViewAdmin('rentaladmin');
+    }
+
     /** Créer une nouvelle location via dashboard */
 
     public function createRental()
@@ -24,16 +33,16 @@ class RentalController extends MainController
         $type = $_POST['type'];
         $rooms = $_POST['rooms'];
         $description = $_POST['description'];
-        
+
         $photolinks = $_FILES['photolink'];
-        
+
         // Gérer les fichiers téléchargés
         $photoalt = array();
         foreach ($_POST['photoalt'] as $alt) {
             $photoalt[] = $alt;
         }
-        
-        
+
+
 
         $rental = new Rental();
         $rental->insertRental($type, $rooms, $description, $photolinks, $photoalt);
@@ -54,7 +63,7 @@ class RentalController extends MainController
         $rental = new Rental();
         $rental->updateRental($id, $type, $rooms, $description);
 
-   //Redirection vers la vue rentaladmin
+        //Redirection vers la vue rentaladmin
         header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 
@@ -67,7 +76,7 @@ class RentalController extends MainController
         $rental = new Rental();
         $rental->deleteRental($id);
 
-       //Redirection vers la vue rentaladmin
+        //Redirection vers la vue rentaladmin
         header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 

@@ -39,8 +39,6 @@
 <section class="section-affichage">
 
     <?php
-    $controller = new Locabraz\controllers\controllerClass\RentalController();
-    $rentals = $controller->obtainAllRentals();
     foreach ($rentals as $rental) {
     ?>
         <form class="form-admin-template" action="?action=upgrade-rental" method="POST" enctype="multipart/form-data">

@@ -43,8 +43,6 @@
 <h3 class="title-admin">Liste utilisateurs</h3>
 <section class="section-affichage">
     <?php
-    $controller = new Locabraz\controllers\controllerClass\LoginController();
-    $users = $controller->obtainAllUsers();
     foreach ($users as $user) {
     ?>
         <form class="form-admin-template" action="?action=upgrade-user-admin" method="POST">

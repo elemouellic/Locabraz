@@ -21,6 +21,14 @@ use Locabraz\models\modelClass\Login;
 class LoginController extends UserController
 {
 
+    /** Vue admin */
+    public function userAdmin()
+    {
+        $controller = new LoginController();
+        $users = $controller->obtainAllUsers();
+        require_once $this->getViewAdmin('useradmin');
+    }
+
     /**Page de connexion */
 
     public function loginUser()

@@ -81,11 +81,13 @@ try {
                 break;
 
             case 'rentaladmin':
-                $admin->rentalAdmin();
+                //Vue et méthode par contrôleur
+                $rental->rentalAdmin();
                 break;
 
             case 'useradmin':
-                $admin->userAdmin();
+                //Vue et méthode par contrôleur
+                $login->userAdmin();
                 break;
 
             case 'contactadmin':

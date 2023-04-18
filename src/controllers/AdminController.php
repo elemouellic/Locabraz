@@ -32,18 +32,18 @@ class AdminController extends MainController
     /**
      * Affiche la page de gestion des locations
      */
-    public function rentalAdmin(): void
-    {
-        require_once $this->getViewAdmin('rentaladmin');
-    }
+    // public function rentalAdmin(): void
+    // {
+    //     require_once $this->getViewAdmin('rentaladmin');
+    // }
 
     /**
      * Affiche la page des utilisateurs
      */
-    public function userAdmin(): void
-    {
-        require_once $this->getViewAdmin('useradmin');
-    }
+    // public function userAdmin(): void
+    // {
+    //     require_once $this->getViewAdmin('useradmin');
+    // }
 
     /**
      * Affiche la page des entrées contact
