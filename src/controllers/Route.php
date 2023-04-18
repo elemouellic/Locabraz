@@ -174,6 +174,23 @@ try {
                     $admin->dashboard();
                 }
 
+                // Gestion des utilisateurs
+
+            case 'create-user-admin':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $login->createUserByAdmin();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+            case 'upgrade-user-admin':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $login->upgradeUserByAdmin();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
             default:
                 $view->homePage();
                 break;

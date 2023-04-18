@@ -10,9 +10,10 @@ use Locabraz\models\modelClass\Login;
  * *****Liste des méthodes*****
  * loginUser (Connexion de l'utilisateur)
  * createUser (créer nouvel utilisateur et l'ajouter dans la base de données)
+ * createUserByAdmin (créer utilisateur par dashboard admin)
  * upgradeUser (mise à jour des informations de l'utilisateur connecté)
  * removeUser (supprimer compte utilisateur)
- * obtainUsersByEmail (récupérer comptes utilisateurs)
+ * obtainAllUsers (récupérer comptes utilisateurs)
  */
 
 
@@ -68,7 +69,27 @@ class LoginController extends UserController
         header("Location: " . $_ENV['SITE_URL'] . "?action=account");
     }
 
-    /** Mettre à jour les informations de l'utilisateur */
+    /**Créer un utilisateurpar le dashboard **/
+
+    public function createUserByAdmin()
+    {
+        $email = $_POST['email'];
+        $name = $_POST['name'];
+        $firstname = $_POST['firstname'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        $zipcode = $_POST['zipcode'];
+        $password = $_POST['password'];
+
+
+        $user = new Login();
+        $user->insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password);
+
+        //Redirection vers le compte utilisateur
+        header("Location: " . $_ENV['SITE_URL'] . "?action=useradmin");
+    }
+
+    /** Mettre à jour les informations de l'utilisateur **/
 
     public function upgradeUser()
     {
@@ -85,10 +106,11 @@ class LoginController extends UserController
         $phone = $_POST['phone'];
         $address = $_POST['address'];
         $zipcode = $_POST['zipcode'];
+        $password = $_POST['password'];
 
         try {
             $user = new Login();
-            $user->updateUser($email, $name, $firstname, $phone, $address, $zipcode);
+            $user->updateUser($email, $name, $firstname, $phone, $address, $zipcode, $password);
         } catch (\Exception $e) {
             echo 'Erreur : ' . $e->getMessage();
             return;
@@ -98,6 +120,24 @@ class LoginController extends UserController
         header("Location: " . $_ENV['SITE_URL'] . "?action=account");
     }
 
+    /** Mettre à jour les informations de l'utilisateur par le dashboard **/
+
+    public function upgradeUserByAdmin()
+    {
+        $email = $_POST['email'];
+        $name = $_POST['name'];
+        $firstname = $_POST['firstname'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        $zipcode = $_POST['zipcode'];
+
+
+        $user = new Login();
+        $user->updateUser($name, $firstname, $phone, $address, $zipcode, $email);
+
+        //Redirection vers le compte utilisateur
+        header("Location: " . $_ENV['SITE_URL'] . "?action=useradmin");
+    }
 
     /** Supprimer un utilisateur **/
     public function removeUser()
@@ -124,10 +164,10 @@ class LoginController extends UserController
 
     /** Récupérer comptes utilisateurs */
 
-    public function obtainUsersByEmail($email)
+    public function obtainAllUsers()
     {
         $user = new Login();
-        $users = $user->getUsersByEmail($email);
+        $users = $user->getAllUsers();
 
         return $users;
     }

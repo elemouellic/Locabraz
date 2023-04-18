@@ -11,7 +11,7 @@ use Locabraz\models\DbConnector;
  * insertUser (ajouter nouvel utilisateur dans la base de données)
  * udpateUser (mettre à jour les informations dans la base de données)
  * deleteUser (supprimer un compte utilisateur de la base de données)
- * getUsersByEmail (afficher tous les utilisateurs de mon site)
+ * getAllUsers (afficher tous les utilisateurs de mon site)
  */
 
 class Login extends DbConnector
@@ -23,8 +23,8 @@ class Login extends DbConnector
     {
         $db = self::dbConnect();
     
-        $req = $db->prepare("SELECT * FROM _user WHERE email = :email");
-        $req->execute([':email' => $email]);
+        $req = $db->prepare("SELECT * FROM _user WHERE email = ?");
+        $req->execute([$email]);
     
         $user = $req->fetch();
     
@@ -77,28 +77,20 @@ class Login extends DbConnector
             zipcode, 
             password
             ) 
-            VALUES (:email, :name, :firstname, :phone, :address, :zipcode, :password)"
+            VALUES (?, ?, ?, ?, ?, ?, ?)"
         );
-        $req->execute([
-            ':email' => $email,
-            ':name' => $name,
-            ':firstname' => $firstname,
-            ':phone' => $phone,
-            ':address' => $address,
-            ':zipcode' => $zipcode,
-            ':password' => $hashedPassword
-        ]);
+        $req->execute([$email, $name, $firstname, $phone, $address, $zipcode, $hashedPassword]);
     }
 
     /** Mettre à jour un utilisateur **/
-    public function updateUser($email, $name, $firstname, $phone, $address, $zipcode)
+    public function updateUser( $name, $firstname, $phone, $address, $zipcode, $email)
     {
         $db = self::dbConnect();
 
-        // Validation de l'email
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new \Exception('Email invalide');
-        }
+        // // Validation de l'email
+        // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        //     throw new \Exception('Email invalide');
+        // }
 
         // Validation du code postal
         if (!preg_match('/^[0-9]{5}$/', $zipcode)) {
@@ -107,21 +99,14 @@ class Login extends DbConnector
 
         $req = $db->prepare(
             "UPDATE _user 
-            SET name = :name, 
-            firstname = :firstname, 
-            phone = :phone, 
-            address = :address, 
-            zipcode = :zipcode 
-            WHERE email = :email"
+            SET name = ?, 
+            firstname = ?, 
+            phone = ?, 
+            address = ?, 
+            zipcode = ? 
+            WHERE email = ?"
         );
-        $req->execute([
-            ':email' => $email,
-            ':name' => $name,
-            ':firstname' => $firstname,
-            ':phone' => $phone,
-            ':address' => $address,
-            ':zipcode' => $zipcode
-        ]);
+        $req->execute([$name, $firstname, $phone, $address, $zipcode, $email ]);
     }
 
     /** Supprimer un compte utilisateur **/
@@ -131,22 +116,20 @@ class Login extends DbConnector
 
         $req = $db->prepare(
             "DELETE FROM _user 
-            WHERE email = :email"
+            WHERE email = ?"
         );
-        $req->execute([
-            ':email' => $email
-        ]);
+        $req->execute([$email]);
     }
 
     
     /** Récupérer tous les comptes utilisateurs pour back office **/
 
-    public function getUsersByEmail($email)
+    public function getAllUsers()
     {
         $db = self::dbConnect();
 
-        $req = $db->prepare("SELECT * FROM _user WHERE email = :email");
-        $req->execute([':email' => $email]);
+        $req = $db->prepare("SELECT * FROM _user WHERE admin=0");
+        $req->execute();
 
         $users = $req->fetchAll();
 
