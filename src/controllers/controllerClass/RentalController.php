@@ -71,7 +71,7 @@ class RentalController extends MainController
         header("Location: " . $_ENV['SITE_URL'] . "?action=rentaladmin");
     }
 
-    /** Afficher touts les locations */
+    /** Afficher toutes les locations */
 
     public function obtainAllRentals()
     {

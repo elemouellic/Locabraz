@@ -164,6 +164,16 @@ try {
                     $admin->dashboard();
                 }
 
+                // Gestion des messages
+
+            case 'remove-message':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $contact->removeMessages();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
             default:
                 $view->homePage();
                 break;

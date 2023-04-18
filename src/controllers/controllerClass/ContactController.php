@@ -9,6 +9,7 @@ use Locabraz\models\modelClass\Contact;
  * *****Liste des méthodes*****
  * sendMessage (envoi d'un message via le formulaire)
  * obtainMessages (récupérer messages pour vue administrateur)
+ * removeMessages (supprimer message pour vue administrateur)
  */
 
 class ContactController extends MainController
@@ -25,13 +26,10 @@ class ContactController extends MainController
         $message = $_POST['message'];
         $postdate =  date('Y-m-d H:i:s');
         $status = 0;
-        
+
 
         $contact = new Contact();
         $contact->insertMessage($name, $firstname, $email, $subject, $message, $postdate, $status);
-
-
-        
     }
 
     public function obtainMessages()
@@ -41,6 +39,16 @@ class ContactController extends MainController
         $contact = $contact->getMessages();
 
         return $contact;
+    }
 
+    public function removeMessages()
+    {
+        $id = $_POST['idMessages'];
+
+        $contact = new Contact();
+        $contact->deleteMessages($id);
+
+        //Redirection vers la vue articleadmin
+        header("Location: " . $_ENV['SITE_URL'] . "?action=contactadmin");
     }
 }

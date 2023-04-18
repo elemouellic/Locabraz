@@ -97,7 +97,7 @@ class Rental extends DbConnector
 
       $req1->execute([$id]);
 
-      // Suppression de la l'appartement dans la table "rentals"
+      // Suppression de la location dans la table "rentals"
       $req2 = $db->prepare(
          "DELETE FROM rentals 
          WHERE idRentals = ?"
@@ -140,7 +140,7 @@ class Rental extends DbConnector
 
       return $rentals;
    }
-/** Récupérer les photos d'une location **/
+   /** Récupérer les photos d'une location **/
 public function getRentalPhotos($id)
 {
    $db = self::dbConnect();
@@ -163,4 +163,5 @@ public function getRentalPhotos($id)
 
    return $photos;
 }
+
 }

@@ -1,8 +1,5 @@
 <!-- Chargement Header -->
-<?php require_once __DIR__ . '/./layouts/header.php';
-
-use Locabraz\controllers\controllerClass\RentalController;
-?>
+<?php require_once __DIR__ . '/./layouts/header.php';?>
 
 
 
@@ -42,7 +39,7 @@ use Locabraz\controllers\controllerClass\RentalController;
 <section class="section-affichage">
 
     <?php
-    $controller = new RentalController();
+    $controller = new Locabraz\controllers\controllerClass\RentalController();
     $rentals = $controller->obtainAllRentals();
     foreach ($rentals as $rental) {
     ?>
@@ -80,23 +77,23 @@ use Locabraz\controllers\controllerClass\RentalController;
 </section>
 <section class="section-affichage">
 
-<h3 class="title-admin">Supprimer un appartement</h3>
+    <h3 class="title-admin">Supprimer un appartement</h3>
 
-<?php foreach ($rentals as $rental) {
-?>
-    <form class="form-admin-template" action="?action=remove-rental" method="POST" enctype="multipart/form-data">
-        <div class="box-form">
-            <h4>Id Appartement : <?php echo $rental['idRentals']; ?></h4>
-        </div>
-        <div class="box-form">
-            <h4>Type : <?php echo $rental['type']; ?></h4>
-        </div>
-        <input type="hidden" name="idRentals" value="<?php echo $rental['idRentals']; ?>">
-        <input class="form-validate" type="submit" value="Supprimer">
-    </form>
-<?php
-}
-?>
+    <?php foreach ($rentals as $rental) {
+    ?>
+        <form class="form-admin-template" action="?action=remove-rental" method="POST" enctype="multipart/form-data">
+            <div class="box-form">
+                <h4>Id Appartement : <?php echo $rental['idRentals']; ?></h4>
+            </div>
+            <div class="box-form">
+                <h4>Type : <?php echo $rental['type']; ?></h4>
+            </div>
+            <input type="hidden" name="idRentals" value="<?php echo $rental['idRentals']; ?>">
+            <input class="form-validate" type="submit" value="Supprimer">
+        </form>
+    <?php
+    }
+    ?>
 </section>
 
 <!-- Chargement Footer -->
