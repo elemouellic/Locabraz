@@ -36,7 +36,7 @@ class Login extends DbConnector
             throw new \Exception('Mot de passe incorrect');
         }
     
-        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_id'] = $user['email'];
     
         // Vérifier si l'utilisateur est un admin
 

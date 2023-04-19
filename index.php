@@ -5,9 +5,9 @@ error_reporting(E_ALL);
 
 
 //Vérifier si une session existe déjà
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
+// if (session_status() !== PHP_SESSION_ACTIVE) {
+//     session_start();
+// }
 
 
 //Chargement Autoload
