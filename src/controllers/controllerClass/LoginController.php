@@ -171,6 +171,20 @@ class LoginController extends UserController
         header("Location: " . $_ENV['SITE_URL'] . "?action=login");
     }
 
+    /** Supprimer un utilisateur **/
+    public function removeUserByAdmin()
+    {
+
+        // Récupération de l'email de l'utilisateur à supprimer
+        $email = $_POST['email'];
+
+        // Suppression de l'utilisateur
+        $user = new Login();
+        $user->deleteUser($email);
+
+        header("Location: " . $_ENV['SITE_URL'] . "?action=useradmin");
+    }
+
     /** Récupérer comptes utilisateurs */
 
     public function obtainAllUsers()

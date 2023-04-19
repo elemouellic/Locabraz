@@ -70,15 +70,28 @@
                 <label for="zipcode">Code postal</label>
                 <input type="number" id="zipcode" name="zipcode" maxlength="5" value="<?php echo $user['zipcode']; ?>" required>
             </div>
-            
+
 
             <input class="form-validate" type="submit" value="Mise à jour données">
         </form>
+    <?php
+    }
+    ?>
+</section>
+<section class="section-affichage">
 
-        <form action="?action=remove-user" method="POST">
-                <input type="hidden" name="idMessages" value="<?php echo $user['email']; ?>">
-                <input class="form-validate" type="submit" value="Supprimer utilisateur">
-            </form>
+    <h3 class="title-admin">Supprimer un utilisateur</h3>
+
+    <?php
+    foreach ($users as $user) {
+    ?>
+        <form class="form-admin-template" action="?action=remove-user-admin" method="POST">
+            <p>Nom : <?php echo $user['name']; ?></p>
+            <p>Prénom : <?php echo $user['firstname']; ?></p>
+            <p>Email : <?php echo $user['email']; ?></p>
+            <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
+            <input class="form-validate" type="submit" value="Supprimer utilisateur">
+        </form>
     <?php
     }
     ?>

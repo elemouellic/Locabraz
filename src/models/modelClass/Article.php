@@ -102,19 +102,24 @@ class Article extends DbConnector
     public function getAllArticles()
     {
         $db = self::dbConnect();
-
-        $req = $db->prepare("SELECT * FROM articles");
-
+    
+        // Alias a=articles ag=articlegallerie
+        $req = $db->prepare("SELECT a.*, ag.photolink, ag.alt
+        FROM articles a
+        LEFT JOIN articlegallerie ag ON a.idPhotoarticle = ag.idPhotoarticle;
+        ");
+    
         $req->execute();
-
+    
         $articles = $req->fetchAll();
-
+    
         if (!$articles) {
             throw new \Exception('Aucun article trouvé');
         }
-
+    
         return $articles;
     }
+    
 
     /** Récupérer trois articles **/
 

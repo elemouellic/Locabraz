@@ -18,13 +18,13 @@ class ArticleController extends MainController
 {
 
     /** Vue admin */
-    
     public function articleAdmin(): void
     {
-        
+        $controller = new ArticleController();
+        $articles = $controller->obtainAllArticles();
         require_once $this->getViewAdmin('articleadmin');
     }
-
+    
     /** Créer un article via le dashboard admin */
 
     public function createArticle()
@@ -75,7 +75,7 @@ class ArticleController extends MainController
         header("Location: " . $_ENV['SITE_URL'] . "?action=articleadmin");
     }
 
-    /** Récupérer tous les article */
+    /** Récupérer tous les articles */
 
     public function obtainAllArticles()
     {

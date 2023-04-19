@@ -4,7 +4,6 @@
 <section class="section-page">
     <h3 class="title-admin">Messages reçus</h3>
     <?php
-    
     foreach ($contacts as $contact) {
     ?>
         <div class="form-admin-template">
@@ -23,8 +22,6 @@
     }
     ?>
 
-    <div class="box-form">
-    </div>
 </section>
 
 <!-- Chargement Footer -->

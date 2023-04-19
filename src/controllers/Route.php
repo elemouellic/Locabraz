@@ -194,6 +194,13 @@ try {
                 } else {
                     $admin->dashboard();
                 }
+            case 'remove-user-admin':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $login->removeUserByAdmin();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
 
             default:
                 $view->homePage();

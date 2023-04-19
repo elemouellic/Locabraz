@@ -28,8 +28,7 @@
 <section class="section-affichage">
 
     <?php
-    $controller = new Locabraz\controllers\controllerClass\ArticleController();
-    $articles = $controller->obtainAllArticles();
+
     foreach ($articles as $article) {
     ?>
         <form class="form-admin-template" action="?action=upgrade-article" method="POST" enctype="multipart/form-data">
@@ -42,7 +41,9 @@
             </div>
             <div class="box-form box-row">
 
-                        <!-- <img class="img-form" src="<?php echo $article['photolink']; ?>" alt="<?php echo $article['alt']; ?>"> -->
+
+                <img class="img-form" src="<?php echo $article['photolink']; ?>" alt="<?php echo $article['alt']; ?>">
+
 
             </div>
 
@@ -58,23 +59,23 @@
 
 <section class="section-affichage">
 
-<h3 class="title-admin">Supprimer un article</h3>
+    <h3 class="title-admin">Supprimer un article</h3>
 
-<?php foreach ($articles as $article) {
-?>
-    <form class="form-admin-template" action="?action=remove-article" method="POST" enctype="multipart/form-data">
-        <div class="box-form">
-            <h4>Id Article : <?php echo $article['idArticles']; ?></h4>
-        </div>
-        <div class="box-form">
-            <h4>Titre : <?php echo $article['title']; ?></h4>
-        </div>
-        <input type="hidden" name="idArticles" value="<?php echo $article['idArticles']; ?>">
-        <input class="form-validate" type="submit" value="Supprimer">
-    </form>
-<?php
-}
-?>
+    <?php foreach ($articles as $article) {
+    ?>
+        <form class="form-admin-template" action="?action=remove-article" method="POST" enctype="multipart/form-data">
+            <div class="box-form">
+                <h4>Id Article : <?php echo $article['idArticles']; ?></h4>
+            </div>
+            <div class="box-form">
+                <h4>Titre : <?php echo $article['title']; ?></h4>
+            </div>
+            <input type="hidden" name="idArticles" value="<?php echo $article['idArticles']; ?>">
+            <input class="form-validate" type="submit" value="Supprimer">
+        </form>
+    <?php
+    }
+    ?>
 </section>
 
 <!-- Chargement Footer -->
