@@ -16,19 +16,4 @@ class AdminController extends MainController
     }
 
 
-    /**
-     * Affiche la page de gestion des réservations
-     */
-    public function bookingAdmin(): void
-    {
-        require_once $this->getViewAdmin('bookingadmin');
-    }
-
-    // public function rentalAdmin(): void
-    // {
-    //     $controller = new RentalController();
-    //     $rentals = $controller->obtainAllRentals();
-    //     require_once $this->getViewAdmin('rentaladmin');
-    // }
-
 }

@@ -82,7 +82,7 @@ try {
                 break;
 
             case 'bookingadmin':
-                $admin->bookingAdmin();
+                $booking->bookingAdmin();
                 break;
 
             case 'rentaladmin':
@@ -177,6 +177,32 @@ try {
             case 'remove-message':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $contact->removeMessages();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
+                // Gestion des réservation
+
+            case 'create-booking':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $booking->createBooking();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
+            case 'upgrade-booking':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $booking->upgradeBooking();
+                    break;
+                } else {
+                    $admin->dashboard();
+                }
+
+            case 'remove-booking':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $booking->removeBooking();
                     break;
                 } else {
                     $admin->dashboard();

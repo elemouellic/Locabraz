@@ -6,7 +6,6 @@ use Locabraz\models\DbConnector;
 
 /**
  * *****Liste des méthodes*****
- * getBookingById (récupérer une réservation par son ID)
  * insertBooking (insérer une réservation dans la base de données)
  * updateBooking (mettre à jour une réservation)
  * deleteBooking (supprimer une réservation)
@@ -15,21 +14,6 @@ use Locabraz\models\DbConnector;
 class Booking extends DbConnector
 {
    
-   public function getBookingById($id)
-   {
-      $db = self::dbConnect();
-
-      $req = $db->prepare("SELECT * FROM bookings WHERE idBookings = :id");
-      $req->execute([':id' => $id]);
-
-      $booking = $req->fetch();
-
-      if (!$booking) {
-         throw new \Exception('Réservation non trouvée');
-      }
-
-      return $booking;
-   }
 
    public function insertBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email)
    {
@@ -37,52 +21,35 @@ class Booking extends DbConnector
 
       $req = $db->prepare(
          "INSERT INTO bookings (
-           arrival, 
-           departure, 
-           persons, 
-           amount, 
-           payment, 
-           idRentals, 
-           email
+           arrival = ?, 
+           departure = ?, 
+           persons = ?, 
+           amount = ?, 
+           payment = ?, 
+           idRentals = ?, 
+           email = ?
            ) 
-           VALUES (:arrival, :departure, :persons, :amount, :payment, :idRentals, :email)"
+           VALUES (?, ?, ?, ?, ?, ?, ?)"
       );
-      $req->execute([
-         ':arrival' => $arrival,
-         ':departure' => $departure,
-         ':persons' => $persons,
-         ':amount' => $amount,
-         ':payment' => $payment,
-         ':idRentals' => $idRentals,
-         ':email' => $email
-      ]);
+      $req->execute([$arrival, $departure, $persons, $amount, $payment, $idRentals, $email]);
    }
 
-   public function updateBooking($id, $arrival, $departure, $persons, $amount, $payment, $idRentals, $email)
+   public function updateBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email, $id)
    {
       $db = self::dbConnect();
 
       $req = $db->prepare(
          "UPDATE bookings 
-           SET arrival = :arrival, 
-           departure = :departure, 
-           persons = :persons, 
-           amount = :amount, 
-           payment = :payment, 
-           idRentals = :idRentals, 
-           email = :email 
-           WHERE idBookings = :id"
+           SET arrival = ?, 
+           departure = ?, 
+           persons = ?, 
+           amount = ?, 
+           payment = ?, 
+           idRentals = ?, 
+           email = ? 
+           WHERE idBookings = ?"
       );
-      $req->execute([
-         ':id' => $id,
-         ':arrival' => $arrival,
-         ':departure' => $departure,
-         ':persons' => $persons,
-         ':amount' => $amount,
-         ':payment' => $payment,
-         ':idRentals' => $idRentals,
-         ':email' => $email
-      ]);
+      $req->execute([$arrival, $departure, $persons, $amount, $payment, $idRentals, $email, $id]);
    }
 
    public function deleteBooking($id)
@@ -91,11 +58,9 @@ class Booking extends DbConnector
 
       $req = $db->prepare(
          "DELETE FROM bookings 
-           WHERE idBookings = :id"
+           WHERE idBookings = ?"
       );
-      $req->execute([
-         ':id' => $id
-      ]);
+      $req->execute([$id]);
    }
 
    public function getAllBookings()

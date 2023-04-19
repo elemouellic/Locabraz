@@ -10,12 +10,19 @@ use Locabraz\models\modelClass\Booking;
  * createBooking ()
  * upgradeBooking ()
  * removeBooking ()
- * obtainBookingById ()
  * obtainAllBookings ()
  */
 
 class BookingController extends MainController
 {
+
+
+    public function bookingAdmin(): void
+    {
+        $controller = new BookingController();
+        $bookings = $controller->obtainAllBookings();
+        require_once $this->getViewAdmin('bookingadmin');
+    }
 
 
     /** Créer une nouvelle réservation */
@@ -33,15 +40,14 @@ class BookingController extends MainController
         $booking = new Booking();
         $booking->insertBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email);
 
-        // Redirection vers la page de confirmation
-        header('Location: views/bookingConfirmation.php');
+        //Redirection vers la vue bookingadmin
+        header("Location: " . $_ENV['SITE_URL'] . "?action=bookingadmin");
     }
 
     /** Mettre à jour une réservation */
 
     public function upgradeBooking()
     {
-        $id = $_POST['id'];
         $arrival = $_POST['arrival'];
         $departure = $_POST['departure'];
         $persons = $_POST['persons'];
@@ -49,38 +55,28 @@ class BookingController extends MainController
         $payment = $_POST['payment'];
         $idRentals = $_POST['idRentals'];
         $email = $_POST['email'];
+        $id = $_POST['idBookings'];
 
         $booking = new Booking();
-        $booking->updateBooking($id, $arrival, $departure, $persons, $amount, $payment, $idRentals, $email);
+        $booking->updateBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email, $id);
 
-        // Redirection vers la page de confirmation
-        header('Location: views/bookingConfirmation.php');
+        //Redirection vers la vue bookingadmin
+        header("Location: " . $_ENV['SITE_URL'] . "?action=bookingadmin");
     }
 
     /** Supprimer une réservation */
 
     public function removeBooking()
     {
-        $id = $_POST['id'];
+        $id = $_POST['idBookings'];
 
         $booking = new Booking();
         $booking->deleteBooking($id);
 
-        // Redirection vers la page des réservations
-        header('Location: views/admin/bookingadmin.php');
+        //Redirection vers la vue bookingadmin
+        header("Location: " . $_ENV['SITE_URL'] . "?action=bookingadmin");
     }
 
-    /** Afficher une réservation par son ID */
-
-    public function obtainBookingById()
-    {
-        $id = $_GET['id'];
-
-        $booking = new Booking();
-        $booking = $booking->getBookingById($id);
-
-        return $booking;
-    }
 
     /** Afficher toutes les réservations */
 
