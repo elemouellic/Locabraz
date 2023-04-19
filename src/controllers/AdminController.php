@@ -3,6 +3,8 @@
 namespace Locabraz\controllers;
 
 
+// use Locabraz\controllers\controllerClass\RentalController; 
+
 class AdminController extends MainController
 {
     /**
@@ -21,5 +23,12 @@ class AdminController extends MainController
     {
         require_once $this->getViewAdmin('bookingadmin');
     }
+
+    // public function rentalAdmin(): void
+    // {
+    //     $controller = new RentalController();
+    //     $rentals = $controller->obtainAllRentals();
+    //     require_once $this->getViewAdmin('rentaladmin');
+    // }
 
 }

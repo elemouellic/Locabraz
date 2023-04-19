@@ -56,6 +56,23 @@ class LoginController extends UserController
         }
     }
 
+    public function logOut()
+    {
+        // Démarrage de la session
+        session_start();
+
+        // Suppression de toutes les variables de session
+        $_SESSION = array();
+
+        // Destruction de la session
+        session_destroy();
+        setcookie('PHPSESSID', '', time() - 3600, '/');
+
+        // Redirection vers la page de login
+        header("Location: " . $_ENV['SITE_URL'] . "?action=login");
+    }
+
+
 
 
 

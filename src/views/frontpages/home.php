@@ -4,7 +4,6 @@
 <main>
     <section class="slider">
         <h2 class="slider-title">Location d'appartements dans le Finistère Sud</h2>
-
     </section>
     <h3 class="title-form">Chercher une disponibilité</h3>
     <form class="home-form search" action="process.php<--a définir-->">
@@ -15,50 +14,22 @@
 
     <article class="articles rentals-list">
 
+        <?php foreach ($rentals as $rental) : ?>
+            <article class="article-home">
+                <?php if (!empty($rental['photos'])) : ?>
+                    <img class="img-form" src="<?php echo $rental['photos'][0]['photolink']; ?>" alt="<?php echo $rental['photos'][0]['alt']; ?>">
+                <?php endif; ?>
+                <div class="article-body">
+                    <h4 class="article-title"><?php echo $rental['type']; ?></h4>
+                    <p class="article-description"><?php echo $rental['description']; ?></p>
+                    <a href="#" class="article-button">Voir</a>
+                </div>
+            </article>
+        <?php endforeach; ?>
 
-        <article class="article-home">
-            <img class="article-img" src="public/img/appt3quimperle/20220515_175817.jpg" alt="">
-            <div class="article-body">
-                <h4 class="article-title">Appartement T2</h4>
-                <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et enim,
-                    perferendis quibusdam iure ex neque cum fugit. Atque unde, ipsum eius, quam sint velit iusto.
-                </p>
-                <a href="#" class="article-button">Réserver</a>
-            </div>
-        </article>
-        <article class="article-home">
-            <img class="article-img" src="public/img/appt3quimperle/20220515_175817.jpg" alt="">
-            <div class="article-body">
-                <h4 class="article-title">Appartement T2</h4>
-                <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et enim,
-                    perferendis quibusdam iure ex neque cum fugit. Atque unde, ipsum eius, quam sint velit iusto.
-                </p>
-                <a href="#" class="article-button">Réserver</a>
-            </div>
-        </article>
-        <article class="article-home">
-            <img class="article-img" src="public/img/appt3quimperle/20220515_175817.jpg" alt="">
-            <div class="article-body">
-                <h4 class="article-title">Appartement T2</h4>
-                <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et enim,
-                    perferendis quibusdam iure ex neque cum fugit. Atque unde, ipsum eius, quam sint velit iusto.
-                </p>
-                <a href="#" class="article-button">Réserver</a>
-            </div>
-        </article>
-        <article class="article-home">
-            <img class="article-img" src="public/img/appt3quimperle/20220515_175817.jpg" alt="">
-            <div class="article-body">
-                <h4 class="article-title">Appartement T2</h4>
-                <p class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et enim,
-                    perferendis quibusdam iure ex neque cum fugit. Atque unde, ipsum eius, quam sint velit iusto.
-                </p>
-                <a href="#" class="article-button">Réserver</a>
-            </div>
-        </article>
     </article>
     <div class="section-button">
-    <a href="?action=apartment" class="seeall" >Voir&nbsptout</a>
+        <a href="?action=apartment" class="seeall">Voir&nbsptout</a>
     </div>
     <section class="prez-banner">
         <h5 class="prez-title">Présentation</h5>
@@ -68,52 +39,19 @@
             necessitatibus architecto quibusdam placeat?</p>
     </section>
 
-    <article class="actus">
-        <article class="actus-home">
-            <img class="actus-img" src="public/img/actus/actus-fake.jpg" alt="">
-            <h6 class="actus-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h6>
-            <p class="actus-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. A magni rem
-                quo
-                sed quam itaque autem cupiditate mollitia voluptatibus. Nulla in unde consequatur ratione
-                placeat
-                libero, mollitia atque veritatis nostrum! Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
-                Et nobis aliquam asperiores voluptatibus dignissimos non ipsum impedit nemo? Quis ad commodi
-                doloribus, assumenda temporibus consequatur et fugit repellat quaerat ratione!</p>
-            <input class="actus-button" type="button" value="Lire...">
-        </article>
-        <article class="actus-home">
-
-            <h6 class="actus-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h6>
-            <p class="actus-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. A magni rem
-                quo
-                sed quam itaque autem cupiditate mollitia voluptatibus. Nulla in unde consequatur ratione
-                placeat
-                libero, mollitia atque veritatis nostrum! Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
-                Et nobis aliquam asperiores voluptatibus dignissimos non ipsum impedit nemo? Quis ad commodi
-                doloribus, assumenda temporibus consequatur et fugit repellat quaerat ratione!</p>
-
-            <input class="actus-button" type="button" value="Lire...">
-            <img class="actus-img" src="public/img/actus/actus-fake.jpg" alt="">
-        </article>
-        <article class="actus-home">
-            <img class="actus-img" src="public/img/actus/actus-fake.jpg" alt="">
-            <h6 class="actus-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h6>
-            <p class="actus-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. A magni rem
-                quo
-                sed quam itaque autem cupiditate mollitia voluptatibus. Nulla in unde consequatur ratione
-                placeat
-                libero, mollitia atque veritatis nostrum! Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
-                Et nobis aliquam asperiores voluptatibus dignissimos non ipsum impedit nemo? Quis ad commodi
-                doloribus, assumenda temporibus consequatur et fugit repellat quaerat ratione!</p>
-            <input class="actus-button" type="button" value="Lire...">
-        </article>
-        <div class="section-button">
-            <a href="?action=news" class="seeall" >Voir&nbsptout</a>
+    <!-- <section>
+        <h6>Nos dernières actualités :</h6>
+        <div>
+            <img src="public/img/articles/643fed6fa2775.jpg" alt="vieux bâteau bleu à quai">
+            <img src="public/img/articles/643feea92f2b7.jpg" alt="Chemin en bois en bord de côte">
+            <img src="public/img/articles/643ff02c9acec.jpg" alt="maison dans la campagne finisterienne">
+            <img src="public/img/articles/643ff6f2a9f60.jpg" alt="côte sauvage du Finistère">
+            <img src="public/img/articles/643ff74e78293.jpg" alt="ville close de Concarneau">
         </div>
-    </article>
+        <div class="section-button">
+        <a href="?action=news" class="seeall">Voir&nbsptout</a>
+    </div>
+    </section> -->
 
 </main>
 

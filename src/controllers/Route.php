@@ -66,6 +66,10 @@ try {
                 $view->bookingPage();
                 break;
 
+            case 'logout':
+                $login->logOut();
+                break;
+
                 /** Vues admin */
 
             case 'dashboard':

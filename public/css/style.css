@@ -252,6 +252,8 @@ header {
     background-color: var(--colorheader);
     box-shadow: var(--box);
     transition-delay: 0.5s;
+    font-family: var(--prata);
+    font-size: var(--titleresponsivemedium);
 }
 
 .logo.hidden {
@@ -350,7 +352,7 @@ header {
     background-image: linear-gradient(180deg,
             rgba(31, 31, 38, 0.88) 0%,
             rgba(31, 31, 38, 0.24) 100%),
-        url(../img/appt1quimperle/20220521_172648.jpg);
+        url(../img/slider/slider1.jpg);
     animation: fade 5s ease-in-out infinite;
 
 }
@@ -709,10 +711,17 @@ footer {
 
 
 .logo-footer {
-    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 33%;
     padding-right: 1rem;
+    background-color: var(--colorfooter);
+}
+.logo-footer>a{
+    font-family: var(--prata);
+    font-size: var(--titleresponsivemedium);
 }
 
 

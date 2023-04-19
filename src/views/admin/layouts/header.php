@@ -13,7 +13,7 @@
 
 <header class="admin-header">
 <ul class="admin-menu">
-        <li class="admin-items"><a class="admin-links" href="?action=rentaladmin">Appartments</a></li>
+        <li class="admin-items"><a class="admin-links" href="?action=rentaladmin">Appartements</a></li>
         <li class="admin-items"><a class="admin-links" href="?action=articleadmin">Actualités</a></li>
         <li class="admin-items"><a class="admin-links" href="?action=contactadmin">Contact</a></li>
         <li class="admin-items"><a class="admin-links" href="?action=bookingadmin">Réservations</a></li>

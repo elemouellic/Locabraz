@@ -129,7 +129,7 @@ class Rental extends DbConnector
    {
       $db = self::dbConnect();
 
-      $req = $db->prepare("SELECT * FROM rentals ORDER BY id ASC LIMIT 4");
+      $req = $db->prepare("SELECT * FROM rentals ORDER BY idRentals ASC LIMIT 4");
       $req->execute();
 
       $rentals = $req->fetchAll();

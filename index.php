@@ -3,10 +3,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
 //Vérifier si une session existe déjà
-if (session_status() == PHP_SESSION_NONE) {
+if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
+
 
 //Chargement Autoload
 require __DIR__ . '/vendor/autoload.php';

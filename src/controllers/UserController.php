@@ -1,6 +1,8 @@
 <?php
 
 namespace Locabraz\controllers;
+use Locabraz\controllers\controllerClass\RentalController;
+use Locabraz\controllers\controllerClass\ArticleController;
 
 
 class UserController extends MainController
@@ -10,6 +12,8 @@ class UserController extends MainController
      */
     public function homePage(): void
     {
+        $controller = new RentalController();
+        $rentals = $controller->obtainFourRentals();
         require_once $this->getViewFront('home');
     }
 
@@ -18,6 +22,9 @@ class UserController extends MainController
      */
     public function apartmentPage(): void
     {
+        
+        $controller = new RentalController();
+        $rentals = $controller->obtainAllRentals();
         require_once $this->getViewFront('apartment');
     }
 
@@ -26,6 +33,8 @@ class UserController extends MainController
      */
     public function newsPage(): void
     {
+        $controller = new ArticleController();
+        $articles = $controller->obtainAllArticles();
         require_once $this->getViewFront('news');
     }
 

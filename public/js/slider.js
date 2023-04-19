@@ -1,6 +1,6 @@
 const slider = document.querySelector(".slider");
 
-const images = ["public/img/appt1quimperle/20220521_172648.jpg", "public/img/appt1quimperle/20220525_193503.jpg", "public/img/appt1quimperle/20220525_193513.jpg"];
+const images = ["public/img/slider/slider2.jpg", "public/img/slider/slider3.jpg", "public/img/slider/slider4.jpg", "public/img/slider/slider5.jpg"];
 
 let i = 0;
 

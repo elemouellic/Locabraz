@@ -15,11 +15,11 @@
         </div>
         <div class="box-links">
             <label for="photolink">Téléverser une photo</label>
-            <input type="file" id="photolink" name="photolink" multiple accept=".jpg, .jpeg">
+            <input type="file" id="photolink" name="photolink" accept=".jpg, .jpeg">
             <label for="photoalt">Texte alternatif:</label>
             <input type="text" id="photoalt" name="photoalt" maxlength="100" placeholder="Texte alternatif" required>
         </div>
-        <input type="hidden" name="publishdate" value="<?php echo date('d/m/Y H:i:s'); ?>">
+        <input type="hidden" name="publishdate" value="<?php echo date('d/m/Y'); ?>">
         <input class="form-validate" type="submit" value="Envoyer">
 
     </form>
@@ -28,7 +28,6 @@
 <section class="section-affichage">
 
     <?php
-
     foreach ($articles as $article) {
     ?>
         <form class="form-admin-template" action="?action=upgrade-article" method="POST" enctype="multipart/form-data">
