@@ -72,57 +72,57 @@ try {
 
                 /** Vues admin */
 
-                case 'dashboard':
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-                        $admin->dashboard();
-                    } else {
-                        $view->errorPage();
-                    }
-                    break;
-    
-                case 'articleadmin':
-                    //Vue et méthode par contrôleur
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-                        $article->articleAdmin();
-                    } else {
-                        $view->errorPage();
-                    }
-                    break;
-    
-                case 'bookingadmin':
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-                        $booking->bookingAdmin();
-                    } else {
-                        $view->errorPage();
-                    }
-                    break;
-    
-                case 'rentaladmin':
-                    //Vue et méthode par contrôleur
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-                        $rental->rentalAdmin();
-                    } else {
-                        $view->errorPage();
-                    }
-                    break;
-    
-                case 'useradmin':
-                    //Vue et méthode par contrôleur
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-                        $login->userAdmin();
-                    } else {
-                        $view->errorPage();
-                    }
-                    break;
-    
-                case 'contactadmin':
-                    //Vue et méthode par contrôleur
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-                        $contact->contactAdmin();
-                    } else {
-                        $view->errorPage();
-                    }
-                    break;
+            case 'dashboard':
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    $admin->dashboard();
+                } else {
+                    $view->errorPage();
+                }
+                break;
+
+            case 'articleadmin':
+                //Vue et méthode par contrôleur
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    $article->articleAdmin();
+                } else {
+                    $view->errorPage();
+                }
+                break;
+
+            case 'bookingadmin':
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    $booking->bookingAdmin();
+                } else {
+                    $view->errorPage();
+                }
+                break;
+
+            case 'rentaladmin':
+                //Vue et méthode par contrôleur
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    $rental->rentalAdmin();
+                } else {
+                    $view->errorPage();
+                }
+                break;
+
+            case 'useradmin':
+                //Vue et méthode par contrôleur
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    $login->userAdmin();
+                } else {
+                    $view->errorPage();
+                }
+                break;
+
+            case 'contactadmin':
+                //Vue et méthode par contrôleur
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    $contact->contactAdmin();
+                } else {
+                    $view->errorPage();
+                }
+                break;
 
                 /** Traitement des formulaires */
 
@@ -160,111 +160,179 @@ try {
                 /** Formulaires de la vue admin */
                 // Gestion des locations
             case 'create-rental':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $rental->createRental();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $rental->createRental();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
             case 'upgrade-rental':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $rental->upgradeRental();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $rental->upgradeRental();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
             case 'remove-rental':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $rental->removeRental();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $rental->removeRental();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
                 // Gestion des articles
             case 'create-article':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $article->createArticle();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $article->createArticle();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
+
             case 'upgrade-article':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $article->upgradeArticle();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $article->upgradeArticle();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
             case 'remove-article':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $article->removeArticle();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $article->removeArticle();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
                 // Gestion des messages
 
             case 'remove-message':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $contact->removeMessages();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $contact->removeMessages();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
                 // Gestion des réservation
 
             case 'create-booking':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $booking->createBooking();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $booking->createBooking();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
             case 'upgrade-booking':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $booking->upgradeBooking();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $booking->upgradeBooking();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
             case 'remove-booking':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $booking->removeBooking();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $booking->removeBooking();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
                 // Gestion des utilisateurs
 
             case 'create-user-admin':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $login->createUserByAdmin();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $login->createUserByAdmin();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
+
             case 'upgrade-user-admin':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $login->upgradeUserByAdmin();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $login->upgradeUserByAdmin();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
+
             case 'remove-user-admin':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $login->removeUserByAdmin();
-                    break;
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $login->removeUserByAdmin();
+                        break;
+                    } else {
+                        $admin->dashboard();
+                    }
                 } else {
-                    $admin->dashboard();
+                    $view->errorPage();
                 }
+                break;
 
             default:
                 $view->homePage();
@@ -274,7 +342,7 @@ try {
         $view->homePage();
     }
 } catch (Exception $e) {
-    $view->notFoundPage();
+    $view->notFoundPage($e);
 } catch (Error $e) {
     $view->errorPage();
 }

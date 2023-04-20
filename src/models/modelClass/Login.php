@@ -37,7 +37,7 @@ class Login extends DbConnector
 
         }
     
-        $_SESSION['user_email'] = $user['email'];
+        // $_SESSION['user_email'] = $user['email'];
     
         // Vérifier si l'utilisateur est un admin
 

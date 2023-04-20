@@ -13,7 +13,7 @@ use Locabraz\models\DbConnector;
  */
 class Booking extends DbConnector
 {
-   
+
 
    public function insertBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email)
    {
@@ -77,4 +77,25 @@ class Booking extends DbConnector
 
       return $bookings;
    }
+
+   public function getBookingsByEmail($email)
+   {
+       $db = self::dbConnect();
+       $email = $_SESSION['email'];
+       $req = $db->prepare("
+           SELECT bookings.*, rentals.type 
+           FROM bookings 
+           JOIN rentals ON bookings.idRentals = rentals.idRentals
+           WHERE email = ?
+       ");
+       $req->execute([$email]);
+       $bookings = $req->fetchAll();
+   
+       if (!$bookings) {
+           throw new \Exception('Aucune réservation trouvée pour cet email');
+       }
+   
+       return $bookings;
+   }
+   
 }

@@ -34,6 +34,7 @@ class LoginController extends UserController
 
     public function loginUser()
     {
+
         $email = $_POST['email'];
         $password = $_POST['password'];
 

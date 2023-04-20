@@ -3,6 +3,7 @@
 namespace Locabraz\controllers;
 use Locabraz\controllers\controllerClass\RentalController;
 use Locabraz\controllers\controllerClass\ArticleController;
+use Exception;
 
 
 class UserController extends MainController
@@ -99,7 +100,7 @@ class UserController extends MainController
     /**
      * Affiche page 404
      */
-    public function notFoundPage()
+    public function notFoundPage($exception)
     {
         require_once $this->getViewFront('404');
     }

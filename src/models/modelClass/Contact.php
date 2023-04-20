@@ -64,10 +64,6 @@ class Contact extends DbConnector
 
         $messages = $req->fetchAll();
 
-        if (!$messages) {
-            throw new \Exception('Aucun message trouvé');
-        }
-
         return $messages;
     }
 
