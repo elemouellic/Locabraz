@@ -72,33 +72,57 @@ try {
 
                 /** Vues admin */
 
-            case 'dashboard':
-                $admin->dashboard();
-                break;
-
-            case 'articleadmin':
-                //Vue et méthode par contrôleur
-                $article->articleAdmin();
-                break;
-
-            case 'bookingadmin':
-                $booking->bookingAdmin();
-                break;
-
-            case 'rentaladmin':
-                //Vue et méthode par contrôleur
-                $rental->rentalAdmin();
-                break;
-
-            case 'useradmin':
-                //Vue et méthode par contrôleur
-                $login->userAdmin();
-                break;
-
-            case 'contactadmin':
-                //Vue et méthode par contrôleur
-                $contact->contactAdmin();
-                break;
+                case 'dashboard':
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                        $admin->dashboard();
+                    } else {
+                        $view->errorPage();
+                    }
+                    break;
+    
+                case 'articleadmin':
+                    //Vue et méthode par contrôleur
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                        $article->articleAdmin();
+                    } else {
+                        $view->errorPage();
+                    }
+                    break;
+    
+                case 'bookingadmin':
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                        $booking->bookingAdmin();
+                    } else {
+                        $view->errorPage();
+                    }
+                    break;
+    
+                case 'rentaladmin':
+                    //Vue et méthode par contrôleur
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                        $rental->rentalAdmin();
+                    } else {
+                        $view->errorPage();
+                    }
+                    break;
+    
+                case 'useradmin':
+                    //Vue et méthode par contrôleur
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                        $login->userAdmin();
+                    } else {
+                        $view->errorPage();
+                    }
+                    break;
+    
+                case 'contactadmin':
+                    //Vue et méthode par contrôleur
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                        $contact->contactAdmin();
+                    } else {
+                        $view->errorPage();
+                    }
+                    break;
 
                 /** Traitement des formulaires */
 
@@ -120,6 +144,16 @@ try {
                     break;
                 } else {
                     $view->registerPage();
+                    break;
+                }
+
+                // Formulaire de connexion utilisateur
+            case 'form-login':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $login->loginUser();
+                    break;
+                } else {
+                    $view->loginPage();
                     break;
                 }
 

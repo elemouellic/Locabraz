@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 
 //Vérifier si une session existe déjà
-if (session_status() !== PHP_SESSION_ACTIVE) {
+if (!isset($_SESSION)) {
     session_start();
 }
 
@@ -25,6 +25,5 @@ try {
 
 //Connexion à l'index et aux pages du site via routage
 require_once __DIR__ . '/src/controllers/Route.php';
-
 
 ?>

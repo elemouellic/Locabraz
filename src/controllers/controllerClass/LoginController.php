@@ -74,8 +74,6 @@ class LoginController extends UserController
 
 
 
-
-
     /**Créer un utilisateur */
 
     public function createUser()

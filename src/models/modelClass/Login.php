@@ -34,6 +34,7 @@ class Login extends DbConnector
     
         if (!password_verify($password, $user['password'])) {
             throw new \Exception('Mot de passe incorrect');
+
         }
     
         $_SESSION['user_email'] = $user['email'];
