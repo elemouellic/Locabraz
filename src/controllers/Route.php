@@ -47,8 +47,12 @@ try {
 
                 //Pages utilisateurs
             case 'account':
-                $view->accountPage();
-                break;
+                if (isset($_SESSION['email'])) {
+                    $view->accountPage();
+                    break;
+                } else {
+                    $view->loginPage();
+                }
 
             case 'login':
                 $view->loginPage();

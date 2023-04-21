@@ -1,7 +1,7 @@
 <!-- Chargement Header -->
 <?php require_once __DIR__ . '/layouts/header.php'; ?>
 
-<main>
+
     <section class="slider">
         <h2 class="slider-title">Location d'appartements dans le Finistère Sud</h2>
     </section>
@@ -53,7 +53,7 @@
     </div>
     </section> -->
 
-</main>
+
 
 <!-- Chargement Footer -->
 <?php require_once __DIR__ . '/layouts/footer.php'; ?>

@@ -3,7 +3,7 @@
 
 
 
-<section class="account-page">
+<section class="template-page">
 
     <h2 class="title-form">Se connecter</h2>
     <form class="form-template" action="?action=form-login" method="POST">
@@ -16,6 +16,7 @@
             <input type="password" id="password" name="password" maxlength="32" placeholder="Votre mot de passe" required>
         </div>
         <input class="form-validate" type="submit" value="Se connecter">
+        <a class="form-validate" href="?action=register">Créer un compte</a>
     </form>
 
 

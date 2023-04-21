@@ -1,3 +1,4 @@
+</main>
 <footer>
         <ul class="menu-footer">
             <li><a href="?action=apartment">Appartements</a></li>

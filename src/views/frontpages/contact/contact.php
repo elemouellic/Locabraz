@@ -1,7 +1,7 @@
 <!-- Chargement Header -->
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
 
-<section class="contact-page">
+<section class="template-page">
     <h2 class="title-form">Contactez-nous</h2>
     <form class="form-template" action="?action=form-contact" method="POST">
         <div class="box-form">

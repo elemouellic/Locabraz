@@ -1,7 +1,7 @@
 <!-- Chargement Header -->
 <?php require_once __DIR__ . '/../layouts/header.php'; ?>
 
-<section class="account-page">
+<section class="template-page">
 
     <h2 class="title-form">Inscription</h2>
     <form class="form-template" action="?action=form-register" method="POST">

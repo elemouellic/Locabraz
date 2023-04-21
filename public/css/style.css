@@ -579,37 +579,26 @@ header {
     width: 100%;
 }
 
-/******************** Page contact ********************/
+/******************** Pages utilisateurs ********************/
 
-.contact-page {
-    height: 100vh;
+.template-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 15vh;
+
 }
 
-
-
-/******************** Page Login ********************/
-
-.login-page {
-    height: 100vh;
+.template-page-list{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
     justify-content: center;
-    align-items: center;
 }
 
-/******************** Page Mon Compte ********************/
 
-.account-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 
 /******************** Template formulaire ********************/
 

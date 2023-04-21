@@ -88,7 +88,7 @@ class BookingController extends MainController
         return $bookings;
     }
 
-    public function obtainBookingsByEmail($email)
+    public static function obtainBookingsByEmail($email)
     {
 
         $booking = new Booking();
