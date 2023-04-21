@@ -2,9 +2,9 @@
 
 namespace Locabraz\controllers\controllerClass;
 
-// use Locabraz\controllers\MainController;
-use Locabraz\controllers\UserController;
+use Locabraz\controllers\MainController;
 use Locabraz\models\modelClass\Login;
+use Locabraz\controllers\Security;
 
 /**
  * *****Liste des méthodes*****
@@ -17,9 +17,9 @@ use Locabraz\models\modelClass\Login;
  * obtainAllUsers (récupérer comptes utilisateurs)
  */
 
+//modif à supprimer
 
-
-class LoginController extends UserController
+class LoginController extends MainController
 {
 
     /** Vue admin */
@@ -34,9 +34,8 @@ class LoginController extends UserController
 
     public function loginUser()
     {
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = Security::sanitize($_POST['email'], FILTER_VALIDATE_EMAIL);
+        $password = Security::sanitize($_POST['password']);
 
         $user = new Login();
         $user->userLogin($email, $password);
@@ -79,32 +78,37 @@ class LoginController extends UserController
 
     public function createUser()
     {
-        $email = $_POST['email'];
-        $name = $_POST['name'];
-        $firstname = $_POST['firstname'];
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $zipcode = $_POST['zipcode'];
-        $password = $_POST['password'];
-
+        $email = Security::sanitize($_POST['email']);
+        $name = Security::sanitize($_POST['name']);
+        $firstname = Security::sanitize($_POST['firstname']);
+        $phone = Security::sanitize($_POST['phone']);
+        $address = Security::sanitize($_POST['address']);
+        $zipcode = Security::sanitize($_POST['zipcode']);
+        $password = Security::sanitize($_POST['password']);
+        if (strlen($password) < 8) {
+            throw new \Exception('Le mot de passe doit contenir au moins 8 caractères');
+        }
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
         $user = new Login();
-        $user->insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password);
-
+        $user->insertUser($email, $name, $firstname, $phone, $address, $zipcode, $hashedPassword);
+    
         //Redirection vers le compte utilisateur
         header("Location: " . $_ENV['SITE_URL'] . "?action=account");
     }
+    
 
     /**Créer un utilisateurpar le dashboard **/
 
     public function createUserByAdmin()
     {
-        $email = $_POST['email'];
-        $name = $_POST['name'];
-        $firstname = $_POST['firstname'];
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $zipcode = $_POST['zipcode'];
-        $password = $_POST['password'];
+        $email = Security::sanitize($_POST['email']);
+        $name = Security::sanitize($_POST['name']);
+        $firstname = Security::sanitize($_POST['firstname']);
+        $phone = Security::sanitize($_POST['phone']);
+        $address = Security::sanitize($_POST['address']);
+        $zipcode = Security::sanitize($_POST['zipcode']);
+        $password = Security::sanitize($_POST['password']);
 
 
         $user = new Login();
@@ -125,13 +129,13 @@ class LoginController extends UserController
             exit;
         }
 
-        $email = $_SESSION['email'];
-        $name = $_POST['name'];
-        $firstname = $_POST['firstname'];
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $zipcode = $_POST['zipcode'];
-        $password = $_POST['password'];
+        $email = Security::sanitize($_SESSION['email']);
+        $name = Security::sanitize($_POST['name']);
+        $firstname = Security::sanitize($_POST['firstname']);
+        $phone = Security::sanitize($_POST['phone']);
+        $address = Security::sanitize($_POST['address']);
+        $zipcode = Security::sanitize($_POST['zipcode']);
+        $password = Security::sanitize($_POST['password']);
 
         try {
             $user = new Login();
@@ -149,12 +153,12 @@ class LoginController extends UserController
 
     public function upgradeUserByAdmin()
     {
-        $email = $_POST['email'];
-        $name = $_POST['name'];
-        $firstname = $_POST['firstname'];
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $zipcode = $_POST['zipcode'];
+        $email = Security::sanitize($_POST['email']);
+        $name = Security::sanitize($_POST['name']);
+        $firstname = Security::sanitize($_POST['firstname']);
+        $phone = Security::sanitize($_POST['phone']);
+        $address = Security::sanitize($_POST['address']);
+        $zipcode = Security::sanitize($_POST['zipcode']);
 
 
         $user = new Login();
@@ -192,7 +196,7 @@ class LoginController extends UserController
     {
 
         // Récupération de l'email de l'utilisateur à supprimer
-        $email = $_POST['email'];
+        $email = Security::sanitize($_POST['email']);
 
         // Suppression de l'utilisateur
         $user = new Login();

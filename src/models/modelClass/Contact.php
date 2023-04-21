@@ -22,14 +22,6 @@ class Contact extends DbConnector
     {
         $db = self::dbConnect();
 
-        $name = htmlspecialchars($name);
-        $firstname = htmlspecialchars($firstname);
-        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
-        $subject = htmlspecialchars($subject);
-        $message = htmlspecialchars($message);
-        $postdate = htmlspecialchars($postdate);
-        $status = htmlspecialchars($status);
-
         if (!$email) {
             throw new \Exception('Adresse e-mail invalide');
         }

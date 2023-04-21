@@ -4,7 +4,7 @@ namespace Locabraz\controllers\controllerClass;
 
 use Locabraz\controllers\MainController;
 use Locabraz\models\modelClass\Rental;
-
+use Locabraz\controllers\Security;
 /**
  * *****Liste des méthodes*****
  * rentalAdmin (Contrôleur pour vue admin)
@@ -30,9 +30,9 @@ class RentalController extends MainController
 
     public function createRental()
     {
-        $type = $_POST['type'];
-        $rooms = $_POST['rooms'];
-        $description = $_POST['description'];
+        $type = Security::sanitize($_POST['type']);
+        $rooms = Security::sanitize($_POST['rooms']);
+        $description = Security::sanitize($_POST['description']);
 
         $photolinks = $_FILES['photolink'];
 
@@ -55,10 +55,10 @@ class RentalController extends MainController
 
     public function upgradeRental()
     {
-        $id = $_POST['idRentals'];
-        $type = $_POST['type'];
-        $rooms = $_POST['rooms'];
-        $description = $_POST['description'];
+        $id = Security::sanitize($_POST['idRentals']);
+        $type = Security::sanitize($_POST['type']);
+        $rooms = Security::sanitize($_POST['rooms']);
+        $description = Security::sanitize($_POST['description']);
 
         $rental = new Rental();
         $rental->updateRental($id, $type, $rooms, $description);

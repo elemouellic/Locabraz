@@ -3,7 +3,7 @@
 
 <section class="template-page">
   <?php 
-    if (isset($_SESSION['email'])) {
+
       echo "Vous êtes connecté avec cette adresse mail: " . $_SESSION['email']; 
       echo "Me déconnecter de mon compte <a href='?action=logout'>Se déconnecter</a> "; 
       if (count($bookings) > 0) {
@@ -28,10 +28,7 @@
         echo "<p>Aucune réservation trouvée.</p>";
       }
 
-    } else {
-      echo "Vous n'êtes pas connecté. <a href='?action=login'>Se connecter</a>";
-      echo "Pas encore encore inscrit?. <a href='?action=register'>Créer un compte</a>";
-    }
+    
   ?>
 </section>
 

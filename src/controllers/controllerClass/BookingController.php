@@ -4,6 +4,7 @@ namespace Locabraz\controllers\controllerClass;
 
 use Locabraz\controllers\MainController;
 use Locabraz\models\modelClass\Booking;
+use Locabraz\controllers\Security;
 
 /**
  * *****Liste des méthodes*****
@@ -29,13 +30,13 @@ class BookingController extends MainController
 
     public function createBooking()
     {
-        $arrival = $_POST['arrival'];
-        $departure = $_POST['departure'];
-        $persons = $_POST['persons'];
-        $amount = $_POST['amount'];
-        $payment = $_POST['payment'];
-        $idRentals = $_POST['idRentals'];
-        $email = $_POST['email'];
+        $arrival = Security::sanitize($_POST['arrival']);
+        $departure = Security::sanitize($_POST['departure']);
+        $persons = Security::sanitize($_POST['persons']);
+        $amount = Security::sanitize($_POST['amount']);
+        $payment = Security::sanitize($_POST['payment']);
+        $idRentals = Security::sanitize($_POST['idRentals']);
+        $email = Security::sanitize($_POST['email']);
 
         $booking = new Booking();
         $booking->insertBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email);
@@ -48,14 +49,14 @@ class BookingController extends MainController
 
     public function upgradeBooking()
     {
-        $arrival = $_POST['arrival'];
-        $departure = $_POST['departure'];
-        $persons = $_POST['persons'];
-        $amount = $_POST['amount'];
-        $payment = $_POST['payment'];
-        $idRentals = $_POST['idRentals'];
-        $email = $_POST['email'];
-        $id = $_POST['idBookings'];
+        $arrival = Security::sanitize($_POST['arrival']);
+        $departure = Security::sanitize($_POST['departure']);
+        $persons = Security::sanitize($_POST['persons']);
+        $amount = Security::sanitize($_POST['amount']);
+        $payment = Security::sanitize($_POST['payment']);
+        $idRentals = Security::sanitize($_POST['idRentals']);
+        $email = Security::sanitize($_POST['email']);
+        $id = Security::sanitize($_POST['idBookings']);
 
         $booking = new Booking();
         $booking->updateBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email, $id);
@@ -68,7 +69,7 @@ class BookingController extends MainController
 
     public function removeBooking()
     {
-        $id = $_POST['idBookings'];
+        $id = Security::sanitize($_POST['idBookings']);
 
         $booking = new Booking();
         $booking->deleteBooking($id);

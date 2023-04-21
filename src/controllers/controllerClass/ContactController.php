@@ -4,6 +4,7 @@ namespace Locabraz\controllers\controllerClass;
 
 use Locabraz\controllers\MainController;
 use Locabraz\models\modelClass\Contact;
+use Locabraz\controllers\Security;
 
 /**
  * *****Liste des méthodes*****
@@ -28,11 +29,11 @@ class ContactController extends MainController
 
     public function sendMessage()
     {
-        $name = $_POST['name'];
-        $firstname = $_POST['firstname'];
-        $email = $_POST['email'];
-        $subject = $_POST['subject'];
-        $message = $_POST['message'];
+        $name = Security::sanitize($_POST['name']);
+        $firstname = Security::sanitize($_POST['firstname']);
+        $email = Security::sanitize($_POST['email'], FILTER_VALIDATE_EMAIL);
+        $subject = Security::sanitize($_POST['subject']);
+        $message = Security::sanitize($_POST['message']);
         $postdate =  date('Y-m-d H:i:s');
         $status = 0;
 

@@ -46,7 +46,7 @@ class Login extends DbConnector
 
     /** Ajouter un utilisateur **/
 
-    public function insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password)
+    public function insertUser($email, $name, $firstname, $phone, $address, $zipcode, $hashedPassword)
     {
         $db = self::dbConnect();
 
@@ -61,6 +61,8 @@ class Login extends DbConnector
             throw new \Exception('Code postal invalide');
         }
 
+
+
         // Vérification si l'email existe déjà dans la base de données
         $req = $db->prepare("SELECT COUNT(*) FROM _user WHERE email = ?");
         $req->execute([$email]);
@@ -70,9 +72,6 @@ class Login extends DbConnector
             // L'email existe déjà, renvoyer une exception
             throw new \Exception('Cet email est déjà utilisé');
         }
-
-        //Crypter le mot de passe
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $req = $db->prepare(
             "INSERT INTO _user (

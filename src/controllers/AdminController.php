@@ -2,9 +2,6 @@
 
 namespace Locabraz\controllers;
 
-
-// use Locabraz\controllers\controllerClass\RentalController; 
-
 class AdminController extends MainController
 {
     /**

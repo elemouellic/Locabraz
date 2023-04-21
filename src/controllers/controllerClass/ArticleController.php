@@ -4,6 +4,7 @@ namespace Locabraz\controllers\controllerClass;
 
 use Locabraz\controllers\MainController;
 use Locabraz\models\modelClass\Article;
+use Locabraz\controllers\Security;
 
 /**
  * *****Liste des méthodes*****
@@ -24,18 +25,19 @@ class ArticleController extends MainController
         $articles = $controller->obtainAllArticles();
         require_once $this->getViewAdmin('articleadmin');
     }
-    
+
     /** Créer un article via le dashboard admin */
 
     public function createArticle()
     {
 
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $publishdate = $_POST['publishdate'];
+        $title = Security::sanitize($_POST['title']);
+        $content = Security::sanitize($_POST['content']);
+        $publishdate = Security::sanitize($_POST['publishdate']);
 
         $photolink = $_FILES['photolink'];
-        $photoalt = $_POST['photoalt'];
+        $photoalt = Security::sanitize($_POST['photoalt']);
+
 
 
         $article = new Article();
@@ -50,9 +52,9 @@ class ArticleController extends MainController
     public function upgradeArticle()
     {
 
-        $id = $_POST['idArticles'];
-        $title = $_POST['title'];
-        $content = $_POST['content'];
+        $id = Security::sanitize($_POST['idArticles']);
+        $title = Security::sanitize($_POST['title']);
+        $content = Security::sanitize($_POST['content']);
 
         $article = new Article();
         $article->updateArticle($title, $content, $id);

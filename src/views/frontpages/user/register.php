@@ -31,7 +31,7 @@
         </div>
         <div class="box-form">
             <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" maxlength="32" placeholder="Votre mot de passe" required>
+            <input type="password" id="password" name="password" minlength="8" maxlength="32" placeholder="Votre mot de passe" required>
         </div>
         <label for="validate">J'accepte les <a href="?action=mentions">mentions légales</a></label>
         <input type="checkbox" id="validate" name="validate" required>
