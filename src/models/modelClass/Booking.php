@@ -81,19 +81,16 @@ class Booking extends DbConnector
    public function getBookingsByEmail($email)
    {
        $db = self::dbConnect();
-       $email = $_SESSION['email'];
-       $req = $db->prepare("
-           SELECT bookings.*, rentals.type 
+       $email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
+       $req = $db->prepare(
+         "SELECT bookings.*, rentals.type 
            FROM bookings 
            JOIN rentals ON bookings.idRentals = rentals.idRentals
-           WHERE email = ?
-       ");
+           WHERE email = ?"
+       );
        $req->execute([$email]);
        $bookings = $req->fetchAll();
    
-       if (!$bookings) {
-           throw new \Exception('Aucune réservation trouvée pour cet email');
-       }
    
        return $bookings;
    }

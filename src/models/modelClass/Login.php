@@ -22,29 +22,25 @@ class Login extends DbConnector
     public function userLogin($email, $password)
     {
         $db = self::dbConnect();
-    
+
         $req = $db->prepare("SELECT * FROM _user WHERE email = ?");
         $req->execute([$email]);
-    
+
         $user = $req->fetch();
-    
+
         if (!$user) {
             throw new \Exception('Utilisateur non trouvé');
         }
-    
+
         if (!password_verify($password, $user['password'])) {
             throw new \Exception('Mot de passe incorrect');
-
         }
-    
-        // $_SESSION['user_email'] = $user['email'];
-    
-        // Vérifier si l'utilisateur est un admin
+
 
         if ($user['admin'] == 1) {
             $_SESSION['admin'] = true;
         }
-    
+
         return $user;
     }
 
@@ -63,6 +59,16 @@ class Login extends DbConnector
         // Validation du code postal
         if (!preg_match('/^[0-9]{5}$/', $zipcode)) {
             throw new \Exception('Code postal invalide');
+        }
+
+        // Vérification si l'email existe déjà dans la base de données
+        $req = $db->prepare("SELECT COUNT(*) FROM _user WHERE email = ?");
+        $req->execute([$email]);
+        $count = $req->fetchColumn();
+
+        if ($count > 0) {
+            // L'email existe déjà, renvoyer une exception
+            throw new \Exception('Cet email est déjà utilisé');
         }
 
         //Crypter le mot de passe
@@ -84,14 +90,14 @@ class Login extends DbConnector
     }
 
     /** Mettre à jour un utilisateur **/
-    public function updateUser( $name, $firstname, $phone, $address, $zipcode, $email)
+    public function updateUser($name, $firstname, $phone, $address, $zipcode, $email)
     {
         $db = self::dbConnect();
 
-        // // Validation de l'email
-        // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        //     throw new \Exception('Email invalide');
-        // }
+        // Validation de l'email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new \Exception('Email invalide');
+        }
 
         // Validation du code postal
         if (!preg_match('/^[0-9]{5}$/', $zipcode)) {
@@ -107,7 +113,7 @@ class Login extends DbConnector
             zipcode = ? 
             WHERE email = ?"
         );
-        $req->execute([$name, $firstname, $phone, $address, $zipcode, $email ]);
+        $req->execute([$name, $firstname, $phone, $address, $zipcode, $email]);
     }
 
     /** Supprimer un compte utilisateur **/
@@ -122,7 +128,7 @@ class Login extends DbConnector
         $req->execute([$email]);
     }
 
-    
+
     /** Récupérer tous les comptes utilisateurs pour back office **/
 
     public function getAllUsers()

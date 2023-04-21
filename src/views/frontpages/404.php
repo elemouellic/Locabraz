@@ -7,9 +7,7 @@
 <br>
 <br>
 
-<?php var_dump($exception) ?>
   <p><?php echo $exception->getMessage(); ?></p>
-
 
 
 <!-- Chargement Footer -->

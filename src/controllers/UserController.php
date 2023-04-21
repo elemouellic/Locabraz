@@ -3,6 +3,7 @@
 namespace Locabraz\controllers;
 use Locabraz\controllers\controllerClass\RentalController;
 use Locabraz\controllers\controllerClass\ArticleController;
+use Locabraz\controllers\controllerClass\BookingController;
 use Exception;
 
 
@@ -62,6 +63,9 @@ class UserController extends MainController
      */
     public function accountPage(): void
     {
+        $email = $_SESSION['email'];
+        $controller = new BookingController();
+        $bookings = $controller->obtainBookingsByEmail($email);
         require_once $this->getViewFront('user/account');
     }
 

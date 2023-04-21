@@ -157,6 +157,17 @@ try {
                     break;
                 }
 
+                // Supprimer compte utilisateur
+
+            case 'removeuser':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $login->removeUser();
+                    break;
+                } else {
+                    $view->loginPage();
+                    break;
+                }
+
                 /** Formulaires de la vue admin */
                 // Gestion des locations
             case 'create-rental':
