@@ -8,10 +8,6 @@ function trimText(elements, limit) {
   });
 }
 
-const actusdescription = document.querySelectorAll('.actus-description');
-const actustitle = document.querySelectorAll('.actus-title');
-const articlesdescription = document.querySelectorAll('.article-description');
+const articlesdescription = document.querySelectorAll('.article-description-home');
 
-trimText(actusdescription, 225);
-trimText(actustitle, 60);
 trimText(articlesdescription, 100);

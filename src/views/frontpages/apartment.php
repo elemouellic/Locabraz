@@ -3,12 +3,15 @@
 
 <article class="articles rentals-list">
 
-
     <?php foreach ($rentals as $rental) : ?>
-        <article id="<?php echo $rental['idRentals'] ?>" class="article-home">
-            <?php if (!empty($rental['photos'])) : ?>
-                <img class="article-img" src="<?php echo $rental['photos'][0]['photolink']; ?>" alt="<?php echo $rental['photos'][0]['alt']; ?>">
-            <?php endif; ?>
+        <article id="<?php echo $rental['idRentals'] ?>" class="article-home article-page">
+            <div class="article-img-container">
+                <?php if (!empty($rental['photos'])) : ?>
+                    <?php foreach ($rental['photos'] as $photo) : ?>
+                        <img class="article-img" src="<?php echo $photo['photolink']; ?>" alt="<?php echo $photo['alt']; ?>">
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
             <div class="article-body">
                 <h4 class="article-title"><?php echo $rental['type']; ?></h4>
                 <p class="article-description"><?php echo $rental['description']; ?></p>

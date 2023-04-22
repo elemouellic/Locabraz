@@ -21,7 +21,7 @@
                 <?php endif; ?>
                 <div class="article-body">
                     <h4 class="article-title"><?php echo $rental['type']; ?></h4>
-                    <p class="article-description"><?php echo $rental['description']; ?></p>
+                    <p class="article-description article-description-home"><?php echo $rental['description']; ?></p>
                     <a href="?action=apartment#<?php echo $rental['idRentals']; ?>" class="article-button">Voir</a>
 
                 </div>

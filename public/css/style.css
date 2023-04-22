@@ -337,8 +337,8 @@ header {
 
 /******************** Main ********************/
 
-/* Alignement avec header */
-main{
+/* Alignement avec le header */
+main {
     margin-top: 13vh;
 }
 
@@ -360,6 +360,7 @@ main{
     animation: fade 5s ease-in-out infinite;
 
 }
+
 
 .slider-title {
     display: flex;
@@ -594,7 +595,7 @@ main{
 
 }
 
-.template-page-list{
+.template-page-list {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -647,7 +648,7 @@ main{
 
 /* Box alternative pour pages avec peu d'input */
 
-.box-form-alt{
+.box-form-alt {
     justify-content: center;
 }
 
@@ -712,7 +713,8 @@ footer {
     padding-right: 1rem;
     background-color: var(--colorfooter);
 }
-.logo-footer>a{
+
+.logo-footer>a {
     font-family: var(--prata);
     font-size: var(--titleresponsivemedium);
 }
@@ -750,7 +752,7 @@ footer {
 
 @media only screen and (min-width: 768px) {
 
-    main{
+    main {
         margin-top: 10vh;
     }
 
@@ -813,6 +815,16 @@ footer {
         width: 15%;
         border-radius: 4px;
         box-shadow: var(--box);
+    }
+
+    /* Appartements */
+
+    .article-page{
+        width: 36rem;
+    }
+
+    .article-img{
+        height: 400px;
     }
 
     /* Actualités */

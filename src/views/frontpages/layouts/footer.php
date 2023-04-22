@@ -22,6 +22,7 @@
 
     <script src="public/js/burger.js"></script>
     <script src="public/js/slider.js"></script>
+    <script src="public/js/sliderrental.js"></script>
     <script src="public/js/scrollmouse.js"></script>
     <script src="public/js/substring.js"></script>
 </body>
