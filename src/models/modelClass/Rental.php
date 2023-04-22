@@ -174,15 +174,15 @@ class Rental extends DbConnector
 
       $req = $db->prepare(
          "SELECT *
-         FROM rentals
-         WHERE idRentals NOT IN (
-            SELECT idRentals
-            FROM bookings
-            WHERE (arrival <= ? AND departure >= ?)
-         )"
+      FROM rentals
+      WHERE idRentals NOT IN (
+         SELECT idRentals
+         FROM bookings
+         WHERE (arrival < ? AND departure > ?) OR (arrival <= ? AND departure >= ?) OR (arrival >= ? AND departure <= ?)
+      )"
       );
 
-      $req->execute([$arrival, $departure]);
+      $req->execute([$departure, $arrival, $arrival, $departure, $arrival, $departure]);
 
       $rentals = $req->fetchAll();
 

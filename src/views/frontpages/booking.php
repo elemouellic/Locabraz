@@ -5,14 +5,15 @@
 
 <h3 class="title-form">Chercher une disponibilité</h3>
 <form class="home-form search" method="post">
-    <input class="input" type="date" name="arrival" id="arrival" value='<?php echo date("Y-m-d"); ?>'>
-    <input class="input" type="date" name="departure" id="departure" value='<?php echo date("Y-m-d"); ?>'>
+    <input class="input" type="date" name="arrival" id="arrival" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y"))); ?>'>
+    <input class="input" type="date" name="departure" id="departure" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 10, date("Y"))); ?>'>
     <input class="inputbutton" type="submit" value="Rechercher">
 </form>
 
 <?php if (!empty($rentals)) : ?>
     <h2 class="title-form">Résultats de recherche</h2>
     <article class="articles rentals-list">
+
 
 <?php foreach ($rentals as $rental) : ?>
     <article id="<?php echo $rental['idRentals'] ?>" class="article-home">
@@ -34,7 +35,7 @@
 <?php else : ?>
     <p>Aucune location n'est disponible pour les dates sélectionnées.</p>
 <?php endif; ?>
->
+
 
     
 
