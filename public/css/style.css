@@ -326,7 +326,6 @@ header {
     display: block;
     padding: 1rem;
     font-size: var(--titleresponsivebig);
-    /* border-bottom: 1px solid #ccc; */
     width: 100%;
     height: 7rem;
 }
@@ -338,6 +337,7 @@ header {
 
 /******************** Main ********************/
 
+/* Alignement avec header */
 main{
     margin-top: 13vh;
 }
