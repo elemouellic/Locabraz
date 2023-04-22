@@ -109,10 +109,14 @@ class LoginController extends MainController
         $address = Security::sanitize($_POST['address']);
         $zipcode = Security::sanitize($_POST['zipcode']);
         $password = Security::sanitize($_POST['password']);
+        if (strlen($password) < 8) {
+            throw new \Exception('Le mot de passe doit contenir au moins 8 caractères');
+        }
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
         $user = new Login();
-        $user->insertUser($email, $name, $firstname, $phone, $address, $zipcode, $password);
+        $user->insertUser($email, $name, $firstname, $phone, $address, $zipcode, $hashedPassword);
 
         //Redirection vers le compte utilisateur
         header("Location: " . $_ENV['SITE_URL'] . "?action=useradmin");

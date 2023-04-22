@@ -634,6 +634,8 @@ main {
 
 }
 
+
+
 /* Box alternative pour pages avec peu d'input */
 
 .box-form-alt {
@@ -652,6 +654,7 @@ main {
     height: 100%;
     font-size: var(--textreponsive);
     margin-bottom: 1rem;
+    text-indent: 1rem;
 }
 
 .form-validate {
@@ -807,21 +810,21 @@ footer {
 
     /* Appartements */
 
-    .article-page{
+    .article-page {
         width: 36rem;
     }
 
-    .article-img{
+    .article-img {
         height: 400px;
     }
 
     /* Actualités */
 
-    .actus-home{
+    .actus-home {
         width: 36rem;
     }
 
-    .actus-img{
+    .actus-img {
         height: 400px;
     }
 

@@ -16,23 +16,24 @@ class Booking extends DbConnector
 
 
    public function insertBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email)
-   {
-      $db = self::dbConnect();
+{
+   $db = self::dbConnect();
 
-      $req = $db->prepare(
-         "INSERT INTO bookings (
-           arrival = ?, 
-           departure = ?, 
-           persons = ?, 
-           amount = ?, 
-           payment = ?, 
-           idRentals = ?, 
-           email = ?
-           ) 
-           VALUES (?, ?, ?, ?, ?, ?, ?)"
-      );
-      $req->execute([$arrival, $departure, $persons, $amount, $payment, $idRentals, $email]);
-   }
+   $req = $db->prepare(
+      "INSERT INTO bookings (
+        arrival, 
+        departure, 
+        persons, 
+        amount, 
+        payment, 
+        idRentals, 
+        email
+        ) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)"
+   );
+   $req->execute([$arrival, $departure, $persons, $amount, $payment, $idRentals, $email]);
+}
+
 
    public function updateBooking($arrival, $departure, $persons, $amount, $payment, $idRentals, $email, $id)
    {
@@ -40,12 +41,12 @@ class Booking extends DbConnector
 
       $req = $db->prepare(
          "UPDATE bookings 
-           SET arrival = ?, 
-           departure = ?, 
-           persons = ?, 
-           amount = ?, 
-           payment = ?, 
-           idRentals = ?, 
+           SET arrival, 
+           departure, 
+           persons, 
+           amount, 
+           payment, 
+           idRentals, 
            email = ? 
            WHERE idBookings = ?"
       );

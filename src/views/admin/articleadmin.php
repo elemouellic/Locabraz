@@ -11,7 +11,7 @@
 
         <div class="box-form">
             <label for="content">Contenu de l'article :</label>
-            <textarea id="content" name="content" rows="10" cols="50" maxlength="1000" placeholder="Saisir contenu (1000 caractères max)" required></textarea>
+            <textarea id="content" name="content" rows="10" cols="50" maxlength="3000" placeholder="Saisir contenu (3000 caractères max)" required></textarea>
         </div>
         <div class="box-links">
             <label for="photolink">Téléverser une photo</label>
@@ -36,7 +36,7 @@
                 <input type="text" id="title" name="title" maxlength="50" value="<?php echo $article['title']; ?>" required>
             </div>
             <div class="box-form"><label for="content">Contenu</label>
-                <textarea id="content" name="content" rows="10" cols="50" maxlength="1000" required><?php echo $article['content']; ?> </textarea>
+                <textarea id="content" name="content" rows="10" cols="50" maxlength="3000" required><?php echo $article['content']; ?> </textarea>
             </div>
             <div class="box-form box-row">
 
