@@ -10,8 +10,9 @@ use Locabraz\models\DbConnector;
  * udpateRental (mettre à jour les informations dans la base de données)
  * deleteRental (supprimer une location de la base de données)
  * getAllRentals (récupérer toutes les locations)
+ * getRentalPhotos (récupérer les photos liées à la location)
  * getFourRentals (récupérer les 4 dernières locations)
- * * getRentalPhotos (récupérer les photos liées à la location)
+ * getRentalByDate (récupérer les apprtements disponibles par date)
  */
 
 class Rental extends DbConnector
@@ -123,6 +124,30 @@ class Rental extends DbConnector
       return $rentals;
    }
 
+   /** Récupérer les photos d'une location **/
+   public function getRentalPhotos($id)
+   {
+      $db = self::dbConnect();
+
+      $req = $db->prepare(
+         "SELECT r.idRentals, g.idPhotorental, g.photolink, g.alt
+   FROM rentals r 
+   JOIN representer rep ON r.idRentals = rep.idRentals 
+   JOIN rentalgallerie g ON rep.idPhotorental = g.idPhotorental
+   WHERE r.idRentals = ?"
+      );
+
+      $req->execute([$id]);
+
+      $photos = $req->fetchAll();
+
+      if (!$photos) {
+         throw new \Exception('Aucune photo trouvée pour cette location');
+      }
+
+      return $photos;
+   }
+
    /** Récupérer les quatre dernières locations **/
 
    public function getFourRentals()
@@ -140,28 +165,27 @@ class Rental extends DbConnector
 
       return $rentals;
    }
-   /** Récupérer les photos d'une location **/
-public function getRentalPhotos($id)
-{
-   $db = self::dbConnect();
 
-   $req = $db->prepare(
-      "SELECT r.idRentals, g.idPhotorental, g.photolink, g.alt
-   FROM rentals r 
-   JOIN representer rep ON r.idRentals = rep.idRentals 
-   JOIN rentalgallerie g ON rep.idPhotorental = g.idPhotorental
-   WHERE r.idRentals = ?"
-   );
+   /** Récupérer les locations disponibles pour une période donnée */
 
-   $req->execute([$id]);
+   public function getRentalByDate($arrival, $departure)
+   {
+      $db = self::dbConnect();
 
-   $photos = $req->fetchAll();
+      $req = $db->prepare(
+         "SELECT *
+         FROM rentals
+         WHERE idRentals NOT IN (
+            SELECT idRentals
+            FROM bookings
+            WHERE (arrival <= ? AND departure >= ?)
+         )"
+      );
 
-   if (!$photos) {
-      throw new \Exception('Aucune photo trouvée pour cette location');
+      $req->execute([$arrival, $departure]);
+
+      $rentals = $req->fetchAll();
+
+      return $rentals;
    }
-
-   return $photos;
-}
-
 }

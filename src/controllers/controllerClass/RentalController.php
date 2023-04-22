@@ -5,6 +5,7 @@ namespace Locabraz\controllers\controllerClass;
 use Locabraz\controllers\MainController;
 use Locabraz\models\modelClass\Rental;
 use Locabraz\controllers\Security;
+
 /**
  * *****Liste des méthodes*****
  * rentalAdmin (Contrôleur pour vue admin)
@@ -13,6 +14,7 @@ use Locabraz\controllers\Security;
  * removeRental (supprimer une location via l'admin)
  * obtainAllRentals (récupérer les quatres dernières ,location pour page d'accueil)
  * obtainFourRentals (récupérer toutes les locations pour page appartements)
+ * obtainRentalByDate (récupérer pour affichage des locations disponibles)
  */
 
 class RentalController extends MainController
@@ -102,6 +104,30 @@ class RentalController extends MainController
     {
         $rental = new Rental();
         $rentals = $rental->getFourRentals();
+
+        // Ajouter les photos pour chaque location
+        foreach ($rentals as &$r) {
+            $photos = $rental->getRentalPhotos($r['idRentals']);
+            $r['photos'] = $photos;
+        }
+
+        return $rentals;
+    }
+
+    /** Récupérer les locations disponibles pour une période donnée */
+    public static function obtainRentalByDate($arrival, $departure)
+    {
+
+        if(isset($_POST['arrival']) && isset($_POST['departure'])) {
+        $arrival = Security::sanitize($_POST['arrival']);
+        $departure = Security::sanitize($_POST['departure']);
+    } else {
+        $arrival = date('Y-m-d');
+        $departure = date('Y-m-d');
+    }
+
+        $rental = new Rental();
+        $rentals = $rental->getRentalByDate($arrival, $departure);
 
         // Ajouter les photos pour chaque location
         foreach ($rentals as &$r) {

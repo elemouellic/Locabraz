@@ -6,7 +6,7 @@
         <h2 class="slider-title">Location d'appartements dans le Finistère Sud</h2>
     </section>
     <h3 class="title-form">Chercher une disponibilité</h3>
-    <form class="home-form search" action="">
+    <form class="home-form search" action="?action=form-dispo" method="POST">
         <input class="input" type="date" name="trip-start" id="start" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y"))); ?>'>
         <input class="input" type="date" name="trip-arrival" id="arrival" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 10, date("Y"))); ?>'>
         <input class="inputbutton" type="submit" value="Rechercher">
