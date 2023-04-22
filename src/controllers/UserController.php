@@ -94,7 +94,7 @@ class UserController extends MainController
     }
 
     /**
-     * Affiche la page de réservation utilisateur
+     * Affiche la page de disponibilité des locations
      */
     public function bookingPage(): void
     {
@@ -104,7 +104,7 @@ class UserController extends MainController
         $controller = new RentalController();
         $rentals = $controller->obtainRentalByDate($arrival, $departure);
     
-        require_once $this->getViewFront('user/booking');
+        require_once $this->getViewFront('booking');
     }
     
 
