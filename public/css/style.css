@@ -336,7 +336,11 @@ header {
     color: var(--colorfontdark);
 }
 
+/******************** Main ********************/
 
+main{
+    margin-top: 13vh;
+}
 
 /******************** Slider ********************/
 
@@ -745,6 +749,10 @@ footer {
 /* Media Queries */
 
 @media only screen and (min-width: 768px) {
+
+    main{
+        margin-top: 10vh;
+    }
 
     /* Menu burger */
 
