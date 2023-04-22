@@ -101,7 +101,8 @@ class UserController extends MainController
         $arrival = $_POST['arrival'] ?? date('Y-m-d');
         $departure = $_POST['departure'] ?? date('Y-m-d');
     
-        $rentals = RentalController::obtainRentalByDate($arrival, $departure);
+        $controller = new RentalController();
+        $rentals = $controller->obtainRentalByDate($arrival, $departure);
     
         require_once $this->getViewFront('user/booking');
     }

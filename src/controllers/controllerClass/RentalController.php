@@ -115,7 +115,7 @@ class RentalController extends MainController
     }
 
     /** Récupérer les locations disponibles pour une période donnée */
-    public static function obtainRentalByDate($arrival, $departure)
+    public function obtainRentalByDate($arrival, $departure)
     {
 
         if(isset($_POST['arrival']) && isset($_POST['departure'])) {
