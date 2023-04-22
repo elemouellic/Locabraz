@@ -22,7 +22,8 @@
                 <div class="article-body">
                     <h4 class="article-title"><?php echo $rental['type']; ?></h4>
                     <p class="article-description"><?php echo $rental['description']; ?></p>
-                    <a href="#" class="article-button">Voir</a>
+                    <a href="?action=apartment#<?php echo $rental['idRentals']; ?>" class="article-button">Voir</a>
+
                 </div>
             </article>
         <?php endforeach; ?>

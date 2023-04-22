@@ -5,14 +5,14 @@
 
 
     <?php foreach ($rentals as $rental) : ?>
-        <article class="article-home">
+        <article id="<?php echo $rental['idRentals'] ?>" class="article-home">
             <?php if (!empty($rental['photos'])) : ?>
-                <img class="img-form" src="<?php echo $rental['photos'][0]['photolink']; ?>" alt="<?php echo $rental['photos'][0]['alt']; ?>">
+                <img class="article-img" src="<?php echo $rental['photos'][0]['photolink']; ?>" alt="<?php echo $rental['photos'][0]['alt']; ?>">
             <?php endif; ?>
             <div class="article-body">
                 <h4 class="article-title"><?php echo $rental['type']; ?></h4>
                 <p class="article-description"><?php echo $rental['description']; ?></p>
-                <a href="#" class="article-button">Voir</a>
+                <a href="?action=contact" class="article-button">Contactez-nous</a>
             </div>
         </article>
     <?php endforeach; ?>
