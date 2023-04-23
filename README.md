@@ -25,6 +25,8 @@ MySQL
 #### Utilitaires
 Composer
 Looping
+VSCode
+PHPMyAdmin
 
 ## Installation du projet
 
@@ -58,7 +60,6 @@ DB_PASSWORD = 'Mot de passe de la base de données'
 SITE_URL = 'URL du serveur ex: http://localhost/Locabraz/'
  ```
 
-* Base de données
 
 ## Base de données
 
@@ -77,14 +78,25 @@ Un utilisateur avec une réservation:
 Login : utilisateur@locabraz.com
 MdP : locabraz
 ```
+Vous pouvez accéder au dashboard et au compte utilisateur via la rubrique 'Mon Compte'
 
-
-
-
-### Version PC
+## Version PC
 <img src="screenshots/home1.jpg">
 <img src="screenshots/home2.jpg">
 <img src="screenshots/home3.jpg">
 
-### Version Mobile
+## Version Mobile
 <img src="screenshots/home-small.jpg">
+
+## Contact
+
+Pour toute question concernant l'installation du projet vous pouver me contacter par mail:
+
+```
+emmanuel.lm@gmail.com
+```
+
+## Remerciements
+
+Je tiens à remercier le Greta de Vannes et tout particulièrement nos deux formateurs dévoués Marie-Christine L. et Thierry B. pour leur aide précieuse et leur bonne humeur.
+
