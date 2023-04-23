@@ -40,14 +40,13 @@ En tout premier lieu, via la console, effectuer un git clone
 git clone https://github.com/elemouellic/Locabraz.git
 ```
 
-* Composer
-Installer Composer si vous ne l'avez pas (https://getcomposer.org/download/) puis effectuer en ligne de commande un 
+* Installer Composer si vous ne l'avez pas (https://getcomposer.org/download/) puis effectuer en ligne de commande un 
 
 ```sh
 composer install
 ```
 
-* .env - 
+* Variables d'environnement
   
 Renommer le fichier .env.example en .env en remplissant les champs adéquats
 
