@@ -20,12 +20,16 @@
                         <img class="article-img" src="<?php echo $photo['photolink']; ?>" alt="<?php echo $photo['alt']; ?>">
                     <?php endforeach; ?>
                 <?php endif; ?>
-                <p >Cliquez sur l'image pour faire défiler les photos</p>
+                <p>Cliquez sur l'image pour faire défiler les photos</p>
             </div>
             <div class="article-body">
                 <h4 class="article-title"><?php echo $rental['type']; ?></h4>
                 <p class="article-description"><?php echo $rental['description']; ?></p>
-                <a href="?action=contact" class="article-button">Contactez-nous</a>
+                <form class="home-form search" action="?action=form-dispo" method="POST">
+                    <input class="" type="date" name="arrival" id="arrival" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y"))); ?>'>
+                    <input class="" type="date" name="departure" id="departure" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 10, date("Y"))); ?>'>
+                    <input class="" type="submit" value="Vérifier la disponibilité">
+                </form>
             </div>
         </article>
     <?php endforeach; ?>

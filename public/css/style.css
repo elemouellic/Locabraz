@@ -315,10 +315,12 @@ header {
     background-color: var(--colormenuburger);
     transform: translateX(100%);
     transition: transform 1s;
+
 }
 
 .nav.active {
     transform: translateX(0);
+
 }
 
 .items-list {
@@ -359,7 +361,7 @@ main {
     background-image: linear-gradient(180deg,
             rgba(31, 31, 38, 0.88) 0%,
             rgba(31, 31, 38, 0.24) 100%),
-        url(../img/slider/slider1.jpg);
+        url(../img/slider/slider1-min.jpg);
     animation: fade 5s ease-in-out infinite;
 
 }
@@ -404,7 +406,7 @@ main {
 
 .input {
     cursor: pointer;
-    border: 2px solid var(--colorfontdark);
+    border: 1.5px solid var(--colorfontdark);
     border-radius: 4px;
     width: 50%;
     margin-bottom: 0.5rem;
@@ -477,6 +479,7 @@ main {
 .section-button {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
     width: 100%;
 }
 
@@ -490,6 +493,40 @@ main {
     text-align: center;
 
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+}
+
+.container>img {
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+}
+
+.container>img:nth-child(1) {
+    height: 10vh;
+}
+
+.container>img:nth-child(2) {
+    height: 12vh;
+}
+
+.container>img:nth-child(3) {
+    height: 14vh;
+}
+
+.container>img:nth-child(4) {
+    height: 16vh;
+}
+
+.container>img:nth-child(5) {
+    height: 18vh;
+}
+
 
 
 
@@ -596,9 +633,10 @@ main {
 
 /******************** Page disponibilité ********************/
 
-.text-dispo{
+.text-dispo {
     text-align: center;
     font-size: var(--textreponsive);
+    margin-top: 1rem;
 }
 
 
@@ -792,6 +830,41 @@ footer {
 
     .rentals-list {
         justify-content: center;
+    }
+
+
+    .container {
+        flex-direction: column;
+        justify-content: space-between;
+        height: 50vh;
+    }
+
+    .container>img:first-child {
+        height: 100%;
+        width: 33%;
+    }
+
+    .container>img:nth-child(2) {
+        height: 39%;
+        width: 33%;
+
+    }
+
+    .container>img:nth-child(3) {
+        height: 60%;
+        width: 33%;
+    }
+
+    .container>img:nth-child(4) {
+        height: 60%;
+        width: 33%;
+
+    }
+
+    .container>img:last-child {
+        height: 39%;
+        width: 33%;
+
     }
 
 

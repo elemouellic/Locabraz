@@ -88,14 +88,4 @@ class ArticleController extends MainController
         return $article;
     }
 
-    /** Récupérer trois articles */
-
-    public function obtainThreeArticles()
-    {
-
-        $article = new Article();
-        $article = $article->getThreeArticles();
-
-        return $article;
-    }
 }

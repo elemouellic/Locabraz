@@ -25,7 +25,7 @@
         }
         echo '<div>';
       } else {
-        echo "<p>Aucune réservation trouvée.</p>";
+        echo '<p class="text-dispo">Aucune réservation trouvée.</p>';
       }
 
     

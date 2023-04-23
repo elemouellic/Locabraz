@@ -11,7 +11,6 @@ use Locabraz\models\DbConnector;
  * udpateArticle (mettre à jour un article dans la base de données)
  * deleteArticle (supprimer un article de la base de données)
  * getAllArticles (récupérer tous les articles de la table)
- * getThreeArticles (récupérer les trois derniers articles de la table)
  */
 
 class Article extends DbConnector
@@ -121,21 +120,4 @@ class Article extends DbConnector
     }
     
 
-    /** Récupérer trois articles **/
-
-    public function getThreeArticles()
-    {
-        $db = self::dbConnect();
-
-        $req = $db->prepare("SELECT * FROM articles ORDER BY id ASC LIMIT 3");
-        $req->execute();
-
-        $articles = $req->fetchAll();
-
-        if (!$articles) {
-            throw new \Exception('Aucun article trouvé');
-        }
-
-        return $articles;
-    }
 }
