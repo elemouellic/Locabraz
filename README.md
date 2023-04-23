@@ -89,7 +89,7 @@ Vous pouvez accéder au dashboard et au compte utilisateur via la rubrique 'Mon 
 
 ## Contact
 
-Pour toute question concernant l'installation du projet vous pouver me contacter par mail:
+Pour toute question concernant l'installation du projet vous pouvez me contacter par mail:
 
 ```
 emmanuel.lm@gmail.com
