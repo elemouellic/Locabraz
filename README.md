@@ -14,6 +14,7 @@ CSS
 JavaScript
 PHP
 MySQL
+Composer
 
 ## Installation du projet
 
@@ -25,6 +26,11 @@ En tout premier lieu, via la console, effectuer un git clone
 * Git clone
 ```sh
 git clone https://github.com/elemouellic/Locabraz.git
+```
+
+Installer Composer si vous ne l'avez pas (https://getcomposer.org/download/) puis effectuer en ligne de commande un * Composer
+```sh
+composer install
 ```
 
 
