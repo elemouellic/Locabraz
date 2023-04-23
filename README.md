@@ -69,11 +69,13 @@ Il y a deux utilisateurs enregistrés:
 L'administrateur:
 
 Login : admin@locabraz.com
+```
 MdP : locabraz
 
 Un utilisateur avec une réservation:
 
 Login : utilisateur@locabraz.com
+```
 MdP : locabraz
 
 
