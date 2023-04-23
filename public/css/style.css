@@ -159,7 +159,7 @@ body {
     --colorbody: #f7f7f7;
 
     --colorheader: #EEEEEE;
-    --colorfooter: #282828;
+    --colorfooter: #3c3c3b;
 
     --colormenuburger: #f7f7f7;
 
@@ -331,8 +331,11 @@ header {
 }
 
 .items-link {
+    display: block;
     text-decoration: none;
     color: var(--colorfontdark);
+    font-family: var(--prata);
+    width: 100%;
 }
 
 /******************** Main ********************/
@@ -580,6 +583,7 @@ main {
     justify-content: center;
     align-items: center;
     margin-top: 15vh;
+    min-height: 80vh;
 
 }
 
@@ -590,7 +594,12 @@ main {
     justify-content: center;
 }
 
+/******************** Page disponibilité ********************/
 
+.text-dispo{
+    text-align: center;
+    font-size: var(--textreponsive);
+}
 
 
 /******************** Template formulaire ********************/

@@ -12,6 +12,8 @@
 
 <?php if (!empty($rentals)) : ?>
     <h2 class="title-form">Résultats de recherche</h2>
+    <p class="text-dispo">du <?php echo date("d-m-Y", strtotime($arrival)); ?> au <?php echo date("d-m-Y", strtotime($departure)); ?></p>
+
     <article class="articles rentals-list">
 
 

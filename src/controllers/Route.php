@@ -134,6 +134,7 @@ try {
 
             case 'form-dispo':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    //Vérifier si les variables sont définies
                     $arrival = $_POST['arrival'] ?? date('Y-m-d');
                     $departure = $_POST['departure'] ?? date('Y-m-d');
                     $rental->obtainRentalByDate($arrival, $departure);
