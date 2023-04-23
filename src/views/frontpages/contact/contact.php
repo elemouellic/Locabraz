@@ -26,7 +26,7 @@
             <textarea id="message" name="message" maxlength="500" placeholder="Votre message" required></textarea>
         </div>
         <input type="hidden" name="postdate" value="<?php echo date('d/m/Y H:i:s'); ?>">
-        <label for="validate">J'accepte la RGPD</label>
+        <label for="validate">J'accepte les <a href="?action=mentions">mentions légales</a></label>
         <input type="checkbox" id="validate" name="validate" required>
         <input class="form-validate" type="submit" value="Envoyer">
 

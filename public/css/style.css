@@ -330,6 +330,7 @@ header {
     font-size: var(--titleresponsivebig);
     width: 100%;
     height: 7rem;
+
 }
 
 .items-link {
@@ -338,6 +339,7 @@ header {
     color: var(--colorfontdark);
     font-family: var(--prata);
     width: 100%;
+
 }
 
 /******************** Main ********************/
@@ -420,13 +422,13 @@ main {
 
 .inputbutton {
     cursor: pointer;
-    border: 2px solid var(--colorfontdark);
     width: 35%;
     font-size: var(--inputs);
-    background-color: transparent;
-    color: var(--colorfontdark);
+    color: var(--colorfontlight);
+    background-color: var(--colorfontmedium);
     border-radius: 4px;
     box-shadow: var(--box);
+    text-align: center;
 
 }
 
@@ -484,13 +486,14 @@ main {
 }
 
 .seeall {
-    border: 2px solid var(--colorfontdark);
     width: 30%;
-    background-color: transparent;
-    color: var(--colorfontdark);
+    background-color: var(--colorfontmedium);
+    color: var(--colorfontlight);
+    border-radius: 4px;
     cursor: pointer;
     font-size: var(--inputs);
     text-align: center;
+    padding: 1rem;
 
 }
 
@@ -606,11 +609,6 @@ main {
 }
 
 
-.section-button {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
 
 /******************** Pages utilisateurs ********************/
 
@@ -705,10 +703,11 @@ main {
 }
 
 .form-validate {
-    border: 2px solid var(--colorfontdark);
     width: 30%;
-    background-color: transparent;
-    color: var(--colorfontdark);
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: var(--colorfontmedium);
+    color: var(--colorfontlight);
     cursor: pointer;
     font-size: var(--inputs);
     text-align: center;
@@ -744,7 +743,8 @@ footer {
 
 .logo-footer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     height: 33%;
@@ -752,10 +752,6 @@ footer {
     background-color: var(--colorfooter);
 }
 
-.logo-footer>a {
-    font-family: var(--prata);
-    font-size: var(--titleresponsivemedium);
-}
 
 
 .rentalsite {
@@ -886,7 +882,6 @@ footer {
 
     .seeall {
         width: 15%;
-        border-radius: 4px;
         box-shadow: var(--box);
     }
 

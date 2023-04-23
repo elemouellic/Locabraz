@@ -105,8 +105,10 @@ class Article extends DbConnector
         // Alias a=articles ag=articlegallerie
         $req = $db->prepare("SELECT a.*, ag.photolink, ag.alt
         FROM articles a
-        LEFT JOIN articlegallerie ag ON a.idPhotoarticle = ag.idPhotoarticle;
-        ");
+        LEFT JOIN articlegallerie ag ON a.idPhotoarticle = ag.idPhotoarticle
+        ORDER BY a.publishdate DESC;
+    ");
+    
     
         $req->execute();
     

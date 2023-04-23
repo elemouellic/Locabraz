@@ -5,7 +5,6 @@
             <li><a href="?action=news">Actualités</a></li>
             <li><a href="?action=contact">Contact</a></li>
             <li><a href="?action=account">Mon&nbspCompte</a></li>
-            <li><a href="?action=mentions">Mentions&nbspLégales</a></li>
         </ul>
 
 
@@ -17,6 +16,8 @@
 
         <div class="logo-footer">
             <a href="?action=home">Locabraz</a>
+            <p>&copy;Kercode - Greta de Vannes 2023</p>
+            <a href="?action=mentions">Mentions&nbspLégales</a>
         </div>
     </footer>
 

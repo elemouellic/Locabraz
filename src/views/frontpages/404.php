@@ -5,7 +5,7 @@
 <section class="template-page">
 <h2 class="title-form">Oups</h2>
   <p><?php echo $exception->getMessage(); ?></p>
-  <a class="seeall" href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Retour à la page précédente</a>
+  <a class="inputbutton" href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Retour à la page précédente</a>
 
 </section>
 
