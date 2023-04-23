@@ -9,12 +9,22 @@ C'est est un projet qui continuera à vivre après la soutenance, éventuellemen
 
 ### Technologies employées :
 
+J'ai utilisé Looping (https://www.looping-mcd.fr/) pour créer ma base de données.
+
+Voici le schéma conceptuel de celle-ci:
+
+<img src="BDD.jpg">
+
+#### Langages :
 HTML
 CSS
 JavaScript
 PHP
 MySQL
+
+#### Utilitaires
 Composer
+Looping
 
 ## Installation du projet
 
@@ -28,10 +38,46 @@ En tout premier lieu, via la console, effectuer un git clone
 git clone https://github.com/elemouellic/Locabraz.git
 ```
 
-Installer Composer si vous ne l'avez pas (https://getcomposer.org/download/) puis effectuer en ligne de commande un * Composer
+* Composer
+Installer Composer si vous ne l'avez pas (https://getcomposer.org/download/) puis effectuer en ligne de commande un 
+
 ```sh
 composer install
 ```
+
+* .env - 
+  
+Renommer le fichier .env.example en .env en remplissant les champs adéquats
+
+```
+DB_NAME = 'Nom de la base de données'
+DB_HOST = 'Adresse de la base données'
+DB_PORT = 'Port utilisé'
+DB_USERNAME = 'Utilisateur de la base de données'
+DB_PASSWORD = 'Mot de passe de la base de données'
+SITE_URL = 'URL du serveur ex: http://localhost/Locabraz/'
+ ```
+
+* Base de données
+
+## Base de données
+
+La base de données `locabraz.sql` se trouve à la racine du projet. Elle contient les informations nécessaires au fonctionnement de l'application.
+
+Il y a deux utilisateurs enregistrés:
+
+L'administrateur:
+
+Login : admin@locabraz.com
+MdP : locabraz
+
+Un utilisateur avec une réservation:
+
+Login : utilisateur@locabraz.com
+MdP : locabraz
+
+
+
 
 
 ### Version PC
