@@ -16,17 +16,17 @@ Voici le schéma conceptuel de celle-ci:
 <img src="BDD.jpg">
 
 #### Langages :
-HTML
-CSS
-JavaScript
-PHP
-MySQL
+- HTML
+- CSS
+- JavaScript
+- PHP
+- MySQL
 
 #### Utilitaires
-Composer
-Looping
-VSCode
-PHPMyAdmin
+- Composer
+- Looping
+- VSCode
+- PHPMyAdmin
 
 ## Installation du projet
 
