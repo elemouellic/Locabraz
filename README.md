@@ -66,9 +66,9 @@ La base de données `locabraz.sql` se trouve à la racine du projet. Elle contie
 
 Il y a deux utilisateurs enregistrés:
 
-```
-L'administrateur:
 
+L'administrateur:
+```
 Login : admin@locabraz.com
 MdP : locabraz
 ```
