@@ -30,7 +30,7 @@
 
 </article>
 <div class="section-button">
-    <a href="?action=apartment" class="seeall">Voir&nbsptout</a>
+    <a href="?action=apartment" class="seeall">Voir&nbsp;tout</a>
 </div>
 <section class="prez-banner">
     <h5 class="prez-title">Présentation</h5>
@@ -51,7 +51,7 @@
     </div>
 
     <div class="section-button">
-        <a href="?action=news" class="seeall">Voir&nbsptout</a>
+        <a href="?action=news" class="seeall">Voir&nbsp;tout</a>
     </div>
 </section>
 
