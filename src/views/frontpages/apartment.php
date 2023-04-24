@@ -25,11 +25,8 @@
             <div class="article-body">
                 <h4 class="article-title"><?php echo $rental['type']; ?></h4>
                 <p class="article-description"><?php echo $rental['description']; ?></p>
-                <form class="home-form search" action="?action=form-dispo" method="POST">
-                    <input class="" type="date" name="arrival" id="arrival" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y"))); ?>'>
-                    <input class="" type="date" name="departure" id="departure" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 10, date("Y"))); ?>'>
-                    <input class="" type="submit" value="Vérifier la disponibilité">
-                </form>
+                <a class="inputbutton" href="?action=form-dispo">Vérifier la disponibilité</a>
+                
             </div>
         </article>
     <?php endforeach; ?>
