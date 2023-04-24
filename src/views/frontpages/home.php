@@ -33,7 +33,7 @@
     <a href="?action=apartment" class="seeall">Voir&nbsp;tout</a>
 </div>
 <section class="prez-banner">
-    <h5 class="prez-title">Présentation</h5>
+    <h4 class="prez-title">Présentation</h4>
     <p class="prez-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos accusantium
         obcaecati
         eveniet vel nobis adipisci fugit odit ad in, quaerat animi quam veritatis tempora ullam laborum,
@@ -41,7 +41,7 @@
 </section>
 
 <section>
-    <h6 class="title-form">Nos dernières actualités :</h6>
+    <h5 class="title-form">Nos dernières actualités :</h5>
     <div class="container">
         <img src="public/img/articles/643fed6fa2775.jpg" alt="vieux bâteau bleu à quai">
         <img src="public/img/articles/643feea92f2b7.jpg" alt="Chemin en bois en bord de côte">
