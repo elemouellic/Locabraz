@@ -123,19 +123,19 @@ img {
 /* Hover */
 
 a:hover {
-    opacity: 0.5s;
+    opacity: 0.5;
     transition: 0.2s;
     filter: invert(0.2);
 }
 
 input:hover {
-    opacity: 0.5s;
+    opacity: 0.5;
     transition: 0.2s;
 
 }
 
 button:hover {
-    opacity: 0.5s;
+    opacity: 0.5;
     transition: 0.2s;
 }
 
@@ -423,6 +423,7 @@ main {
 .inputbutton {
     cursor: pointer;
     width: 35%;
+    height: 30%;
     font-size: var(--inputs);
     color: var(--colorfontlight);
     background-color: var(--colorfontmedium);
@@ -703,7 +704,7 @@ main {
 }
 
 .form-validate {
-    width: 30%;
+    width: 35%;
     padding: 0.5rem;
     border-radius: 4px;
     background-color: var(--colorfontmedium);
@@ -814,13 +815,13 @@ footer {
 
     .input {
         width: 15%;
-        height: 30%;
+        height: 35%;
         margin-right: 1rem;
     }
 
     .inputbutton {
         width: 15%;
-        height: 30%;
+        height: 35%;
         margin-bottom: 8px;
     }
 
