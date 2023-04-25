@@ -663,7 +663,7 @@ main {
 }
 
 /* Faire disparaître les labels mais les laisser accessibles aux lecteurs d'écrans  */
-.box-form>label {
+label {
     position: absolute;
     left: -10000px;
     width: 1px;
