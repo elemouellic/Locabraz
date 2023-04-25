@@ -662,15 +662,6 @@ main {
     height: 100%;
 }
 
-/* Faire disparaître les labels mais les laisser accessibles aux lecteurs d'écrans  */
-label {
-    position: absolute;
-    left: -10000px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-}
-
 
 .box-form>input {
     width: 70%;

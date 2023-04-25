@@ -5,10 +5,8 @@
 
 <h3 class="title-form">Chercher une disponibilité</h3>
 <form class="home-form search" method="post">
-<label for="trip-start">Date d'arrivée</label>
-    <input class="input" type="date" name="arrival" id="arrival" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y"))); ?>'>
-    <label for="trip-start">Date de départ</label>
-    <input class="input" type="date" name="departure" id="departure" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 10, date("Y"))); ?>'>
+    <input aria-label="Date d'arrivée" class="input" type="date" name="arrival" id="arrival" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y"))); ?>'>
+    <input aria-label="Date de départ" class="input" type="date" name="departure" id="departure" value='<?php echo date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 10, date("Y"))); ?>'>
     <input class="inputbutton" type="submit" value="Rechercher">
 </form>
 

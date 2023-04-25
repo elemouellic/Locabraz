@@ -6,36 +6,29 @@
     <h2 class="title-form">Inscription</h2>
     <form class="form-template" action="?action=form-register" method="POST">
         <div class="box-form">
-            <label for="name">Nom:</label>
-            <input type="text" id="name" name="name" maxlength="50" placeholder="Votre nom" required>
+            <input aria-label="nom" type="text" id="name" name="name" maxlength="50" placeholder="Votre nom" required>
         </div>
         <div class="box-form">
-            <label for="firstname">Prénom:</label>
-            <input type="text" id="firstname" name="firstname" maxlength="50" placeholder="Votre prénom" required>
+            <input aria-label="prénom" type="text" id="firstname" name="firstname" maxlength="50" placeholder="Votre prénom" required>
         </div>
         <div class="box-form">
-            <label for="email">Adresse email:</label>
-            <input type="email" id="email" name="email" maxlength="50" placeholder="Votre email" required>
+            <input aria-label="email" type="email" id="email" name="email" maxlength="50" placeholder="Votre email" required>
         </div>
         <div class="box-form">
-            <label for="phone">Téléphone:</label>
-            <input type="tel" id="phone" name="phone" maxlength="10" placeholder="Votre numéro de téléphone" required>
+            <input aria-label="téléphone" type="tel" id="phone" name="phone" maxlength="10" placeholder="Votre numéro de téléphone" required>
         </div>
         <div class="box-form">
-            <label for="address">Adresse:</label>
-            <input type="text" id="address" name="address" maxlength="50" placeholder="Votre adresse" required>
+            <input aria-label="adresse" type="text" id="address" name="address" maxlength="50" placeholder="Votre adresse" required>
         </div>
         <div class="box-form">
-            <label for="zipcode">Code postal:</label>
-            <input type="text" id="zipcode" name="zipcode" maxlength="5" placeholder="Votre code postal" required>
+            <input aria-label="code postal" type="text" id="zipcode" name="zipcode" maxlength="5" placeholder="Votre code postal" required>
         </div>
         <div class="box-form">
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" minlength="8" maxlength="32" placeholder="Votre mot de passe" required>
+            <input aria-label="mot de passe" type="password" id="password" name="password" minlength="8" maxlength="32" placeholder="Votre mot de passe" required>
         </div>
-        <label for="validate">J'accepte les <a href="?action=mentions">mentions légales</a></label>
-        <input type="checkbox" id="validate" name="validate" required>
-        <input class="form-validate" type="submit" value="S'inscrire">
+        <p>J'accepte les <a href="?action=mentions">mentions légales</a></p>
+        <input aria-label="j'accepte les mentions légales" type="checkbox" id="validate" name="validate" required>
+        <input aria-label="s'inscrire" class="form-validate" type="submit" value="S'inscrire">
     </form>
 
 </section>
